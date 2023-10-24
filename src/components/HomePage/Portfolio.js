@@ -10,11 +10,12 @@ const Portfolio = () => {
             <div className="col-12">
               <div className="block-text center">
                 <h6 className="sub-heading">
-                  <span>Join NFT Portfolio</span>
+                  <span>Why Choose Us</span>
                 </h6>
                 <h3 className="heading wow" data-splitting="">
-                  Become a Cyfonii <br />
-                  Player Now
+                  Elevate Your SEO
+                  <br />
+                  Experience with Us
                 </h3>
               </div>
             </div>
@@ -69,7 +70,7 @@ const Portfolio = () => {
                     </svg>
                   </div>
                   <div className="content">
-                    <h5 className="title">Connect your wallet</h5>
+                    <h5 className="title">Comprehensive Website Audit</h5>
                     <p>
                       Suspendisse tristique neque a lorem placerat pharetra.
                       Class aptent taciti sociosqu ad litora torquent per
@@ -405,7 +406,10 @@ const Portfolio = () => {
                   data-aos="fade-left"
                   data-aos-duration={2000}
                 >
-                  <img src="https://themesflat.co/html/cyfoniihtml/assets/images/layouts/portfolio.png" alt="" />
+                  <img
+                    src="https://themesflat.co/html/cyfoniihtml/assets/images/layouts/portfolio.png"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>

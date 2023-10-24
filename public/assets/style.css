@@ -402,3 +402,19 @@ ul.custom-orders-ul li a {
   font-size: 12px;
   font-family: sans-serif;
 }
+
+.paypay--btn {
+  position: relative;
+  overflow: hidden;
+  background: #7c51fe;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+  padding: 5px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 17px;
+}

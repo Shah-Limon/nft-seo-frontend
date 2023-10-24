@@ -40,11 +40,14 @@ const OrderMenu = () => {
                 Cancelled Payments
               </Link>
             </li>
+            <li className="menu-item">
+              <Link to="/admin/payments/refunded" class="action-btn ">
+                Refunded Payments
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
-
-     
     </div>
   );
 };

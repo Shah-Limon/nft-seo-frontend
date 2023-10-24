@@ -14,7 +14,8 @@ const Dashboard = () => {
 
   return (
     <>
-     <DashboardMenu></DashboardMenu>
+      <DashboardMenu></DashboardMenu>
+     
       <div className="container">
         <table className="rwd-table">
           <tbody>

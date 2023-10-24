@@ -56,10 +56,9 @@ const OurSpeciality = () => {
                     </defs>
                   </svg>
                 </div>
-                <h5 className="title">Huge Collection</h5>
+                <h5 className="title">Comprehensive SEO Audits</h5>
                 <p>
-                  Oficia dese runt mollit anim id est labo met, consectetur
-                  adipis
+                We leave no stone unturned in analyzing your website's performance, identifying areas for improvement, and providing actionable solutions
                 </p>
                 <h3 className="number">01</h3>
               </div>
@@ -97,10 +96,9 @@ const OurSpeciality = () => {
                     </defs>
                   </svg>
                 </div>
-                <h5 className="title">High Quality</h5>
+                <h5 className="title">Tailored Strategies</h5>
                 <p>
-                  Oficia dese runt mollit anim id est labo met, consectetur
-                  adipis
+                One size does not fit all. Our experts craft customized SEO strategies that perfectly align with your unique business goals
                 </p>
                 <h3 className="number">02</h3>
               </div>
@@ -140,10 +138,9 @@ const OurSpeciality = () => {
                     </defs>
                   </svg>
                 </div>
-                <h5 className="title">Top Resource</h5>
+                <h5 className="title">Proven Results</h5>
                 <p>
-                  Oficia dese runt mollit anim id est labo met, consectetur
-                  adipis
+                Our track record speaks for itself. We've helped countless businesses achieve top-ranking positions on search engines, leading to increased visibility and higher ROI.
                 </p>
                 <h3 className="number">03</h3>
               </div>
@@ -183,10 +180,9 @@ const OurSpeciality = () => {
                     </defs>
                   </svg>
                 </div>
-                <h5 className="title">Big Community</h5>
+                <h5 className="title">Dedicated Support</h5>
                 <p>
-                  Oficia dese runt mollit anim id est labo met, consectetur
-                  adipis
+                Your success is our priority. We provide ongoing support and guidance to ensure your SEO strategy evolves with the ever-changing digital landscape.
                 </p>
                 <h3 className="number">04</h3>
               </div>

@@ -49,7 +49,7 @@ const Package = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/pay-now");
+        navigate("/pending-payment/");
       });
   };
 
@@ -129,7 +129,7 @@ const Package = () => {
 
             <div class="col-sm">
               <button type="submit" class="action-btn">
-                <span>Continue</span>
+                <span>Place Order and Continue For Make Payment</span>
               </button>
             </div>
           </div>

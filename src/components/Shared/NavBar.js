@@ -19,6 +19,7 @@ const NavBar = () => {
   }, []);
   return (
     <>
+    
       <header id="header_main" className="header">
         <div className="container big">
           <div className="row">

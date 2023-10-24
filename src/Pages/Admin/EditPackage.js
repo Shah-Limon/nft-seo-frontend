@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
-const Packages = () => {
+
+const EditPackage = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [packages, setPackages] = useState([]);
+  const [p, setPackage] = useState([]);
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/packages`)
+    fetch(`http://localhost:5000/package/${id}`)
       .then((res) => res.json())
-      .then((info) => setPackages(info));
+      .then((info) => setPackage(info));
   }, []);
 
   let rowNumber = 1;
 
-
-
-
   const handlePackages = (event) => {
-
     event.preventDefault();
     const packageName = event.target.packageName.value;
     const price = event.target.price.value;
@@ -51,9 +49,9 @@ const Packages = () => {
       featureTen,
     };
 
-    const url = `http://localhost:5000/add-package`;
+    const url = `http://localhost:5000/edit-package/${id}`;
     fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -61,13 +59,13 @@ const Packages = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/report-sent ");
+        navigate("/admin/packages/");
       });
   };
 
   return (
     <div>
-      {/* <form class="form" onSubmit={handlePackages}>
+      <form class="form" onSubmit={handlePackages}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
@@ -78,6 +76,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Package Name"
                   name="packageName"
+                  defaultValue={p.packageName}
                 />
               </div>
             </div>
@@ -87,6 +86,7 @@ const Packages = () => {
                 <input
                   type="text"
                   class="form-control"
+                  defaultValue={p.price}
                   placeholder="Enter Package Price"
                   name="price"
                 />
@@ -100,6 +100,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Enter Package Image Url"
                   name="img"
+                  defaultValue={p.img}
                 />
               </div>
             </div>
@@ -111,6 +112,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Feature One"
                   name="featureOne"
+                  defaultValue={p.featureOne}
                 />
               </div>
             </div>
@@ -122,6 +124,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Feature Two"
                   name="featureTwo"
+                  defaultValue={p.featureTwo}
                 />
               </div>
             </div>
@@ -133,6 +136,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type feature Three"
                   name="featureThree"
+                  defaultValue={p.featureThree}
                 />
               </div>
             </div>
@@ -144,6 +148,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Feature Four"
                   name="featureFour"
+                  defaultValue={p.featureFour}
                 />
               </div>
             </div>
@@ -155,6 +160,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Feature Five"
                   name="featureFive"
+                  defaultValue={p.featureFive}
                 />
               </div>
             </div>
@@ -166,6 +172,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Feature Six"
                   name="featureSix"
+                  defaultValue={p.featureSix}
                 />
               </div>
             </div>
@@ -177,6 +184,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Feature Seven"
                   name="featureSeven"
+                  defaultValue={p.featureSeven}
                 />
               </div>
             </div>
@@ -188,6 +196,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Feature Eight"
                   name="featureEight"
+                  defaultValue={p.featureEight}
                 />
               </div>
             </div>
@@ -199,6 +208,7 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Feature Nine"
                   name="featureNine"
+                  defaultValue={p.featureNine}
                 />
               </div>
             </div>
@@ -210,44 +220,21 @@ const Packages = () => {
                   class="form-control"
                   placeholder="Type Feature Ten"
                   name="featureTen"
+                  defaultValue={p.featureTen}
                 />
               </div>
             </div>
 
             <div class="col-sm">
               <button type="submit" class="action-btn">
-                <span>Add Package</span>
+                <span>Update Package</span>
               </button>
             </div>
           </div>
         </div>
-      </form> */}
-      <div className="container">
-        <table className="rwd-table">
-          <tbody>
-            <tr>
-              <th>SL No.</th>
-              <th>Package Name</th>
-              <th>Price</th>
-              <th>Edit</th>
-             
-            </tr>
-            {packages.map((item, index) => (
-              <tr key={item._id}>
-                <td>{index + 1}</td>
-                <td >{item.packageName}</td>
-                <td >{item.price}$</td>
-                <td data-th="Edit">
-                  <Link to={`/admin/package-edit/${item._id}`}>Edit</Link>
-                </td>
-               
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      </form>
     </div>
   );
 };
 
-export default Packages;
+export default EditPackage;

@@ -123,6 +123,87 @@ const Banner = () => {
                       <div className="top d-flex">
                         <span className="icon-logo-01" />
                         <div>
+                          <h6>Website Audit & Suggestions</h6>
+                        </div>
+                      </div>
+                      <div className="content">
+                        <div className="image">
+                          <img
+                            src="https://img.freepik.com/free-vector/seo-specialist-concept-idea-search-engine-optimization-website-as-marketing-strategy-web-page-promotion-internet-development-audit-vector-illustration-cartoon-style_613284-2877.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div className="info d-flex">
+                          <div>
+                            <p>
+                              Optimize Your Online Presence: Unlock
+                              Opportunities and Enhance Performance with a
+                              Website Audit and Expert Suggestions.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="swiper-slide">
+                    <div className="card-box">
+                      <div className="top d-flex">
+                        <span className="icon-logo-01" />
+                        <div>
+                          <h6>Competitor Analysis</h6>
+                        </div>
+                      </div>
+                      <div className="content">
+                        <div className="image">
+                          <img
+                            src="https://img.freepik.com/free-vector/analysis-concept-illustration_114360-1119.jpg?w=564"
+                            alt=""
+                          />
+                        </div>
+                        <div className="info d-flex">
+                          <div>
+                            <p>
+                              Gain the Competitive Edge: Uncover Market Insights
+                              and Strategies with Competitor Analysis
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="swiper-slide">
+                    <div className="card-box">
+                      <div className="top d-flex">
+                        <span className="icon-logo-01" />
+                        <div>
+                          <h6>On-Page SEO Audit</h6>
+                        </div>
+                      </div>
+                      <div className="content">
+                        <div className="image">
+                          <img
+                            src="https://img.freepik.com/free-vector/wall-post-concept-illustration_114360-1022.jpg?w=564"
+                            alt=""
+                          />
+                        </div>
+                        <div className="info d-flex">
+                          <div>
+                            <p>
+                              Maximize Your Online Impact: Optimize Your
+                              Website's Visibility and Rankings with an On-Page
+                              SEO Audit.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="swiper-slide">
+                    <div className="card-box">
+                      <div className="top d-flex">
+                        <span className="icon-logo-01" />
+                        <div>
                           <h6>Keyword Research</h6>
                         </div>
                       </div>
@@ -172,84 +253,7 @@ const Banner = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="swiper-slide">
-                    <div className="card-box">
-                      <div className="top d-flex">
-                        <span className="icon-logo-01" />
-                        <div>
-                          <h6>On-Page SEO Audit</h6>
-                        </div>
-                      </div>
-                      <div className="content">
-                        <div className="image">
-                          <img
-                            src="https://img.freepik.com/free-vector/wall-post-concept-illustration_114360-1022.jpg?w=564"
-                            alt=""
-                          />
-                        </div>
-                        <div className="info d-flex">
-                          <div>
-                            <p>
-                              Maximize Your Online Impact: Optimize Your
-                              Website's Visibility and Rankings with an On-Page
-                              SEO Audit.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="card-box">
-                      <div className="top d-flex">
-                        <span className="icon-logo-01" />
-                        <div>
-                          <h6>Competitor Analysis</h6>
-                        </div>
-                      </div>
-                      <div className="content">
-                        <div className="image">
-                          <img
-                            src="https://img.freepik.com/free-vector/analysis-concept-illustration_114360-1119.jpg?w=564"
-                            alt=""
-                          />
-                        </div>
-                        <div className="info d-flex">
-                          <div>
-                            <p>
-                              Gain the Competitive Edge: Uncover Market Insights
-                              and Strategies with Competitor Analysis
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="card-box">
-                      <div className="top d-flex">
-                        <span className="icon-logo-01" />
-                        <div>
-                          <h6>Website Audit & Suggestions</h6>
-                        </div>
-                      </div>
-                      <div className="content">
-                        <div className="image">
-                          <img
-                            src="https://img.freepik.com/free-vector/seo-specialist-concept-idea-search-engine-optimization-website-as-marketing-strategy-web-page-promotion-internet-development-audit-vector-illustration-cartoon-style_613284-2877.jpg"
-                            alt=""
-                          />
-                        </div>
-                        <div className="info d-flex">
-                          <div>
-                            <p>
-                            Optimize Your Online Presence: Unlock Opportunities and Enhance Performance with a Website Audit and Expert Suggestions.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
                   <div className="swiper-slide">
                     <div className="card-box">
                       <div className="top d-flex">
@@ -260,7 +264,7 @@ const Banner = () => {
                       </div>
                       <div className="content">
                         <div className="image">
-                        <img
+                          <img
                             src="https://img.freepik.com/free-vector/company-employees-use-web-search-find-ideas-doing-business-company_1150-43196.jpg?size=564&ext=jpg"
                             alt=""
                           />
