@@ -1,20 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase.init";
+import React from "react";
+
 import { Link } from "react-router-dom";
-import DashboardMenu from "./DashboardMenu";
 
 const Setting = () => {
-  const [data, setData] = useState([]);
-  const [user] = useAuthState(auth);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/website`)
-      .then((res) => res.json())
-      .then((info) => setData(info));
-  }, []);
-
-  let rowNumber = 1;
   return (
     <>
       <section className="project s2">

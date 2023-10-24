@@ -18,11 +18,9 @@ const Updatepaypal = () => {
   const handleUpdatePayment = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
-    
 
     const updateEmail = {
       email,
-      
     };
 
     const url = `http://localhost:5000/payment/${id}`;
@@ -38,7 +36,6 @@ const Updatepaypal = () => {
         navigate("/report-sent ");
       });
   };
-  
 
   return (
     <>

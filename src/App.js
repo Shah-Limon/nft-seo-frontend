@@ -27,6 +27,8 @@ import EditPackage from './Pages/Admin/EditPackage';
 import Setting from './Pages/Admin/Setting';
 import SettingPayment from './Pages/Admin/SettingPayment';
 import Updatepaypal from './Pages/Admin/Updatepaypal';
+import GeneralOption from './Pages/Admin/GeneralOption';
+import UpdateLogo from './Pages/Admin/UpdateLogo';
 
 
 function App() {
@@ -51,6 +53,11 @@ function App() {
 
         <Route path='/admin/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}></Route>
         <Route path='/admin/setting' element={<RequireAuth><Setting></Setting></RequireAuth>}></Route>
+        <Route path='/admin/setting-general/' element={<RequireAuth><GeneralOption></GeneralOption></RequireAuth>}></Route>
+        <Route path='/admin/update-logo/:id' element={<RequireAuth><UpdateLogo></UpdateLogo></RequireAuth>}></Route>
+
+
+
         <Route path='/admin/packages' element={<RequireAuth><Packages></Packages></RequireAuth>}></Route>
         <Route path='/admin/package-edit/:id' element={<RequireAuth><EditPackage></EditPackage></RequireAuth>}></Route>
         <Route path='/admin/website-edit/:id' element={<RequireAuth><EditWebsite></EditWebsite></RequireAuth>}></Route>
