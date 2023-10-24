@@ -381,3 +381,24 @@ li.text1 {
 select.form-control option {
   background: #070a29;
 }
+
+.custom-orders {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-content: stretch;
+}
+
+ul.custom-orders-ul {
+  display: flex;
+}
+
+ul.custom-orders-ul li {
+  margin-left: 17px;
+  margin-top: 24px;
+}
+
+ul.custom-orders-ul li a {
+  font-size: 12px;
+  font-family: sans-serif;
+}
