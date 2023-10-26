@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Swiper from "swiper";
 import auth from "../firebase.init";
+import { TypeAnimation } from "react-type-animation";
 
 const Banner = () => {
-  const [topBanners, setTopBanners] = useState([]);
+  const { id } = useParams();
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
+  const [banner, setBanner] = useState([]);
+
+
   useEffect(() => {
-    fetch(`http://localhost:5000/top-banner`)
+    fetch(`http://localhost:5000/banner/`)
       .then((res) => res.json())
-      .then((info) => setTopBanners(info));
-  }, []);
+      .then((info) => setBanner(info));
+  }, [id]);
+
+
   useEffect(() => {
     new Swiper(".bannerSwiper", {
       slidesPerView: 1,
@@ -58,64 +64,77 @@ const Banner = () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="block-text center">
-                <h6 className="sub-heading">
-                  <span>Seo Analyzer</span>
-                </h6>
-                <h2 className="heading">
-                  Optimizing your <br /> website{" "}
-                  <span className="arlo_tm_animation_text_word" /> <br />
-                </h2>
-                <p className="mb-34">
-                  Discover Proven Techniques to Elevate Your Website's
-                  Visibility, Attract More Visitors, and Outrank Your
-                  Competitors in Search Engine Results Pages
-                </p>
-                <form
-                  onSubmit={handleAddWebsite}
-                  class="form card-box"
-                  style={{ width: "100%" }}
-                >
-                  <div class="container">
-                    <div class="row justify-content-center align-items-baseline">
-                      <div class="col-sm">
-                        <div class="form-group mb-3">
-                          <input
-                            required
-                            type="email"
-                            class="form-control"
-                            placeholder="Your Email"
-                            name="email"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-sm">
-                        <div class="form-group">
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            placeholder="Your Website"
-                            name="website"
-                          />
-                        </div>
-                      </div>
-                      <input
-                        hidden
-                        type="email"
-                        class="form-control"
-                        name="userMail"
-                        value={user?.email}
+              {banner.map((e) => (
+                <div className="block-text center">
+                  <h6 className="sub-heading">
+                    <span>{e.bannerToptext}</span>
+                  </h6>
+                  <h2 className="heading">
+                    {e.bannerHeadingText1} <br /> {e.bannerHeadingText2} {}
+                    <span className="arlo_tm_animation_text_word">
+                      <TypeAnimation
+                        sequence={[
+                          e.typingHeading1,
+                          1000,
+                          e.typingHeading2,
+                          1000,
+                          e.typingHeading3,
+                          1000,
+                        ]}
+                        wrapper="span"
+                        speed={50}
+                        repeat={Infinity}
                       />
-                      <div class="col-sm">
-                        <button type="submit" class="action-btn">
-                          <span>Submit</span>
-                        </button>
+                    </span>
+                    <br />
+                  </h2>
+                  <p className="mb-34">{e.bannertext}</p>
+                  <form
+                    onSubmit={handleAddWebsite}
+                    class="form card-box"
+                    style={{ width: "100%" }}
+                  >
+                    <div class="container">
+                      <div class="row justify-content-center align-items-baseline">
+                        <div class="col-sm">
+                          <div class="form-group mb-3">
+                            <input
+                              required
+                              type="email"
+                              class="form-control"
+                              placeholder="Your Email"
+                              name="email"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-sm">
+                          <div class="form-group">
+                            <input
+                              required
+                              type="text"
+                              class="form-control"
+                              placeholder="Your Website"
+                              name="website"
+                            />
+                          </div>
+                        </div>
+                        <input
+                          hidden
+                          type="email"
+                          class="form-control"
+                          name="userMail"
+                          value={user?.email}
+                        />
+                        <div class="col-sm">
+                          <button type="submit" class="action-btn">
+                            <span>Submit</span>
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </form>
-              </div>
+                  </form>
+                </div>
+              ))}
               <div className="swiper bannerSwiper">
                 <div className="swiper-wrapper" style={{ gap: "20px" }}>
                   <div className="swiper-slide">

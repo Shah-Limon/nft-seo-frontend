@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const NavBar = () => {
-  const [categories, setCategories] = useState([]);
+  const [logo, setLogo] = useState([]);
   const [user] = useAuthState(auth);
 
   const handleSignout = () => {
@@ -13,31 +13,32 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/categories`)
+    fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
-      .then((info) => setCategories(info));
+      .then((info) => setLogo(info));
   }, []);
+
   return (
     <>
-    
       <header id="header_main" className="header">
         <div className="container big">
           <div className="row">
             <div className="col-12">
               <div className="header__body">
                 <div className="header__logo">
-                  <Link to="/">
-                    <img
-                      id="site-logo"
-                      src="https://themesflat.co/html/cyfoniihtml/assets/images/logo/logo.png"
-                      alt="Peson"
-                      width={160}
-                      height={38}
-                      data-retina="https://themesflat.co/html/cyfoniihtml/assets/images/logo/logo@2x.png"
-                      data-width={160}
-                      data-height={38}
-                    />
-                  </Link>
+                  {logo.map((showLogo) => (
+                    <Link to="/">
+                      <img
+                        id="site-logo"
+                        src={showLogo.logo}
+                        alt="Logo"
+                        width={160}
+                        height={38}
+                        data-width={160}
+                        data-height={38}
+                      />
+                    </Link>
+                  ))}
                 </div>
                 <div className="header__right">
                   <nav id="main-nav" className="main-nav">

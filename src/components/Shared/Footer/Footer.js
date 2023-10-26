@@ -2,42 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  const [categories, setCategories] = useState([]);
-  const [footerAbout, setFooterAbout] = useState([]);
-  const [footerAddress, setFooterAddress] = useState([]);
-  const [footerSocial, setFooterSocial] = useState([]);
-  const [footerCopyright, setFooterCopyright] = useState([]);
-
+  const [logo, setLogo] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/categories`)
+    fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
-      .then((info) => setCategories(info));
-  }, [categories]);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/footer-about`)
-      .then((res) => res.json())
-      .then((info) => setFooterAbout(info));
+      .then((info) => setLogo(info));
   }, []);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/footer-address`)
-      .then((res) => res.json())
-      .then((info) => setFooterAddress(info));
-  }, [footerAddress]);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/footer-social`)
-      .then((res) => res.json())
-      .then((info) => setFooterSocial(info));
-  }, []);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/footer-copyright`)
-      .then((res) => res.json())
-      .then((info) => setFooterCopyright(info));
-  }, [footerCopyright]);
 
   return (
     <>
@@ -48,9 +18,11 @@ const Footer = () => {
               <div className="col-md-12">
                 <div className="footer__main">
                   <div className="info-left">
-                    <a href="index.html" className="logo">
-                      <img src="https://themesflat.co/html/cyfoniihtml/assets/images/logo/logo-footer.png" alt="" />
-                    </a>
+                    <Link to="/" className="logo">
+                      {logo.map((show) => (
+                        <img className="footer__logo" src={show.logo} alt="Logo" />
+                      ))}
+                    </Link>
                     <ul className="list-social">
                       <li>
                         <a href="#">

@@ -418,3 +418,9 @@ ul.custom-orders-ul li a {
   color: #fff;
   padding: 17px;
 }
+
+
+img.footer__logo {
+  height: 45px;
+  width: 160px;
+}

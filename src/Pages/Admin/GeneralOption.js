@@ -17,11 +17,8 @@ const GeneralOption = () => {
       .then((info) => setLogo(info));
   }, []);
 
- 
-
   return (
     <div>
-     
       <section className="participants">
         <div className="container">
           <div className="row">
@@ -29,13 +26,20 @@ const GeneralOption = () => {
               <div className="block-text center">
                 <div className="col-md-4">
                   <h5 className="heading">Logo Option</h5>
-                 
+
                   {logo.map((logoImg) => (
                     <div className="blog-box">
-                      <img className="mb-15" src={logoImg.logo} alt="" />
+                      <img
+                        className="mb-15 footer__logo"
+                        src={logoImg.logo}
+                        alt=""
+                      />
                       <hr></hr>
-                     
-                      <Link to={`/admin/update-logo/${logoImg._id}`} className="action-btn ">
+                      <p>Logo Size: width="160px" height: "38px"</p>
+                      <Link
+                        to={`/admin/update-logo/${logoImg._id}`}
+                        className="action-btn "
+                      >
                         <span>update Logo</span>
                       </Link>
                     </div>

@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Portfolio = () => {
+  const { id } = useParams();
+  const [choose, setChoose] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/why-choose/${id}`)
+      .then((res) => res.json())
+      .then((info) => setChoose(info));
+  }, []);
   return (
     <>
       <section className="portfolio">
@@ -8,16 +17,20 @@ const Portfolio = () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="block-text center">
-                <h6 className="sub-heading">
-                  <span>Why Choose Us</span>
-                </h6>
-                <h3 className="heading wow" data-splitting="">
-                  Elevate Your SEO
-                  <br />
-                  Experience with Us
-                </h3>
-              </div>
+              {choose.map((e) => (
+                <>
+                  <div className="block-text center">
+                    <h6 className="sub-heading">
+                      <span>{e.whyToptext}</span>
+                    </h6>
+                    <h3 className="heading wow" data-splitting="">
+                      {e.bannerHeadingText1}
+                      <br />
+                      {e.bannerHeadingText2}
+                    </h3>
+                  </div>
+                </>
+              ))}
             </div>
             <div className="col-xl-6 col-md-6">
               <div className="portfolio__left">
@@ -70,12 +83,12 @@ const Portfolio = () => {
                     </svg>
                   </div>
                   <div className="content">
-                    <h5 className="title">Comprehensive Website Audit</h5>
-                    <p>
-                      Suspendisse tristique neque a lorem placerat pharetra.
-                      Class aptent taciti sociosqu ad litora torquent per
-                      conubia nostra, per inceptos himenaeos
-                    </p>
+                    {choose.map((e) => (
+                      <>
+                        <h5 className="title"> {e.cardTitleOne}</h5>
+                        <p>{e.cardDescOne}</p>
+                      </>
+                    ))}
                   </div>
                 </div>
                 <div className="portfolio-box">
@@ -139,12 +152,12 @@ const Portfolio = () => {
                     </svg>
                   </div>
                   <div className="content">
-                    <h5 className="title">Buy your NFT</h5>
-                    <p>
-                      Suspendisse tristique neque a lorem placerat pharetra.
-                      Class aptent taciti sociosqu ad litora torquent per
-                      conubia nostra, per inceptos himenaeos
-                    </p>
+                    {choose.map((e) => (
+                      <>
+                        <h5 className="title"> {e.cardTitleTwo}</h5>
+                        <p>{e.cardDescTwo}</p>
+                      </>
+                    ))}
                   </div>
                 </div>
                 <div className="portfolio-box">
@@ -268,12 +281,12 @@ const Portfolio = () => {
                     </svg>
                   </div>
                   <div className="content">
-                    <h5 className="title">Create collection</h5>
-                    <p>
-                      Suspendisse tristique neque a lorem placerat pharetra.
-                      Class aptent taciti sociosqu ad litora torquent per
-                      conubia nostra, per inceptos himenaeos
-                    </p>
+                    {choose.map((e) => (
+                      <>
+                        <h5 className="title"> {e.cardTitleThree}</h5>
+                        <p>{e.cardDescThree}</p>
+                      </>
+                    ))}
                   </div>
                 </div>
                 <div className="portfolio-box">
@@ -389,12 +402,12 @@ const Portfolio = () => {
                     </svg>
                   </div>
                   <div className="content">
-                    <h5 className="title">Sell your NFT</h5>
-                    <p>
-                      Suspendisse tristique neque a lorem placerat pharetra.
-                      Class aptent taciti sociosqu ad litora torquent per
-                      conubia nostra, per inceptos himenaeos
-                    </p>
+                    {choose.map((e) => (
+                      <>
+                        <h5 className="title"> {e.cardTitleFour}</h5>
+                        <p>{e.cardDescFour}</p>
+                      </>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -406,10 +419,14 @@ const Portfolio = () => {
                   data-aos="fade-left"
                   data-aos-duration={2000}
                 >
-                  <img
-                    src="https://themesflat.co/html/cyfoniihtml/assets/images/layouts/portfolio.png"
-                    alt=""
-                  />
+                  {choose.map((e) => (
+                    <>
+                      <img
+                        src={e.img}
+                        alt=""
+                      />
+                    </>
+                  ))}
                 </div>
               </div>
             </div>

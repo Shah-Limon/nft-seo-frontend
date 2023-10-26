@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const OurSpeciality = () => {
+  const { id } = useParams();
+
+  const [speciality, SetSpeciality] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/speciality/${id}`)
+      .then((res) => res.json())
+      .then((info) => SetSpeciality(info));
+  }, [id]);
   return (
     <>
       <section className="speciality">
@@ -8,18 +17,18 @@ const OurSpeciality = () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="block-text center">
-                <h6 className="sub-heading">
-                  <span>Our Speciality</span>
-                </h6>
-                <h3 className="heading wow" data-splitting="">
-                  Complete Solutions <br />
-                  for Your Online Success
-                </h3>
-                <p className="">
-                Unlock Your Website's Full Potential with Our Comprehensive Digital Solutions.
-                </p>
-              </div>
+              {speciality.map((e) => (
+                <div className="block-text center">
+                  <h6 className="sub-heading">
+                    <span>Our Speciality</span>
+                  </h6>
+                  <h3 className="heading wow" data-splitting="">
+                    {e.headingTitleOne} <br />
+                    {e.headingTitleTwo}
+                  </h3>
+                  <p className="">{e.subText}</p>
+                </div>
+              ))}
             </div>
             <div className="col-xl-3 col-md-6">
               <div
@@ -56,10 +65,14 @@ const OurSpeciality = () => {
                     </defs>
                   </svg>
                 </div>
-                <h5 className="title">Comprehensive SEO Audits</h5>
-                <p>
-                We leave no stone unturned in analyzing your website's performance, identifying areas for improvement, and providing actionable solutions
-                </p>
+                {speciality.map((e) => (
+                  <>
+                    <h5 className="title">{e.cardTitleOne}</h5>
+                    <p>
+                      {e.cardDescriptionOne}
+                    </p>
+                  </>
+                ))}
                 <h3 className="number">01</h3>
               </div>
             </div>
@@ -96,10 +109,14 @@ const OurSpeciality = () => {
                     </defs>
                   </svg>
                 </div>
-                <h5 className="title">Tailored Strategies</h5>
-                <p>
-                One size does not fit all. Our experts craft customized SEO strategies that perfectly align with your unique business goals
-                </p>
+                {speciality.map((e) => (
+                  <>
+                    <h5 className="title">{e.cardTitleTwo}</h5>
+                    <p>
+                      {e.cardDescriptionTwo}
+                    </p>
+                  </>
+                ))}
                 <h3 className="number">02</h3>
               </div>
             </div>
@@ -138,10 +155,14 @@ const OurSpeciality = () => {
                     </defs>
                   </svg>
                 </div>
-                <h5 className="title">Proven Results</h5>
-                <p>
-                Our track record speaks for itself. We've helped countless businesses achieve top-ranking positions on search engines, leading to increased visibility and higher ROI.
-                </p>
+                {speciality.map((e) => (
+                  <>
+                    <h5 className="title">{e.cardTitleThree}</h5>
+                    <p>
+                      {e.cardDescriptionThree}
+                    </p>
+                  </>
+                ))}
                 <h3 className="number">03</h3>
               </div>
             </div>
@@ -180,10 +201,14 @@ const OurSpeciality = () => {
                     </defs>
                   </svg>
                 </div>
-                <h5 className="title">Dedicated Support</h5>
-                <p>
-                Your success is our priority. We provide ongoing support and guidance to ensure your SEO strategy evolves with the ever-changing digital landscape.
-                </p>
+                {speciality.map((e) => (
+                  <>
+                    <h5 className="title">{e.cardTitleFour}</h5>
+                    <p>
+                      {e.cardDescriptionFour}
+                    </p>
+                  </>
+                ))}
                 <h3 className="number">04</h3>
               </div>
             </div>

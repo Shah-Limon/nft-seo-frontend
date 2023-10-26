@@ -29,6 +29,12 @@ import SettingPayment from './Pages/Admin/SettingPayment';
 import Updatepaypal from './Pages/Admin/Updatepaypal';
 import GeneralOption from './Pages/Admin/GeneralOption';
 import UpdateLogo from './Pages/Admin/UpdateLogo';
+import HomaPageSetting from './Pages/Admin/HomaPageSetting';
+import AboutUsOption from './Pages/Admin/AboutUsOption';
+import EditBanner from './Pages/Admin/EditBanner';
+import AboutUsEdit from './components/HomePage/AboutUsEdit';
+import SpecialityOptionEdit from './components/HomePage/SpecialityOptionEdit';
+import WhyChooseEdit from './components/HomePage/WhyChooseEdit';
 
 
 function App() {
@@ -53,8 +59,21 @@ function App() {
 
         <Route path='/admin/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}></Route>
         <Route path='/admin/setting' element={<RequireAuth><Setting></Setting></RequireAuth>}></Route>
+        
         <Route path='/admin/setting-general/' element={<RequireAuth><GeneralOption></GeneralOption></RequireAuth>}></Route>
         <Route path='/admin/update-logo/:id' element={<RequireAuth><UpdateLogo></UpdateLogo></RequireAuth>}></Route>
+
+
+        <Route path='/admin/setting-homepage' element={<RequireAuth><HomaPageSetting></HomaPageSetting></RequireAuth>}></Route>
+        <Route path='/admin/edit-banner-option/:id' element={<RequireAuth><EditBanner></EditBanner></RequireAuth>}></Route>
+
+
+
+
+        <Route path='/admin/about-edit/:id' element={<RequireAuth><AboutUsEdit></AboutUsEdit></RequireAuth>}></Route>
+
+        <Route path='/admin/speciality-edit/:id' element={<RequireAuth><SpecialityOptionEdit></SpecialityOptionEdit></RequireAuth>}></Route>
+        <Route path='/admin/why-choose-edit/:id' element={<RequireAuth><WhyChooseEdit></WhyChooseEdit></RequireAuth>}></Route>
 
 
 
