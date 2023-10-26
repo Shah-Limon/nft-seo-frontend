@@ -13,6 +13,8 @@ const HomaPageSetting = () => {
   const [banner, setBanner] = useState([]);
   const [speciality, SetSpeciality] = useState([]);
   const [choose, SetChoose] = useState([]);
+  const [road, SetRoad] = useState([]);
+  const [title, setTitle] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/about`)
@@ -33,6 +35,16 @@ const HomaPageSetting = () => {
     fetch(`http://localhost:5000/why-choose/`)
       .then((res) => res.json())
       .then((info) => SetChoose(info));
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/road/`)
+      .then((res) => res.json())
+      .then((info) => SetRoad(info));
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/team-title`)
+      .then((res) => res.json())
+      .then((info) => setTitle(info));
   }, []);
 
   return (
@@ -113,9 +125,9 @@ const HomaPageSetting = () => {
                 <div className="col">
                   <h5 className="heading">Road Map Option</h5>
 
-                  {speciality.map((e) => (
+                  {road.map((e) => (
                     <Link
-                      to={`/admin/speciality-edit/${e._id}`}
+                      to={`/admin/road-edit/${e._id}`}
                       className="action-btn"
                     >
                       <span>update</span>
@@ -130,9 +142,10 @@ const HomaPageSetting = () => {
                 <div className="col">
                   <h5 className="heading">Team Members Option</h5>
 
-                  {speciality.map((e) => (
+                  {title.map((e) => (
                     <Link
-                      to={`/admin/speciality-edit/${e._id}`}
+                     
+                      to={`/admin/team/`}
                       className="action-btn"
                     >
                       <span>update</span>

@@ -35,6 +35,10 @@ import EditBanner from './Pages/Admin/EditBanner';
 import AboutUsEdit from './components/HomePage/AboutUsEdit';
 import SpecialityOptionEdit from './components/HomePage/SpecialityOptionEdit';
 import WhyChooseEdit from './components/HomePage/WhyChooseEdit';
+import EditRoadMaps from './Pages/Admin/EditRoadMaps';
+import TeamList from './Pages/Admin/TeamList';
+import TeamMemberEdit from './Pages/Admin/TeamMemberEdit';
+import UpdateTeamTitle from './Pages/Admin/UpdateTeamTitle';
 
 
 function App() {
@@ -74,6 +78,12 @@ function App() {
 
         <Route path='/admin/speciality-edit/:id' element={<RequireAuth><SpecialityOptionEdit></SpecialityOptionEdit></RequireAuth>}></Route>
         <Route path='/admin/why-choose-edit/:id' element={<RequireAuth><WhyChooseEdit></WhyChooseEdit></RequireAuth>}></Route>
+        <Route path='/admin/road-edit/:id' element={<RequireAuth><EditRoadMaps></EditRoadMaps></RequireAuth>}></Route>
+
+
+        <Route path='/admin/team/' element={<RequireAuth><TeamList></TeamList></RequireAuth>}></Route>
+        <Route path='/admin/team-edit/:id' element={<RequireAuth><TeamMemberEdit></TeamMemberEdit></RequireAuth>}></Route>
+        <Route path='/admin/edit-team-title/:id' element={<RequireAuth><UpdateTeamTitle></UpdateTeamTitle></RequireAuth>}></Route>
 
 
 

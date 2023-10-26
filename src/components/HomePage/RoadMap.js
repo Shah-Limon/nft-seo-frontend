@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const RoadMap = () => {
+  const [road, SetRoad] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/road/`)
+      .then((res) => res.json())
+      .then((info) => SetRoad(info));
+  }, []);
   return (
     <>
       <section className="roadmap">
@@ -14,87 +21,73 @@ const RoadMap = () => {
           <div className="row">
             <div className="col-12">
               <div className="block-text center">
-                <h6 className="sub-heading">
-                  <span>Road Map</span>
-                </h6>
-                <h3 className="heading wow" data-splitting="">
-                  The Journey of <br />
-                  Cyfonii NFT
-                </h3>
+                {road.map((e) => (
+                  <>
+                    <h6 className="sub-heading">
+                      <span>{e.titleToptext}</span>
+                    </h6>
+                    <h3 className="heading wow" data-splitting="">
+                      {e.bannerHeadingText1} <br />
+                      {e.bannerHeadingText2}
+                    </h3>
+                  </>
+                ))}
               </div>
-              <div
-                className="roadmap__main"
-                data-aos="fade-up"
-                data-aos-duration={2000}
-              >
-                <div className="roadmap-box">
-                  <div className="time">February 01, 2022</div>
-                  <div className="content">
-                    <h5 className="title">Idea Generation</h5>
-                    <p className="text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Duis diam enim, scelerisque sit amet diam ut, molestie
-                      ultrices nisi. Suspendisse in ipsum ante. Ut rhoncus
-                      ligula dictum gravida.
-                    </p>
+              {road.map((e) => (
+                <>
+                  <div
+                    className="roadmap__main"
+                    data-aos="fade-up"
+                    data-aos-duration={2000}
+                  >
+                    <div className="roadmap-box">
+                      <div className="time">{e.cardDateOne}</div>
+                      <div className="content">
+                        <h5 className="title">{e.cardTitleOne}</h5>
+                        <p className="text">{e.cardDescOne}</p>
+                      </div>
+                    </div>
+                    <div className="roadmap-box right">
+                      <div className="time">{e.cardDateTwo}</div>
+                      <div className="content">
+                        <h5 className="title">{e.cardTitleTwo}</h5>
+                        <p className="text">{e.cardDescTwo}</p>
+                      </div>
+                    </div>
+                    <div className="roadmap-box">
+                      <div className="time">{e.cardDateThree}</div>
+                      <div className="content">
+                        <h5 className="title">{e.cardTitleThree}</h5>
+                        <p className="text">{e.cardDescThree}</p>
+                      </div>
+                    </div>
+                    <div className="roadmap-box right">
+                      <div className="time">{e.cardDateFour}</div>
+                      <div className="content">
+                        <h5 className="title">{e.cardTitleFour}</h5>
+                        <p className="text">{e.cardDescFour}</p>
+                      </div>
+                    </div>
+                    <div className="roadmap-box">
+                      <div className="time">{e.cardDateFive}</div>
+                      <div className="content">
+                        <h5 className="title">{e.cardTitleFive}</h5>
+                        <p className="text">
+                          {e.cardDescFive}
+                         
+                        </p>
+                      </div>
+                    </div>
+                    <div className="icon" />
+                    <div className="icon bottom" />
                   </div>
-                </div>
-                <div className="roadmap-box right">
-                  <div className="time">February 01, 2022</div>
-                  <div className="content">
-                    <h5 className="title">Design &amp; Development</h5>
-                    <p className="text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Duis diam enim, scelerisque sit amet diam ut, molestie
-                      ultrices nisi. Suspendisse in ipsum ante. Ut rhoncus
-                      ligula dictum gravida.
-                    </p>
-                  </div>
-                </div>
-                <div className="roadmap-box">
-                  <div className="time">February 01, 2022</div>
-                  <div className="content">
-                    <h5 className="title">Initial Release</h5>
-                    <p className="text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Duis diam enim, scelerisque sit amet diam ut, molestie
-                      ultrices nisi. Suspendisse in ipsum ante. Ut rhoncus
-                      ligula dictum gravida.
-                    </p>
-                  </div>
-                </div>
-                <div className="roadmap-box right">
-                  <div className="time">February 01, 2022</div>
-                  <div className="content">
-                    <h5 className="title">Result &amp; Final Report</h5>
-                    <p className="text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Duis diam enim, scelerisque sit amet diam ut, molestie
-                      ultrices nisi. Suspendisse in ipsum ante. Ut rhoncus
-                      ligula dictum gravida.
-                    </p>
-                  </div>
-                </div>
-                <div className="roadmap-box">
-                  <div className="time">February 01, 2022</div>
-                  <div className="content">
-                    <h5 className="title">Design &amp; Development</h5>
-                    <p className="text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Duis diam enim, scelerisque sit amet diam ut, molestie
-                      ultrices nisi. Suspendisse in ipsum ante. Ut rhoncus
-                      ligula dictum gravida.
-                    </p>
-                  </div>
-                </div>
-                <div className="icon" />
-                <div className="icon bottom" />
-              </div>
-              <div className="button">
+                </>
+              ))}
+              {/* <div className="button">
                 <a href="roadmap.html" className="action-btn">
                   <span>View Full Road Map</span>
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

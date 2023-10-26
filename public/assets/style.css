@@ -424,3 +424,10 @@ img.footer__logo {
   height: 45px;
   width: 160px;
 }
+
+
+.image.personImg img {
+  width: 294px;
+  height: 245px;
+  object-fit: cover;
+}
