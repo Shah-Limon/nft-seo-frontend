@@ -143,11 +143,7 @@ const HomaPageSetting = () => {
                   <h5 className="heading">Team Members Option</h5>
 
                   {title.map((e) => (
-                    <Link
-                     
-                      to={`/admin/team/`}
-                      className="action-btn"
-                    >
+                    <Link to={`/admin/team/`} className="action-btn">
                       <span>update</span>
                     </Link>
                   ))}
@@ -160,14 +156,10 @@ const HomaPageSetting = () => {
                 <div className="col">
                   <h5 className="heading">Testimonials Option</h5>
 
-                  {speciality.map((e) => (
-                    <Link
-                      to={`/admin/speciality-edit/${e._id}`}
-                      className="action-btn"
-                    >
-                      <span>update</span>
-                    </Link>
-                  ))}
+                  <Link to="/admin/testimonials" className="action-btn">
+                    <span>update</span>
+                  </Link>
+
                   <hr></hr>
                 </div>
               </div>
@@ -178,10 +170,7 @@ const HomaPageSetting = () => {
                   <h5 className="heading">FAQs Option</h5>
 
                   {speciality.map((e) => (
-                    <Link
-                      to={`/admin/speciality-edit/${e._id}`}
-                      className="action-btn"
-                    >
+                    <Link to="/admin/faqs" className="action-btn">
                       <span>update</span>
                     </Link>
                   ))}

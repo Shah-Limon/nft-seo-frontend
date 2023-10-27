@@ -39,6 +39,15 @@ import EditRoadMaps from './Pages/Admin/EditRoadMaps';
 import TeamList from './Pages/Admin/TeamList';
 import TeamMemberEdit from './Pages/Admin/TeamMemberEdit';
 import UpdateTeamTitle from './Pages/Admin/UpdateTeamTitle';
+import TestimonialsList from './Pages/Admin/TestimonialsList';
+import TestimonialEdit from './Pages/Admin/TestimonialEdit';
+import TestimonialTitle from './Pages/Admin/TestimonialTitle';
+import FaqsList from './Pages/Admin/FaqsList';
+import EditFaqTitle from './Pages/Admin/EditFaqTitle';
+import FaqsEdit from './Pages/Admin/FaqsEdit';
+import FooterEdit from './Pages/Admin/FooterEdit';
+import EditFooterLink from './Pages/Admin/EditFooterLink';
+import EditSocialLinks from './Pages/Admin/EditSocialLinks';
 
 
 function App() {
@@ -89,6 +98,28 @@ function App() {
 
         <Route path='/admin/packages' element={<RequireAuth><Packages></Packages></RequireAuth>}></Route>
         <Route path='/admin/package-edit/:id' element={<RequireAuth><EditPackage></EditPackage></RequireAuth>}></Route>
+
+
+        <Route path='/admin/testimonials' element={<RequireAuth><TestimonialsList></TestimonialsList></RequireAuth>}></Route>
+        <Route path='/admin/testimonial-edit/:id' element={<RequireAuth><TestimonialEdit></TestimonialEdit></RequireAuth>}></Route>
+        <Route path='/admin/edit-testimonial-title/:id' element={<RequireAuth><TestimonialTitle></TestimonialTitle></RequireAuth>}></Route>
+
+
+
+        <Route path='/admin/setting-footer' element={<RequireAuth><FooterEdit></FooterEdit></RequireAuth>}></Route>
+        <Route path='/admin/edit-footer/:id' element={<RequireAuth><EditFooterLink></EditFooterLink></RequireAuth>}></Route>
+        <Route path='/admin/edit-social/:id' element={<RequireAuth><EditSocialLinks></EditSocialLinks></RequireAuth>}></Route>
+
+
+
+
+
+        <Route path='/admin/faqs' element={<RequireAuth><FaqsList></FaqsList></RequireAuth>}></Route>
+        <Route path='/admin/faq-edit/:id' element={<RequireAuth><FaqsEdit></FaqsEdit></RequireAuth>}></Route>
+        <Route path='/admin/faqs-title/:id' element={<RequireAuth><EditFaqTitle></EditFaqTitle></RequireAuth>}></Route>
+
+
+
         <Route path='/admin/website-edit/:id' element={<RequireAuth><EditWebsite></EditWebsite></RequireAuth>}></Route>
         <Route path='/admin/order/:id' element={<RequireAuth><OrderAction></OrderAction></RequireAuth>}></Route>
         <Route path='/admin/orders' element={<RequireAuth><TotalOrders></TotalOrders></RequireAuth>}></Route>

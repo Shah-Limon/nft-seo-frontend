@@ -85,7 +85,7 @@ const TeamList = () => {
 
               <div class="col-sm">
                 <button type="submit" class="action-btn">
-                  <span>Update Team Member</span>
+                  <span>Update Title</span>
                 </button>
               </div>
             </div>

@@ -56,8 +56,11 @@ const TeamList = () => {
   return (
     <div>
       <form class="form" onSubmit={updateTeam}>
-      <div class="container">
+        <div class="container">
           <div class="justify-content-center align-items-baseline">
+            <h4 className="sub-heading">
+              <span>Add Team Member</span>
+            </h4>
             <div class="col-sm">
               <label className="mt-1">Enter Person Name</label>
               <div class="form-group mb-3">
@@ -66,7 +69,6 @@ const TeamList = () => {
                   class="form-control"
                   placeholder="Enter Person Name"
                   name="personName"
-                 
                 />
               </div>
             </div>
@@ -78,7 +80,6 @@ const TeamList = () => {
                   class="form-control"
                   placeholder="Enter Person Title"
                   name="personTitle"
-                  
                 />
               </div>
             </div>
@@ -90,8 +91,6 @@ const TeamList = () => {
                   class="form-control"
                   placeholder="Enter Person Image URL"
                   name="personImg"
-                 
-                  
                 />
               </div>
             </div>
@@ -103,7 +102,6 @@ const TeamList = () => {
                   class="form-control"
                   placeholder="Type Feature Two"
                   name="facebook"
-                 
                 />
               </div>
             </div>
@@ -115,14 +113,13 @@ const TeamList = () => {
                   class="form-control"
                   placeholder="Type Feature Two"
                   name="twitter"
-                 
                 />
               </div>
             </div>
 
             <div class="col-sm">
               <button type="submit" class="action-btn">
-                <span>Update Team Member</span>
+                <span>Add Team Member</span>
               </button>
             </div>
           </div>

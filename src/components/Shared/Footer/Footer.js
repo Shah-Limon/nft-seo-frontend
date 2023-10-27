@@ -9,6 +9,10 @@ const Footer = () => {
       .then((info) => setLogo(info));
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <>
@@ -117,23 +121,7 @@ const Footer = () => {
                           <a href="#">Carrer</a>
                         </li>
                       </ul>
-                      <ul className="widget">
-                        <li>
-                          <h5 className="title">Help</h5>
-                        </li>
-                        <li>
-                          <a href="about.html">About Us</a>
-                        </li>
-                        <li>
-                          <a href="team.html">Team Members</a>
-                        </li>
-                        <li>
-                          <a href="#">Support</a>
-                        </li>
-                        <li>
-                          <a href="#">Refund Policv</a>
-                        </li>
-                      </ul>
+                     
                       <div className="widget">
                         <h5 className="title">Newsletter</h5>
                         <form action="#" className="form">
@@ -167,17 +155,7 @@ const Footer = () => {
                     </div>
                     <div className="bottom">
                       <p>Copyright © 2022, Cyfonii. Designed by Themesflat</p>
-                      <ul className="list">
-                        <li>
-                          <a href="#">Terms &amp; Condition</a>
-                        </li>
-                        <li>
-                          <a href="#">Privacy Policy</a>
-                        </li>
-                        <li>
-                          <a href="#">Cookie Policy</a>
-                        </li>
-                      </ul>
+                     
                     </div>
                   </div>
                 </div>
@@ -185,9 +163,10 @@ const Footer = () => {
             </div>
           </div>
         </footer>
-        <a id="scroll-top">
+        
+        <Link id="scroll-top" onClick={scrollToTop}>
           <span className="icon-arrow-top" />
-        </a>
+        </Link>
       </>
     </>
   );

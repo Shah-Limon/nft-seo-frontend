@@ -10,10 +10,18 @@ import { Link } from "react-router-dom";
 
 const Team = () => {
   const [team, setTeam] = useState([]);
+  const [title, setTitle] = useState([]);
+
+
   useEffect(() => {
     fetch(`http://localhost:5000/teams`)
       .then((res) => res.json())
       .then((info) => setTeam(info));
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/team-title/`)
+      .then((res) => res.json())
+      .then((info) => setTitle(info));
   }, []);
   return (
     <>
@@ -22,14 +30,19 @@ const Team = () => {
           <div className="row">
             <div className="col-12">
               <div className="block-text center">
-                <h6 className="sub-heading">
-                  <span>Team Members</span>
+                {
+                  title.map( e => 
+                    <>
+                    <h6 className="sub-heading">
+                  <span>{e.titleTopText}</span>
                 </h6>
                 <h3 className="heading wow" data-splitting="">
-                  Our Amazing Team
+                 {e.TitleOne}
                   <br />
-                  Members
+                 {e.titleTwo}
                 </h3>
+                    </>)
+                }
               </div>
               <div className="swiper team-swiper">
                 <div className="swiper-wrapper">
@@ -40,7 +53,7 @@ const Team = () => {
                     slidesPerView={3}
                     navigation
                     pagination={{ clickable: true }}
-                    scrollbar={{ draggable: true }}
+                    scrollbar={{ draggable: false }}
                     onSwiper={(swiper) => console.log(swiper)}
                     onSlideChange={() => console.log("slide change")}
                   >
