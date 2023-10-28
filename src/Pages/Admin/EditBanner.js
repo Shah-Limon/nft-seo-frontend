@@ -157,6 +157,34 @@ const EditBanner = () => {
           </div>)
        }
       </form>
+      
+      <section className="participants">
+        <div className="container">
+          <div className="row">
+      
+          <hr></hr>
+<div className="col-lg">
+              <div className="block-text center">
+                <div className="col">
+                  <h5 className="heading">Banner Slider Options</h5>
+
+                  
+                    <Link
+                      to="/admin/slider-banner/"
+                      className="action-btn"
+                    >
+                      <span>update</span>
+                    </Link>
+                 
+                
+                </div>
+              </div>
+            </div>
+
+</div>
+        </div>
+      </section>
+      
     </div>
   );
 };

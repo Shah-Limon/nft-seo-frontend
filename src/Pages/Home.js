@@ -19,7 +19,7 @@ const Home = () => {
       <OurSpeciality></OurSpeciality>
       <Portfolio></Portfolio>
       <Pricing></Pricing>
-      <Project></Project>
+     
       <RoadMap></RoadMap>
       <Team></Team>
       <Testimonials></Testimonials>

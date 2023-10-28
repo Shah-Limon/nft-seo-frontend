@@ -3,10 +3,22 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [logo, setLogo] = useState([]);
+  const [footer, setFooter] = useState([]);
+  const [social, setSocial] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/footer-links`)
+      .then((res) => res.json())
+      .then((info) => setFooter(info));
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/footer-social`)
+      .then((res) => res.json())
+      .then((info) => setSocial(info));
   }, []);
 
   const scrollToTop = () => {
@@ -24,12 +36,18 @@ const Footer = () => {
                   <div className="info-left">
                     <Link to="/" className="logo">
                       {logo.map((show) => (
-                        <img className="footer__logo" src={show.logo} alt="Logo" />
+                        <img
+                          className="footer__logo"
+                          src={show.logo}
+                          alt="Logo"
+                        />
                       ))}
                     </Link>
-                    <ul className="list-social">
+                    {
+                      social.map(e =>
+                        <ul className="list-social">
                       <li>
-                        <a href="#">
+                        <Link to={e.facebook}>
                           <svg
                             width={9}
                             height={16}
@@ -42,10 +60,10 @@ const Footer = () => {
                               fill="white"
                             />
                           </svg>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to={e.twitter}>
                           <svg
                             width={15}
                             height={12}
@@ -58,10 +76,10 @@ const Footer = () => {
                               fill="white"
                             />
                           </svg>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to={e.instragram}>
                           <svg
                             width={14}
                             height={14}
@@ -82,10 +100,10 @@ const Footer = () => {
                               fill="white"
                             />
                           </svg>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to={e.youtube}>
                           <svg
                             width={18}
                             height={12}
@@ -98,9 +116,11 @@ const Footer = () => {
                               fill="white"
                             />
                           </svg>
-                        </a>
+                        </Link>
                       </li>
                     </ul>
+                    )
+                    }
                   </div>
                   <div className="right">
                     <div className="top">
@@ -121,7 +141,7 @@ const Footer = () => {
                           <a href="#">Carrer</a>
                         </li>
                       </ul>
-                     
+
                       <div className="widget">
                         <h5 className="title">Newsletter</h5>
                         <form action="#" className="form">
@@ -154,8 +174,9 @@ const Footer = () => {
                       </div>
                     </div>
                     <div className="bottom">
-                      <p>Copyright © 2022, Cyfonii. Designed by Themesflat</p>
-                     
+                      {footer.map((e) => (
+                        <p>{e.CopyRight}</p>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -163,7 +184,7 @@ const Footer = () => {
             </div>
           </div>
         </footer>
-        
+
         <Link id="scroll-top" onClick={scrollToTop}>
           <span className="icon-arrow-top" />
         </Link>

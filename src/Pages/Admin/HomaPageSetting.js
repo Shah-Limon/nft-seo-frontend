@@ -52,6 +52,7 @@ const HomaPageSetting = () => {
       <section className="participants">
         <div className="container">
           <div className="row">
+            
             <div className="col-lg-3">
               <div className="block-text center">
                 <div className="col">
@@ -69,6 +70,9 @@ const HomaPageSetting = () => {
                 </div>
               </div>
             </div>
+
+            
+
             <div className="col-lg-3">
               <div className="block-text center">
                 <div className="col">
@@ -178,6 +182,7 @@ const HomaPageSetting = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>

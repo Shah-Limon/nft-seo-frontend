@@ -48,6 +48,8 @@ import FaqsEdit from './Pages/Admin/FaqsEdit';
 import FooterEdit from './Pages/Admin/FooterEdit';
 import EditFooterLink from './Pages/Admin/EditFooterLink';
 import EditSocialLinks from './Pages/Admin/EditSocialLinks';
+import BannerSliderList from './Pages/Admin/BannerSliderList';
+import EditBannerSlider from './Pages/Admin/EditBannerSlider';
 
 
 function App() {
@@ -79,6 +81,9 @@ function App() {
 
         <Route path='/admin/setting-homepage' element={<RequireAuth><HomaPageSetting></HomaPageSetting></RequireAuth>}></Route>
         <Route path='/admin/edit-banner-option/:id' element={<RequireAuth><EditBanner></EditBanner></RequireAuth>}></Route>
+
+        <Route path='/admin/slider-banner/' element={<RequireAuth><BannerSliderList></BannerSliderList></RequireAuth>}></Route>
+        <Route path='/admin/edit-slider/:id' element={<RequireAuth><EditBannerSlider></EditBannerSlider></RequireAuth>}></Route>
 
 
 

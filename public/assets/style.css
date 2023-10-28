@@ -432,3 +432,20 @@ img.footer__logo {
   object-fit: cover;
 }
 
+@media (min-width: 1200px) {
+  .card-custom {
+    width: 534px !important;
+    background: linear-gradient(89.96deg, rgba(255, 255, 255, 0.05) 0.03%, rgba(255, 255, 255, 0.008) 49.66%, rgba(255, 255, 255, 0.05) 99.96%);
+    backdrop-filter: blur(2px);
+    padding: 31px 23px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
+    z-index: 3;
+  }
+}
+
+
+.white-arrow {
+  filter: invert(100%); /* Invert the colors to make it white */
+}

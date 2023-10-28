@@ -38,7 +38,7 @@ const Pricing = () => {
                         <div className="box-testimonial center">
                           <div className="image">
                             <img
-                              src="https://themesflat.co/html/cyfoniihtml/assets/images/layouts/avt-08.png"
+                              src={p.img}
                               alt=""
                             />
                           </div>
