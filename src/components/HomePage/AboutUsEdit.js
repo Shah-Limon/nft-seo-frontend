@@ -32,7 +32,7 @@ const SpecialityOptionEdit = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/report-sent");
+        navigate("/admin/setting-homepage");
       });
   };
 
@@ -45,76 +45,78 @@ const SpecialityOptionEdit = () => {
   return (
     <>
       <form onSubmit={handleEditAbout}>
-        <div class="container">
-          <div class="justify-content-center align-items-baseline">
-            <div class="col-sm">
-              <label className="mt-1">Banner Image Url</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Image Url"
-                  name="img"
-                  defaultValue={about.img}
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Banner Title</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Banner Title"
-                  name="title"
-                  defaultValue={about.title}
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Banner About Text</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your Sub Text"
-                  name="subText"
-                  defaultValue={about.subText}
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Banner Button Text</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your Button Text"
-                  name="btnText"
-                  defaultValue={about.btnText}
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Banner Button URL</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Your Button URL"
-                  name="btnUrl"
-                  defaultValue={about.btnUrl}
-                />
-              </div>
-            </div>
-
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
-                <span>Update About</span>
-              </button>
+       {
+        about.map(e =>  <div class="container">
+        <div class="justify-content-center align-items-baseline">
+          <div class="col-sm">
+            <label className="mt-1">Banner Image Url</label>
+            <div class="form-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Type Image Url"
+                name="img"
+                defaultValue={e.img}
+              />
             </div>
           </div>
+          <div class="col-sm">
+            <label className="mt-1">Banner Title</label>
+            <div class="form-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Banner Title"
+                name="title"
+                defaultValue={e.title}
+              />
+            </div>
+          </div>
+          <div class="col-sm">
+            <label className="mt-1">Banner About Text</label>
+            <div class="form-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Your Sub Text"
+                name="subText"
+                defaultValue={e.subText}
+              />
+            </div>
+          </div>
+          <div class="col-sm">
+            <label className="mt-1">Banner Button Text</label>
+            <div class="form-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Your Button Text"
+                name="btnText"
+                defaultValue={e.btnText}
+              />
+            </div>
+          </div>
+          <div class="col-sm">
+            <label className="mt-1">Banner Button URL</label>
+            <div class="form-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Your Button URL"
+                name="btnUrl"
+                defaultValue={e.btnUrl}
+              />
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <button type="submit" class="action-btn">
+              <span>Update About</span>
+            </button>
+          </div>
         </div>
+      </div>)
+       }
       </form>
     </>
   );

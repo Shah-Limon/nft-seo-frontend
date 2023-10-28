@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 const EditFooterLink = () => {
+  const [footerLink, setFooterLink] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -38,10 +39,16 @@ const EditFooterLink = () => {
       });
   };
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/footer-link/${id}`)
+      .then((res) => res.json())
+      .then((info) => setFooterLink(info));
+  }, [id]);
+
   return (
     <div>
       <form class="form mb-15" onSubmit={handleLinks}>
-        <h4 className="mb-15">Update Links</h4>
+        <h4 className="mb-15">Update Links & CopyRight</h4>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
@@ -52,6 +59,7 @@ const EditFooterLink = () => {
                   class="form-control"
                   placeholder="Enter Link One"
                   name="linkOne"
+                  defaultValue={footerLink.linkOne}
                 />
               </div>
             </div>
@@ -63,6 +71,7 @@ const EditFooterLink = () => {
                   class="form-control"
                   placeholder="Enter Link Two"
                   name="linkTwo"
+                  defaultValue={footerLink.linkTwo}
                 />
               </div>
             </div>
@@ -74,6 +83,7 @@ const EditFooterLink = () => {
                   class="form-control"
                   placeholder="Enter Link Three"
                   name="linkThree"
+                  defaultValue={footerLink.linkThree}
                 />
               </div>
             </div>
@@ -85,6 +95,7 @@ const EditFooterLink = () => {
                   class="form-control"
                   placeholder="Enter Link Four"
                   name="linkFour"
+                  defaultValue={footerLink.linkFour}
                 />
               </div>
             </div>
@@ -96,6 +107,7 @@ const EditFooterLink = () => {
                   class="form-control"
                   placeholder="Enter Link Five"
                   name="linkFive"
+                  defaultValue={footerLink.linkFive}
                 />
               </div>
             </div>
@@ -107,6 +119,7 @@ const EditFooterLink = () => {
                   class="form-control"
                   placeholder="Enter CopyRight Text"
                   name="CopyRight"
+                  defaultValue={footerLink.CopyRight}
                 />
               </div>
             </div>

@@ -44,9 +44,9 @@ const SpecialityOptionEdit = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/report-sent");
+        navigate("/admin/setting-homepage");
       });
-  };
+  }
 
   useEffect(() => {
     fetch(`http://localhost:5000/speciality/${id}`)
