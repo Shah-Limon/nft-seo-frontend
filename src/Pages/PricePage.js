@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const PricePage = () => {
+const Pricing = () => {
   const margin0 = {
     marginBottom: "0",
     marginRight: "10px",
@@ -14,23 +14,37 @@ const PricePage = () => {
       .then((res) => res.json())
       .then((info) => setPackages(info));
   }, []);
+  const [title, setTitle] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/package-titles/`)
+      .then((res) => res.json())
+      .then((info) => setTitle(info));
+  }, []);
 
   return (
     <>
-      <section className="testimonials s2" data-aos="fade-up" data-aos-duration={2000}>
+      <section
+        className="testimonials s2"
+        data-aos="fade-up"
+        data-aos-duration={3000}
+      >
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <div className="testimonials__main">
-                <div className="block-text center">
-                  <h6 className="sub-heading">
-                    <span>Pricing</span>
-                  </h6>
-                  <h3 className="heading">
-                    Price Information and <br />
-                    Details
-                  </h3>
-                </div>
+                {title.map((e) => (
+                  <div className="block-text center">
+                    <h6 className="sub-heading">
+                      <span>{e.titleTop}</span>
+                    </h6>
+                    <h3 className="heading">
+                      {e.titleOne} <br />
+                      {e.titleTwo}
+                    </h3>
+                    <p className="mt-15"> {e.description}</p>
+                  </div>
+                ))}
                 <div className="swiper testimonials-swiper s2">
                   <div className="swiper-wrapper" style={{ gap: "15px" }}>
                     {packages.map((p) => (
@@ -145,4 +159,4 @@ const PricePage = () => {
   );
 };
 
-export default PricePage;
+export default Pricing;

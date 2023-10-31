@@ -58,6 +58,18 @@ const DashboardMenu = () => {
                 </div>
               </div>
             </div>
+            <div className="col-xl-3 col-md-6">
+              <div className="project-box">
+                <div className="image"></div>
+                <div className="content">
+                  
+                    <Link to="/admin/contact-messages/" className="h5 title">
+                      Contact Messages
+                    </Link>
+                 
+                </div>
+              </div>
+            </div>
            
           </div>
         </div>

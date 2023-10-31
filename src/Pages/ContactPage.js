@@ -6,6 +6,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 const ContactPage = () => {
   const { id } = useParams();
   const [contact, setContact] = useState([]);
+  const [currentDate, setCurrentDate] = useState(getCurrentDate());
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,12 +21,16 @@ const ContactPage = () => {
     const email = event.target.email.value;
     const message = event.target.message.value;
     const subject = event.target.subject.value;
+    const date = event.target.date.value;
+    const messageStatus = event.target.messageStatus.value;
 
     const contact = {
       name,
       email,
       message,
       subject,
+      date,
+      messageStatus,
     };
 
     const url = `http://localhost:5000/add-contact-message`;
@@ -41,6 +46,15 @@ const ContactPage = () => {
         navigate("/");
       });
   };
+  // Function to get the current date in yyyy-MM-dd format
+  function getCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
   return (
     <>
       <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
@@ -135,6 +149,22 @@ const ContactPage = () => {
                     </div>
                   </div>
                   <form onSubmit={UserContactMessage} className="form-box">
+                    <input
+                      type="date"
+                      hidden
+                      className="form-control"
+                      name="date"
+                      value={currentDate}
+                      onChange={(e) => setCurrentDate(e.target.value)}
+                    />
+                    <input
+                      hidden
+                      type="text" 
+                      className="form-control"
+                      name="messageStatus"
+                      value="notRead"
+                    />
+
                     <div className="row">
                       <div className="col">
                         <label>Your name</label>
@@ -154,7 +184,7 @@ const ContactPage = () => {
                           name="email"
                         />
                       </div>
-                      <div className="col">
+                      <div className="col-12 mt-15">
                         <label>Subject</label>
                         <input
                           required

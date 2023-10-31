@@ -6,6 +6,7 @@ import auth from "../firebase.init";
 const PayNow = () => {
   const { id } = useParams();
   const [order, setOrder] = useState([]);
+  const [paypal, setPaypal] = useState([]);
   const [user] = useAuthState(auth);
   const currentDomain = window.location.origin;
 
@@ -14,6 +15,13 @@ const PayNow = () => {
       .then((res) => res.json())
       .then((info) => setOrder(info));
   }, [id]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/payments`)
+      .then((res) => res.json())
+      .then((info) => setPaypal(info));
+  }, []);
+
   return (
     <>
       <section className="banner s2">
@@ -38,11 +46,9 @@ const PayNow = () => {
                       method="post"
                       target="_top"
                     >
-                      <input
-                        type="hidden"
-                        name="business"
-                        value="whiteleads.net@gmail.com"
-                      />
+                      {paypal.map((e) => (
+                        <input name="business" hidden value={e.email} />
+                      ))}
                       <input
                         type="hidden"
                         name="item_name"

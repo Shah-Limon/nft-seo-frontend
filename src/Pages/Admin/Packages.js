@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 const Packages = () => {
   const navigate = useNavigate();
   const [packages, setPackages] = useState([]);
+  const [title, setTitle] = useState([]);
   const [user] = useAuthState(auth);
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/package-titles/`)
+      .then((res) => res.json())
+      .then((info) => setTitle(info));
+  }, [id]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/packages`)
@@ -17,23 +25,29 @@ const Packages = () => {
 
   const handlePackagesTitle = (event) => {
     event.preventDefault();
-    const packageName = event.target.packageName.value;
+    const titleTop = event.target.titleTop.value;
+    const titleOne = event.target.titleOne.value;
+    const titleTwo = event.target.titleTwo.value;
+    const description = event.target.description.value;
 
-    const websiteCheck = {
-      packageName,
+    const packageTitle = {
+      titleTop,
+      titleOne,
+      titleTwo,
+      description,
     };
 
-    const url = `http://localhost:5000/add-package-title/`;
+    const url = `http://localhost:5000/edit-package-title/`;
     fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(websiteCheck),
+      body: JSON.stringify(packageTitle),
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/report-sent ");
+        navigate("/admin/dashboard/");
       });
   };
   // const handlePackages = (event) => {
@@ -85,220 +99,17 @@ const Packages = () => {
 
   return (
     <div>
-      <form class="form" onSubmit={handlePackagesTitle}>
-        <div class="container">
-          <div class="justify-content-center align-items-baseline">
-            <div class="col-sm">
-              <label className="mt-1">Title Top Text</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Title Top Text"
-                  name="titleTop"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Type Title 1st Part</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Title 1st Part"
-                  name="titleOne"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Type Title 2nd Part</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Title 2nd Part"
-                  name="titleOne"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Enter Description</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Package Image Url"
-                  name="description"
-                />
-              </div>
-            </div>
-            
-
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
-                <span>Add Package</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </form>
-      {/* <form class="form" onSubmit={handlePackages}>
-        <div class="container">
-          <div class="justify-content-center align-items-baseline">
-            <div class="col-sm">
-              <label className="mt-1">Package Name</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Package Name"
-                  name="packageName"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Enter Package Price</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Package Price"
-                  name="price"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Enter Package Image Url</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Package Image Url"
-                  name="img"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature One</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Feature One"
-                  name="featureOne"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature Two</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Feature Two"
-                  name="featureTwo"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature Three</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type feature Three"
-                  name="featureThree"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature Four</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Feature Four"
-                  name="featureFour"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature Five</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Feature Five"
-                  name="featureFive"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature Six</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Feature Six"
-                  name="featureSix"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature Seven</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Feature Seven"
-                  name="featureSeven"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature Eight</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Feature Eight"
-                  name="featureEight"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature Nine</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Feature Nine"
-                  name="featureNine"
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Feature Ten</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type Feature Ten"
-                  name="featureTen"
-                />
-              </div>
-            </div>
-
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
-                <span>Add Package</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </form> */}
       <div className="container">
         <table className="rwd-table">
+          <div>
+            <div class="col-sm mb-15">
+              {title.map((e) => (
+                <Link to={`/package-title-edit/${e._id}`} class="action-btn">
+                  <span>Edit Price Title</span>
+                </Link>
+              ))}
+            </div>
+          </div>
           <tbody>
             <tr>
               <th>SL No.</th>

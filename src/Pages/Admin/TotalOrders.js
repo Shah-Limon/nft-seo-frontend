@@ -57,6 +57,8 @@
 // };
 
 // export default TotalOrders;
+
+
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
@@ -66,12 +68,12 @@ import OrderMenu from "./OrderMenu";
 const TotalOrders = () => {
   const [orders, setOrders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   useEffect(() => {
     fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
-      .then((info) => setOrders(info));
+      .then((info) => setOrders(info.reverse()));
   }, []);
 
    // Filter the orders with paymentStatus === "Received"
@@ -80,16 +82,23 @@ const TotalOrders = () => {
    // Calculate the total spend
    const totalSpend = receivedOrders.reduce((total, order) => total + parseFloat(order.packagePrice), 0);
 
-  const paginatedOrders = orders.slice(
+ 
+  // Sort orders by order date in descending order (most recent first)
+  const sortedOrders = [...orders].sort((a, b) => {
+    return new Date(b.orderDate) - new Date(a.orderDate);
+  });
+
+  const paginatedOrders = sortedOrders.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  const totalPages = Math.ceil(orders.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedOrders.length / itemsPerPage);
 
   const changePage = (page) => {
     setCurrentPage(page);
   };
+
 
   return (
     <>

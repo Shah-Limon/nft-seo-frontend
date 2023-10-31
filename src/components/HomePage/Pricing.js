@@ -14,6 +14,13 @@ const Pricing = () => {
       .then((res) => res.json())
       .then((info) => setPackages(info));
   }, []);
+  const [title, setTitle] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/package-titles/`)
+      .then((res) => res.json())
+      .then((info) => setTitle(info));
+  }, []);
 
   return (
     <>
@@ -26,16 +33,19 @@ const Pricing = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="testimonials__main">
-                <div className="block-text center">
+                {
+                  title.map(e =>
+                    <div className="block-text center">
                   <h6 className="sub-heading">
-                    <span>Pricing</span>
+                    <span>{e.titleTop}</span>
                   </h6>
                   <h3 className="heading">
-                    Price Information and <br />
-                    Details
+                    {e.titleOne} <br />
+                    {e.titleTwo}
                   </h3>
                 
-                </div>
+                </div>)
+                }
                 <div className="swiper testimonials-swiper s2">
                   <div className="swiper-wrapper" style={{ gap: "15px" }}>
                     {packages.map((p) => (

@@ -66,6 +66,8 @@ import TicketAction from './Pages/TicketAction';
 import SubscriptionMail from './Pages/SubscriptionMail';
 import CancelledPayment from './Pages/CancelledPayment';
 import ReceivedPayment from './Pages/ReceivedPayment';
+import PackageTitleEdit from './Pages/Admin/PackageTitleEdit';
+import ContactUsMessageRead from './components/HomePage/ContactUsMessageRead';
 
 
 function App() {
@@ -93,6 +95,7 @@ function App() {
         <Route path='/report-sent' element={<EmailThankYou></EmailThankYou>}></Route>
         <Route path='/report/:id' element={<ReportSeo></ReportSeo>}></Route>
         <Route path='/package/:id' element={<RequireAuth><Package></Package></RequireAuth>}></Route>
+        <Route path='/package-title-edit/:id' element={<RequireAuth><PackageTitleEdit></PackageTitleEdit></RequireAuth>}></Route>
         <Route path='/user-dashboard' element={<RequireAuth><UserDashboard></UserDashboard></RequireAuth>}></Route>
         <Route path='/user-dashboard/my-orders/' element={<RequireAuth><MyOrders></MyOrders></RequireAuth>}></Route>
         <Route path='/user-dashboard/spend/' element={<RequireAuth><TotalSpend></TotalSpend></RequireAuth>}></Route>
@@ -155,6 +158,8 @@ function App() {
 
         <Route path='/admin/edit-contact-page/:id' element={<ContactPageEdit></ContactPageEdit>}></Route>
         <Route path='/admin/contact-messages/' element={<ContactUsMessages></ContactUsMessages>}></Route>
+        <Route path='/admin/contact-message/:id' element={<ContactUsMessageRead></ContactUsMessageRead>}></Route>
+       
 
 
         <Route path='/admin/faqs' element={<RequireAuth><FaqsList></FaqsList></RequireAuth>}></Route>
