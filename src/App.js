@@ -8,10 +8,7 @@ import Register from './Pages/Register';
 import Dashboard from './Pages/Admin/Dashboard';
 import Footer from './components/Shared/Footer/Footer';
 import EmailThankYou from './Pages/EmailThankYou';
-
 import RequireAuth from './components/Shared/RequireAuth';
-import MyAccount from './Pages/MyAccount';
-
 import EditWebsite from './Pages/Admin/EditWebsite';
 import UserDashboard from './Pages/UserDashboard';
 import ReportSeo from './Pages/ReportSeo';
@@ -30,7 +27,6 @@ import Updatepaypal from './Pages/Admin/Updatepaypal';
 import GeneralOption from './Pages/Admin/GeneralOption';
 import UpdateLogo from './Pages/Admin/UpdateLogo';
 import HomaPageSetting from './Pages/Admin/HomaPageSetting';
-import AboutUsOption from './Pages/Admin/AboutUsOption';
 import EditBanner from './Pages/Admin/EditBanner';
 import AboutUsEdit from './components/HomePage/AboutUsEdit';
 import SpecialityOptionEdit from './components/HomePage/SpecialityOptionEdit';
@@ -50,6 +46,26 @@ import EditFooterLink from './Pages/Admin/EditFooterLink';
 import EditSocialLinks from './Pages/Admin/EditSocialLinks';
 import BannerSliderList from './Pages/Admin/BannerSliderList';
 import EditBannerSlider from './Pages/Admin/EditBannerSlider';
+import OrderPending from './Pages/Admin/OrderPending';
+import PaymentPending from './Pages/Admin/PaymentPending';
+import AcceptedOrder from './Pages/Admin/AcceptedOrder';
+import PaymentsReceived from './Pages/Admin/PaymentsReceived';
+import OrdersCancelled from './Pages/Admin/OrdersCancelled';
+import PaymentsCancelled from './Pages/Admin/PaymentsCancelled';
+import PaymentsRefunded from './Pages/Admin/PaymentsRefunded';
+import AboutPage from './Pages/AboutPage';
+import PricePage from './Pages/PricePage';
+import ContactPage from './Pages/ContactPage';
+import ContactPageEdit from './components/HomePage/ContactPageEdit';
+import ContactUsMessages from './components/HomePage/ContactUsMessages';
+import SupportPage from './Pages/SupportPage';
+import TicketPage from './Pages/TicketPage';
+import HelpDesk from './Pages/HelpDesk';
+import HelpDeskAction from './Pages/HelpDeskAction';
+import TicketAction from './Pages/TicketAction';
+import SubscriptionMail from './Pages/SubscriptionMail';
+import CancelledPayment from './Pages/CancelledPayment';
+import ReceivedPayment from './Pages/ReceivedPayment';
 
 
 function App() {
@@ -59,6 +75,18 @@ function App() {
       <NavBar></NavBar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/about-us' element={<AboutPage></AboutPage>}></Route>
+        <Route path='/pricing' element={<PricePage></PricePage>}></Route>
+
+
+
+        <Route path='/user-dashboard/support/' element={<SupportPage></SupportPage>}></Route>
+        <Route path='/user-dashboard/create-ticket/' element={<TicketPage></TicketPage>}></Route>
+        <Route path='/user-dashboard/support/:id' element={<RequireAuth><TicketAction></TicketAction></RequireAuth>}></Route>
+
+
+        <Route path='/contact-us' element={<ContactPage></ContactPage>}></Route>
+        
         
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
@@ -70,9 +98,18 @@ function App() {
         <Route path='/user-dashboard/spend/' element={<RequireAuth><TotalSpend></TotalSpend></RequireAuth>}></Route>
         <Route path='/pay-now/:id' element={<RequireAuth><PayNow></PayNow></RequireAuth>}></Route>
         <Route path='/pending-payment/' element={<RequireAuth><PendingPayment></PendingPayment></RequireAuth>}></Route>
+        <Route path='/cancelled-payment/:id' element={<RequireAuth><CancelledPayment></CancelledPayment></RequireAuth>}></Route>
+        <Route path='/received-payment/:id' element={<RequireAuth><ReceivedPayment></ReceivedPayment></RequireAuth>}></Route>
 
 
         <Route path='/admin/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}></Route>
+        <Route path='/admin/help-desk' element={<RequireAuth><HelpDesk></HelpDesk></RequireAuth>}></Route>
+        <Route path='/admin/help-desk/:id' element={<RequireAuth><HelpDeskAction></HelpDeskAction></RequireAuth>}></Route>
+        <Route path='/admin/subscription-email/' element={<RequireAuth><SubscriptionMail></SubscriptionMail></RequireAuth>}></Route>
+
+   
+
+
         <Route path='/admin/setting' element={<RequireAuth><Setting></Setting></RequireAuth>}></Route>
         
         <Route path='/admin/setting-general/' element={<RequireAuth><GeneralOption></GeneralOption></RequireAuth>}></Route>
@@ -116,7 +153,8 @@ function App() {
         <Route path='/admin/edit-social/:id' element={<RequireAuth><EditSocialLinks></EditSocialLinks></RequireAuth>}></Route>
 
 
-
+        <Route path='/admin/edit-contact-page/:id' element={<ContactPageEdit></ContactPageEdit>}></Route>
+        <Route path='/admin/contact-messages/' element={<ContactUsMessages></ContactUsMessages>}></Route>
 
 
         <Route path='/admin/faqs' element={<RequireAuth><FaqsList></FaqsList></RequireAuth>}></Route>
@@ -128,6 +166,20 @@ function App() {
         <Route path='/admin/website-edit/:id' element={<RequireAuth><EditWebsite></EditWebsite></RequireAuth>}></Route>
         <Route path='/admin/order/:id' element={<RequireAuth><OrderAction></OrderAction></RequireAuth>}></Route>
         <Route path='/admin/orders' element={<RequireAuth><TotalOrders></TotalOrders></RequireAuth>}></Route>
+        <Route path='/admin/orders-pending' element={<RequireAuth><OrderPending></OrderPending></RequireAuth>}></Route>
+        <Route path='/admin/payments/pending' element={<RequireAuth><PaymentPending></PaymentPending></RequireAuth>}></Route>
+        <Route path='/admin/orders/accepted' element={<RequireAuth><AcceptedOrder></AcceptedOrder></RequireAuth>}></Route>
+        <Route path='/admin/payments/received' element={<RequireAuth><PaymentsReceived></PaymentsReceived></RequireAuth>}></Route>
+        <Route path='/admin/orders/cancelled' element={<RequireAuth><OrdersCancelled></OrdersCancelled></RequireAuth>}></Route>
+        <Route path='/admin/payments/cancelled' element={<RequireAuth><PaymentsCancelled></PaymentsCancelled></RequireAuth>}></Route>
+        <Route path='/admin/payments/refunded' element={<RequireAuth><PaymentsRefunded></PaymentsRefunded></RequireAuth>}></Route>
+
+
+
+
+
+
+
         <Route path='/admin/setting-payment' element={<RequireAuth><SettingPayment></SettingPayment></RequireAuth>}></Route>
         <Route path='/admin/paypal/:id' element={<RequireAuth><Updatepaypal></Updatepaypal></RequireAuth>}></Route>
 

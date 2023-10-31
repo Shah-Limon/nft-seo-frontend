@@ -19,7 +19,7 @@ const Testimonials = () => {
 
   return (
     <>
-      <section className="testimonials s2">
+      <section className="testimonials s2" data-aos="fade-up" data-aos-duration={3000}>
         <div className="container">
           <div className="row">
             <div className="col-md-12">

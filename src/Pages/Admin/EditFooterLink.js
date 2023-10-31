@@ -9,19 +9,13 @@ const EditFooterLink = () => {
 
   const handleLinks = (event) => {
     event.preventDefault();
-    const linkOne = event.target.linkOne.value;
-    const linkTwo = event.target.linkTwo.value;
-    const linkThree = event.target.linkThree.value;
-    const linkFour = event.target.linkFour.value;
-    const linkFive = event.target.linkFive.value;
+    const FooterAbout = event.target.FooterAbout.value;
+
     const CopyRight = event.target.CopyRight.value;
 
     const footerLink = {
-      linkOne,
-      linkTwo,
-      linkThree,
-      linkFour,
-      linkFive,
+      FooterAbout,
+     
       CopyRight,
     };
 
@@ -52,65 +46,18 @@ const EditFooterLink = () => {
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
-              <label className="mt-1">Enter Link One</label>
+              <label className="mt-1">Enter Short About</label>
               <div class="form-group mb-3">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Enter Link One"
-                  name="linkOne"
-                  defaultValue={footerLink.linkOne}
+                  placeholder="Type short About"
+                  name="FooterAbout"
+                  defaultValue={footerLink.FooterAbout}
                 />
               </div>
             </div>
-            <div class="col-sm">
-              <label className="mt-1">Enter Link Two</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Link Two"
-                  name="linkTwo"
-                  defaultValue={footerLink.linkTwo}
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Enter Link Three</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Link Three"
-                  name="linkThree"
-                  defaultValue={footerLink.linkThree}
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Enter Link Four</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Link Four"
-                  name="linkFour"
-                  defaultValue={footerLink.linkFour}
-                />
-              </div>
-            </div>
-            <div class="col-sm">
-              <label className="mt-1">Enter Link Five</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Link Five"
-                  name="linkFive"
-                  defaultValue={footerLink.linkFive}
-                />
-              </div>
-            </div>
+            
             <div class="col-sm">
               <label className="mt-1">Enter CopyRight Text</label>
               <div class="form-group mb-3">

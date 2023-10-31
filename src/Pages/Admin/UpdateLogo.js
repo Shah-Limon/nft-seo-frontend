@@ -64,7 +64,7 @@ const UpdateLogo = () => {
   };
 
   return (
-    <div>
+    <div className="payment-setting" data-aos="fade-up" data-aos-duration={3000}>
       <form className="form" onSubmit={handleLogoUpload}>
         <div className="container">
           <div className="justify-content-center align-items-baseline">

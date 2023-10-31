@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Pricing = () => {
+const PricePage = () => {
   const margin0 = {
     marginBottom: "0",
     marginRight: "10px",
@@ -17,11 +17,7 @@ const Pricing = () => {
 
   return (
     <>
-      <section
-        className="testimonials s2"
-        data-aos="fade-up"
-        data-aos-duration={3000}
-      >
+      <section className="testimonials s2" data-aos="fade-up" data-aos-duration={2000}>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -34,7 +30,6 @@ const Pricing = () => {
                     Price Information and <br />
                     Details
                   </h3>
-                
                 </div>
                 <div className="swiper testimonials-swiper s2">
                   <div className="swiper-wrapper" style={{ gap: "15px" }}>
@@ -150,4 +145,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing;
+export default PricePage;

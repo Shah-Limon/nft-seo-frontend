@@ -15,35 +15,39 @@ const PendingPayment = () => {
 
   let rowNumber = 1;
   return (
-    <div>
-        <table className="rwd-table">
-          <tbody>
-            <tr>
-              <th>SL No.</th>
-              <th>Package Name</th>
-              <th>Amount</th>
-              <th>Pay Now</th>
-            </tr>
+    <div className="container">
+      <table className="rwd-table">
+        <tbody>
+          <tr>
+            <th>SL No.</th>
+            <th>Package Name</th>
+            <th>Amount</th>
+            <th>Pay Now</th>
+          </tr>
 
-            {orders.map((order) => {
-              if (order.customerEmail === user?.email && order.paymentStatus === "Pending") {
-                return (
-                  <tr key={order._id}>
-                    <td>{rowNumber++}</td>
-                    <td >{order.packageName}</td>
-                    <td >{order.packagePrice}</td>
-                    <td >
-                      <Link to={`/pay-now/${order._id}`}>Pay Now With PayPal</Link>
-                    </td>
-                    
-                  </tr>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </tbody>
-        </table>
+          {orders.map((order) => {
+            if (
+              order.customerEmail === user?.email &&
+              order.paymentStatus === "Pending"
+            ) {
+              return (
+                <tr key={order._id}>
+                  <td>{rowNumber++}</td>
+                  <td>{order.packageName}</td>
+                  <td>{order.packagePrice}$</td>
+                  <td>
+                    <Link to={`/pay-now/${order._id}`}>
+                      Pay Now With PayPal
+                    </Link>
+                  </td>
+                </tr>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };

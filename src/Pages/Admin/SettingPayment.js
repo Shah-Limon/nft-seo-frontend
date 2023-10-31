@@ -19,7 +19,7 @@ const SettingPayment = () => {
     <>
       {paymentEmail.map((payment) => (
         <>
-          <section className="banner s2">
+          <section className="banner s2 payment-setting" data-aos="fade-up" data-aos-duration={3000}>
             <div className="shape" />
             <div className="shape right" />
             <div className="container">

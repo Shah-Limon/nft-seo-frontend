@@ -12,7 +12,6 @@ const Team = () => {
   const [team, setTeam] = useState([]);
   const [title, setTitle] = useState([]);
 
-
   useEffect(() => {
     fetch(`http://localhost:5000/teams`)
       .then((res) => res.json())
@@ -25,24 +24,23 @@ const Team = () => {
   }, []);
   return (
     <>
-      <section className="team">
+      <section className="team" data-aos="fade-up" data-aos-duration={3000}>
         <div className="container">
           <div className="row">
             <div className="col-12">
               <div className="block-text center">
-                {
-                  title.map( e => 
-                    <>
+                {title.map((e) => (
+                  <>
                     <h6 className="sub-heading">
-                  <span>{e.titleTopText}</span>
-                </h6>
-                <h3 className="heading wow" data-splitting="">
-                 {e.TitleOne}
-                  <br />
-                 {e.titleTwo}
-                </h3>
-                    </>)
-                }
+                      <span>{e.titleTopText}</span>
+                    </h6>
+                    <h3 className="heading wow" data-splitting="">
+                      {e.TitleOne}
+                      <br />
+                      {e.titleTwo}
+                    </h3>
+                  </>
+                ))}
               </div>
               <div className="swiper team-swiper">
                 <div className="swiper-wrapper">
@@ -66,9 +64,7 @@ const Team = () => {
                                 <img src={e.personImg} alt="" />
                               </div>
                               <div className="content">
-                                <div className="h5 name">
-                                  {e.personName}
-                                </div>
+                                <div className="h5 name">{e.personName}</div>
                                 <p className="postion">{e.personTitle}</p>
                                 <ul className="list-social">
                                   <li>
@@ -88,7 +84,7 @@ const Team = () => {
                                     </Link>
                                   </li>
                                   <li>
-                                  <Link to={e.twitter}>
+                                    <Link to={e.twitter}>
                                       <svg
                                         width={15}
                                         height={12}

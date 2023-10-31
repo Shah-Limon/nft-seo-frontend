@@ -21,12 +21,14 @@ const EditSocialLinks = () => {
     const twitter = event.target.twitter.value;
     const instragram = event.target.instragram.value;
     const youtube = event.target.youtube.value;
+    const email = event.target.email.value;
 
     const footerSocial = {
       facebook,
       twitter,
       instragram,
       youtube,
+      email
     };
 
     const url = `http://localhost:5000/footer-social/${id}`;
@@ -94,6 +96,18 @@ const EditSocialLinks = () => {
                   placeholder="Enter Youtube Link"
                   name="youtube"
                   defaultValue={social.youtube}
+                />
+              </div>
+            </div>
+            <div class="col-sm">
+              <label className="mt-1">Enter Email</label>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Email"
+                  name="email"
+                  defaultValue={social.email}
                 />
               </div>
             </div>

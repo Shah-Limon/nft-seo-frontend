@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const AboutUs = () => {
-  const [about, setAbout] = useState([]);
   const { id } = useParams();
+  const [about, setAbout] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:5000/about/${id}`)
       .then((res) => res.json())
@@ -12,7 +12,7 @@ const AboutUs = () => {
 
   return (
     <>
-      <section className="about">
+      <section className="about" data-aos="fade-up" data-aos-duration={3000}>
         <div className="shape" />
         <div className="container">
           {about.map((AboutData) => (
@@ -53,7 +53,6 @@ const AboutUs = () => {
                     {AboutData.title}
                   </h3>
                   <p className="mb-17">
-                    
                     {about.map((AboutData, index) => (
                       <div key={index}>
                         {AboutData.subText
@@ -63,7 +62,6 @@ const AboutUs = () => {
                               {sentenceIndex > 0 && sentenceIndex % 2 === 0 && (
                                 <br />
                               )}{" "}
-                              
                               <p>{sentence}</p>
                             </React.Fragment>
                           ))}

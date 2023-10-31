@@ -43,12 +43,18 @@ const NavBar = () => {
                 <div className="header__right">
                   <nav id="main-nav" className="main-nav">
                     <ul id="menu-primary-menu" className="menu">
-                      <li className="menu-item menu-item-has-children">
+                      <li className="menu-item">
                         <Link to="/">Home</Link>
                       </li>
 
                       <li className="menu-item">
-                        <Link to="/admin/dashboard">Dashboard</Link>
+                        <Link to="/pricing">Pricing</Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link to="/about-us">About Us</Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link to="/contact-us">Contact Us</Link>
                       </li>
                     </ul>
                   </nav>

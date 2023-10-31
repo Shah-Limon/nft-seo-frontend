@@ -26,15 +26,14 @@ const EditBanner = () => {
     const typingHeading3 = event.target.typingHeading3.value;
     const bannertext = event.target.bannertext.value;
 
-
     const updateBanner = {
-        bannerToptext,
-        bannerHeadingText1,
-        bannerHeadingText2,
-        typingHeading1,
-        typingHeading2,
-        typingHeading3,
-        bannertext,
+      bannerToptext,
+      bannerHeadingText1,
+      bannerHeadingText2,
+      typingHeading1,
+      typingHeading2,
+      typingHeading3,
+      bannertext,
     };
 
     const url = `http://localhost:5000/edit-banner/${id}`;
@@ -53,10 +52,9 @@ const EditBanner = () => {
 
   return (
     <div>
-      <form class="form" onSubmit={handleBanner}>
-       {
-        banner.map(e =>
-            <div class="container">
+      <form class="form mb-15" onSubmit={handleBanner}>
+        {banner.map((e) => (
+          <div class="container">
             <div class="justify-content-center align-items-baseline">
               <div class="col-sm">
                 <label className="mt-1">Banner Top Text</label>
@@ -134,7 +132,7 @@ const EditBanner = () => {
                   />
                 </div>
               </div>
-  
+
               <div class="col-sm">
                 <label className="mt-1">Enter Banner Paragraph</label>
                 <div class="form-group mb-3">
@@ -147,44 +145,18 @@ const EditBanner = () => {
                   />
                 </div>
               </div>
-  
+
               <div class="col-sm">
                 <button type="submit" class="action-btn">
                   <span>Update Bannner</span>
                 </button>
               </div>
             </div>
-          </div>)
-       }
+          </div>
+        ))}
       </form>
-      
-      <section className="participants">
-        <div className="container">
-          <div className="row">
-      
-          <hr></hr>
-<div className="col-lg">
-              <div className="block-text center">
-                <div className="col">
-                  <h5 className="heading">Banner Slider Options</h5>
 
-                  
-                    <Link
-                      to="/admin/slider-banner/"
-                      className="action-btn"
-                    >
-                      <span>update</span>
-                    </Link>
-                 
-                
-                </div>
-              </div>
-            </div>
-
-</div>
-        </div>
-      </section>
-      
+     
     </div>
   );
 };

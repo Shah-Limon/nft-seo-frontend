@@ -207,20 +207,20 @@ const FooterEdit = () => {
         </div>
       </form> */}
 
-      <section className="participants">
+      <section className="participants payment-setting" data-aos="fade-up" data-aos-duration={3000}>
         <div className="container">
           <div className="row">
             <div className="col-lg-4">
               <div className="block-text center">
                 <div className="col">
-                  <h5 className="heading">Footer Social Options</h5>
+                  <h5 className="heading">Contact Options</h5>
 
                   {social.map((e) => (
                     <Link
                       to={`/admin/edit-social/${e._id}`}
                       className="action-btn"
                     >
-                      <span>update</span>
+                      <span>Edit</span>
                     </Link>
                   ))}
 
@@ -231,14 +231,14 @@ const FooterEdit = () => {
             <div className="col-lg-4">
               <div className="block-text center">
                 <div className="col">
-                  <h5 className="heading">Footer Links Options</h5>
+                  <h5 className="heading">Footer About Options</h5>
 
                   {footerLink.map((e) => (
                     <Link
                       to={`/admin/edit-footer/${e._id}`}
                       className="action-btn"
                     >
-                      <span>update</span>
+                      <span>Edit</span>
                     </Link>
                   ))}
 

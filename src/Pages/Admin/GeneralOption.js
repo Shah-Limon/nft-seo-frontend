@@ -19,7 +19,7 @@ const GeneralOption = () => {
 
   return (
     <div>
-      <section className="participants">
+      <section className="participants payment-setting" data-aos="fade-up" data-aos-duration={3000}>
         <div className="container">
           <div className="row">
             <div className="col-12">

@@ -42,9 +42,19 @@ const DashboardMenu = () => {
               <div className="project-box">
                 <div className="image"></div>
                 <div className="content">
-                  <a href="nft.html" className="h5 title">
+                  <Link to="/admin/help-desk/" className="h5 title">
                    Help Desk
-                  </a>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-3 col-md-6">
+              <div className="project-box">
+                <div className="image"></div>
+                <div className="content">
+                  <Link to="/admin/subscription-email/" className="h5 title">
+                    Subscription Email
+                  </Link>
                 </div>
               </div>
             </div>

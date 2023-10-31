@@ -12,7 +12,7 @@ const OurSpeciality = () => {
   }, [id]);
   return (
     <>
-      <section className="speciality">
+      <section className="speciality" data-aos="fade-up" data-aos-duration={3000}>
         <div className="shape right" />
         <div className="container">
           <div className="row">
@@ -68,9 +68,7 @@ const OurSpeciality = () => {
                 {speciality.map((e) => (
                   <>
                     <h5 className="title">{e.cardTitleOne}</h5>
-                    <p>
-                      {e.cardDescriptionOne}
-                    </p>
+                    <p>{e.cardDescriptionOne}</p>
                   </>
                 ))}
                 <h3 className="number">01</h3>
@@ -112,9 +110,7 @@ const OurSpeciality = () => {
                 {speciality.map((e) => (
                   <>
                     <h5 className="title">{e.cardTitleTwo}</h5>
-                    <p>
-                      {e.cardDescriptionTwo}
-                    </p>
+                    <p>{e.cardDescriptionTwo}</p>
                   </>
                 ))}
                 <h3 className="number">02</h3>
@@ -158,9 +154,7 @@ const OurSpeciality = () => {
                 {speciality.map((e) => (
                   <>
                     <h5 className="title">{e.cardTitleThree}</h5>
-                    <p>
-                      {e.cardDescriptionThree}
-                    </p>
+                    <p>{e.cardDescriptionThree}</p>
                   </>
                 ))}
                 <h3 className="number">03</h3>
@@ -204,9 +198,7 @@ const OurSpeciality = () => {
                 {speciality.map((e) => (
                   <>
                     <h5 className="title">{e.cardTitleFour}</h5>
-                    <p>
-                      {e.cardDescriptionFour}
-                    </p>
+                    <p>{e.cardDescriptionFour}</p>
                   </>
                 ))}
                 <h3 className="number">04</h3>

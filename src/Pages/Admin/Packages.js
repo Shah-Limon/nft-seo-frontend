@@ -15,43 +15,15 @@ const Packages = () => {
 
   let rowNumber = 1;
 
-
-
-
-  const handlePackages = (event) => {
-
+  const handlePackagesTitle = (event) => {
     event.preventDefault();
     const packageName = event.target.packageName.value;
-    const price = event.target.price.value;
-    const img = event.target.img.value;
-    const featureOne = event.target.featureOne.value;
-    const featureTwo = event.target.featureTwo.value;
-    const featureThree = event.target.featureThree.value;
-    const featureFour = event.target.featureFour.value;
-    const featureFive = event.target.featureFive.value;
-    const featureSix = event.target.featureSix.value;
-    const featureSeven = event.target.featureSeven.value;
-    const featureEight = event.target.featureEight.value;
-    const featureNine = event.target.featureNine.value;
-    const featureTen = event.target.featureTen.value;
 
     const websiteCheck = {
       packageName,
-      price,
-      img,
-      featureOne,
-      featureTwo,
-      featureThree,
-      featureFour,
-      featureFive,
-      featureSix,
-      featureSeven,
-      featureEight,
-      featureNine,
-      featureTen,
     };
 
-    const url = `http://localhost:5000/add-package`;
+    const url = `http://localhost:5000/add-package-title/`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -64,9 +36,112 @@ const Packages = () => {
         navigate("/report-sent ");
       });
   };
+  // const handlePackages = (event) => {
+
+  //   event.preventDefault();
+  //   const packageName = event.target.packageName.value;
+  //   const price = event.target.price.value;
+  //   const img = event.target.img.value;
+  //   const featureOne = event.target.featureOne.value;
+  //   const featureTwo = event.target.featureTwo.value;
+  //   const featureThree = event.target.featureThree.value;
+  //   const featureFour = event.target.featureFour.value;
+  //   const featureFive = event.target.featureFive.value;
+  //   const featureSix = event.target.featureSix.value;
+  //   const featureSeven = event.target.featureSeven.value;
+  //   const featureEight = event.target.featureEight.value;
+  //   const featureNine = event.target.featureNine.value;
+  //   const featureTen = event.target.featureTen.value;
+
+  //   const websiteCheck = {
+  //     packageName,
+  //     price,
+  //     img,
+  //     featureOne,
+  //     featureTwo,
+  //     featureThree,
+  //     featureFour,
+  //     featureFive,
+  //     featureSix,
+  //     featureSeven,
+  //     featureEight,
+  //     featureNine,
+  //     featureTen,
+  //   };
+
+  //   const url = `http://localhost:5000/add-package`;
+  //   fetch(url, {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(websiteCheck),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       navigate("/report-sent ");
+  //     });
+  // };
 
   return (
     <div>
+      <form class="form" onSubmit={handlePackagesTitle}>
+        <div class="container">
+          <div class="justify-content-center align-items-baseline">
+            <div class="col-sm">
+              <label className="mt-1">Title Top Text</label>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Type Title Top Text"
+                  name="titleTop"
+                />
+              </div>
+            </div>
+            <div class="col-sm">
+              <label className="mt-1">Type Title 1st Part</label>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Type Title 1st Part"
+                  name="titleOne"
+                />
+              </div>
+            </div>
+            <div class="col-sm">
+              <label className="mt-1">Type Title 2nd Part</label>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Type Title 2nd Part"
+                  name="titleOne"
+                />
+              </div>
+            </div>
+            <div class="col-sm">
+              <label className="mt-1">Enter Description</label>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Package Image Url"
+                  name="description"
+                />
+              </div>
+            </div>
+            
+
+            <div class="col-sm">
+              <button type="submit" class="action-btn">
+                <span>Add Package</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
       {/* <form class="form" onSubmit={handlePackages}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
@@ -230,17 +305,15 @@ const Packages = () => {
               <th>Package Name</th>
               <th>Price</th>
               <th>Edit</th>
-             
             </tr>
             {packages.map((item, index) => (
               <tr key={item._id}>
                 <td>{index + 1}</td>
-                <td >{item.packageName}</td>
-                <td >{item.price}$</td>
+                <td>{item.packageName}</td>
+                <td>{item.price}$</td>
                 <td data-th="Edit">
                   <Link to={`/admin/package-edit/${item._id}`}>Edit</Link>
                 </td>
-               
               </tr>
             ))}
           </tbody>

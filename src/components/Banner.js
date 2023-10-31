@@ -315,7 +315,11 @@ const Banner = () => {
 
   return (
     <>
-      <section className="banner s2">
+      <section
+        className="banner s2"
+        data-aos="fade-up"
+        data-aos-duration={3000}
+      >
         <div className="shape" />
         <div className="shape right" />
         <div className="container">
@@ -394,48 +398,45 @@ const Banner = () => {
               ))}
               <div className="swiper bannerSwiper">
                 <div className="swiper-wrapper" style={{ gap: "20px" }}>
-                  {
-                    sliders.map(e => 
-                      <div className="swiper-slide">
-                    <div className="card-box card-custom">
-                      <div className="top d-flex">
-                        <span className="icon-logo-01" />
-                        <div>
-                          <h6>{e.sliderTitle}</h6>
-                        </div>
-                      </div>
-                      <div className="content">
-                        <div className="image">
-                          <img
-                            src={e.sliderImg}
-                            alt=""
-                          />
-                        </div>
-                        <div className="info d-flex">
+                  {sliders.map((e) => (
+                    <div className="swiper-slide">
+                      <div className="card-box card-custom">
+                        <div className="top d-flex">
+                          <span className="icon-logo-01" />
                           <div>
-                            <p>
-                             {e.sliderDesc}
-                            </p>
+                            <h6>{e.sliderTitle}</h6>
+                          </div>
+                        </div>
+                        <div className="content">
+                          <div className="image">
+                            <img src={e.sliderImg} alt="" />
+                          </div>
+                          <div className="info d-flex">
+                            <div>
+                              <p>
+                                {e.sliderDesc.length > 160
+                                  ? `${e.sliderDesc.slice(0, 160)}...`
+                                  : e.sliderDesc}
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  )
-                  }
-                 
+                  ))}
                 </div>
               </div>
               <div className="swiper-button-prev " onClick={handlePrevSlide}>
                 <img
-                className="white-arrow"
+                  className="white-arrow"
                   src="https://i.ibb.co/y6Ck0z5/left-arrow.png"
                   alt="banner"
                 ></img>
                 <FontAwesomeIcon icon="chevron-left" />
               </div>
               <div className="swiper-button-next " onClick={handleNextSlide}>
-                <img className="white-arrow"
+                <img
+                  className="white-arrow"
                   src="https://i.ibb.co/JK9Bd4H/right-arrow.png"
                   alt="banner"
                 ></img>

@@ -7,6 +7,7 @@ const PayNow = () => {
   const { id } = useParams();
   const [order, setOrder] = useState([]);
   const [user] = useAuthState(auth);
+  const currentDomain = window.location.origin;
 
   useEffect(() => {
     fetch(`http://localhost:5000/order/${id}`)
@@ -63,12 +64,12 @@ const PayNow = () => {
                       <input
                         type="hidden"
                         name="cancel_return"
-                        value="http://localhost:3000/user-dashboard/my-orders/"
+                        value={`${currentDomain}/cancelled-payment/${order._id}`}
                       />
                       <input
                         type="hidden"
                         name="return"
-                        value="http://sitename/paypal-payment-gateway-integration-in-php/return.php"
+                        value={`${currentDomain}/received-payment/${order._id}`}
                       />
                       <input type="hidden" name="cmd" value="_xclick" />
                       <input

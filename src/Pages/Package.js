@@ -5,6 +5,7 @@ import auth from "../firebase.init";
 
 const Package = () => {
   const [p, setPackage] = useState([]);
+  const [orderDate, setOrderDate] = useState("");
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const Package = () => {
     const customerName = event.target.customerName.value;
     const customerWebsite = event.target.customerWebsite.value;
     const customerNote = event.target.customerNote.value;
+    const orderDate = event.target.orderDate.value;
 
     const order = {
       packageId,
@@ -37,6 +39,7 @@ const Package = () => {
       customerName,
       customerWebsite,
       customerNote,
+      orderDate,
     };
 
     const url = `http://localhost:5000/new-order`;
@@ -52,12 +55,25 @@ const Package = () => {
         navigate("/pending-payment/");
       });
   };
+  useEffect(() => {
+    // Get the current date
+    const currentDate = new Date();
 
+    // Format the date as dd/mm/yyyy
+    const day = currentDate.getDate().toString().padStart(2, "0");
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+    const year = currentDate.getFullYear();
+
+    // Set the formatted date as the default value
+    setOrderDate(`${day}/${month}/${year}`);
+  }, []);
   return (
     <div className="container">
-      <h2>You are ordering {p.packageName}</h2>
-      <br></br>
-      <h2>Price ${p.price}</h2>
+      <div className="block-text center mt-15">
+        <h3>You are ordering {p.packageName}</h3>
+        <br></br>
+        <h4>Price ${p.price}</h4>
+      </div>
       <br></br>
       <form class="form" onSubmit={handleOrder}>
         <div class="container">
@@ -90,16 +106,24 @@ const Package = () => {
               name="orderStatus"
               hidden
             ></input>
+            <input
+              hidden
+              type="text"
+              class="form-control"
+              value={user?.email}
+              name="customerEmail"
+            />
 
             {/*  */}
             <div class="col-sm">
-              <label className="mt-1">Email</label>
               <div class="form-group mb-3">
+                <label className="mt-1">Order Date</label>
                 <input
-                  type="text"
-                  class="form-control"
-                  value={user?.email}
-                  name="customerEmail"
+                  type="text" 
+                  className="form-control"
+                  name="orderDate"
+                  value={orderDate}
+                  onChange={(e) => setOrderDate(e.target.value)}
                 />
               </div>
             </div>

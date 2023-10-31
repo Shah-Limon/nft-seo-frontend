@@ -14,7 +14,7 @@ const UserDashboardMenu = () => {
   }, []);
 
   // Filter the orders with paymentStatus === "Received"
-  const receivedOrders = orders.filter((order) => order.paymentStatus === 'Received');
+  const receivedOrders = orders.filter((order) => order.paymentStatus === 'Received' && order.customerEmail === user?.email);
 
   // Calculate the total spend
   const totalSpend = receivedOrders.reduce((total, order) => total + parseFloat(order.packagePrice), 0);

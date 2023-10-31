@@ -13,7 +13,7 @@ const ReportSeo = () => {
 
   return (
     <>
-      <div class="container mt-5">
+      <div class="container mt-5 payment-setting" data-aos="fade-up" data-aos-duration={2000}>
         <div class="row">
           <div class="col">
             <h3>SEO Report Dashboard</h3>

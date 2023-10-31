@@ -10,7 +10,7 @@ const RoadMap = () => {
   }, []);
   return (
     <>
-      <section className="roadmap">
+      <section className="roadmap" data-aos="fade-up" data-aos-duration={3000}>
         <img
           src="https://themesflat.co/html/cyfoniihtml/assets/images/background/line.png"
           alt=""
