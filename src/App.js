@@ -68,6 +68,7 @@ import CancelledPayment from './Pages/CancelledPayment';
 import ReceivedPayment from './Pages/ReceivedPayment';
 import PackageTitleEdit from './Pages/Admin/PackageTitleEdit';
 import ContactUsMessageRead from './components/HomePage/ContactUsMessageRead';
+import ContactMessageSuccessMessage from './Pages/ContactMessageSuccessMessage';
 
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/report-sent' element={<EmailThankYou></EmailThankYou>}></Route>
+        <Route path='/message-sent-success' element={<ContactMessageSuccessMessage></ContactMessageSuccessMessage>}></Route>
         <Route path='/report/:id' element={<ReportSeo></ReportSeo>}></Route>
         <Route path='/package/:id' element={<RequireAuth><Package></Package></RequireAuth>}></Route>
         <Route path='/package-title-edit/:id' element={<RequireAuth><PackageTitleEdit></PackageTitleEdit></RequireAuth>}></Route>

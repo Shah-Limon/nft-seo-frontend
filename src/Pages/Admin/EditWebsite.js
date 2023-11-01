@@ -25,6 +25,7 @@ const EditWebsite = () => {
     const ux = event.target.ux.value;
     const backlinks = event.target.backlinks.value;
     const img = event.target.img.value;
+    const pdfLink = event.target.pdfLink.value;
 
     const edit = {
       email,
@@ -34,14 +35,11 @@ const EditWebsite = () => {
       pageLoadSpeed,
       ssl,
       sitemap,
-      brokenLinks, 
+      brokenLinks,
       ux,
       backlinks,
-      img
-
-
-
-
+      img,
+      pdfLink,
     };
 
     const url = `http://localhost:5000/edit-website/${id}`;
@@ -57,6 +55,8 @@ const EditWebsite = () => {
         navigate(`/admin/dashboard`);
       });
   };
+  const pdfLink = website.pdfLink || "Default Text If No PDF Link";
+  console.log("pdfLink:", pdfLink);
   return (
     <div>
       <form onSubmit={handleEditWebsite} class="form">
@@ -169,9 +169,17 @@ const EditWebsite = () => {
                   <option disabled>selct</option>
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
-                  
                 </select>
               </div>
+            </div>
+            <div class="col-sm">
+              <label className="mt-3">Add PDF URL</label>
+              <input
+                type="text"
+                className="form-control"
+                name="pdfLink"
+                defaultValue={website.pdfLink}
+              />
             </div>
 
             <div class="col-sm">

@@ -2,13 +2,19 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const ContactPage = () => {
   const { id } = useParams();
   const [contact, setContact] = useState([]);
   const [currentDate, setCurrentDate] = useState(getCurrentDate());
   const navigate = useNavigate();
-
+  
+  const notifySuccess = () => {
+    toast.success("Message sent successfully!");
+  };
   useEffect(() => {
     fetch(`http://localhost:5000/contact/`)
       .then((res) => res.json())
@@ -43,7 +49,8 @@ const ContactPage = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/");
+        notifySuccess();
+        navigate("/message-sent-success");
       });
   };
   // Function to get the current date in yyyy-MM-dd format
@@ -58,6 +65,8 @@ const ContactPage = () => {
   return (
     <>
       <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
+      <ToastContainer />
+
         <div className="container">
           <div className="row">
             {contact.map((e) => (
@@ -145,7 +154,8 @@ const ContactPage = () => {
                       </li>
                     </ul>
                     <div className="image">
-                      <img src={e.img} alt="" />
+                    <img height={324} width={285} src={e.img} alt="" />
+
                     </div>
                   </div>
                   <form onSubmit={UserContactMessage} className="form-box">
@@ -214,6 +224,7 @@ const ContactPage = () => {
             ))}
           </div>
         </div>
+       
       </section>
     </>
   );

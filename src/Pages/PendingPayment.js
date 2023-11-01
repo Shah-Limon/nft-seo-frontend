@@ -10,7 +10,7 @@ const PendingPayment = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
-      .then((info) => setOrders(info));
+      .then((info) => setOrders(info.reverse()));
   }, []);
 
   let rowNumber = 1;
@@ -20,6 +20,7 @@ const PendingPayment = () => {
         <tbody>
           <tr>
             <th>SL No.</th>
+            <th>Order ID</th>
             <th>Package Name</th>
             <th>Amount</th>
             <th>Pay Now</th>
@@ -33,6 +34,7 @@ const PendingPayment = () => {
               return (
                 <tr key={order._id}>
                   <td>{rowNumber++}</td>
+                  <td>{order.orderId}</td>
                   <td>{order.packageName}</td>
                   <td>{order.packagePrice}$</td>
                   <td>

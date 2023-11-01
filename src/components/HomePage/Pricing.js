@@ -43,6 +43,7 @@ const Pricing = () => {
                     {e.titleOne} <br />
                     {e.titleTwo}
                   </h3>
+                  <p className="mt-15"> {e.description}</p>
                 
                 </div>)
                 }

@@ -511,7 +511,8 @@ const AboutPage = () => {
                 >
                   {choose.map((e) => (
                     <>
-                      <img src={e.img} alt="" />
+                      <img width={616}
+                      height={677} src={e.img} alt="" />
                     </>
                   ))}
                 </div>

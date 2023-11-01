@@ -8,16 +8,25 @@ const TicketPage = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
-
-
+  const generateUniqueTicketId = () => {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let TicketId = "";
+    for (let i = 0; i < 10; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      TicketId += characters.charAt(randomIndex);
+    }
+    return TicketId;
+  };
   const UserContactMessage = (event) => {
     event.preventDefault();
     const ticketStatus = event.target.ticketStatus.value;
     const ticketCreator = event.target.ticketCreator.value;
     const message = event.target.message.value;
     const subject = event.target.subject.value;
+    const TicketId = generateUniqueTicketId();
 
     const ticket = {
+      TicketId,
       ticketStatus,
       ticketCreator,
       message,
@@ -34,7 +43,7 @@ const TicketPage = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/");
+        navigate("/user-dashboard/support/");
       });
   };
   return (
@@ -51,14 +60,7 @@ const TicketPage = () => {
               </div>
               <div className="touch__main">
                 <form onSubmit={UserContactMessage} className="form-box">
-                 
-
-                  <input
-                    type="text"
-                    value="Open"
-                    name="ticketStatus"
-                    hidden
-                  />
+                  <input type="text" value="Open" name="ticketStatus" hidden />
                   <input
                     type="text"
                     value={user?.email}

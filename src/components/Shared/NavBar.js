@@ -92,7 +92,7 @@ const NavBar = () => {
                   {user ? (
                     <Link className="action-btn" to="/user-dashboard">
                       {" "}
-                      <span>dashboard</span>
+                      <span>Dashboard</span>
                     </Link>
                   ) : (
                     <Link to="/login" className="action-btn">

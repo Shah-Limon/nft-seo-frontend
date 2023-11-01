@@ -128,13 +128,13 @@ const UserDashboard = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/website`)
       .then((res) => res.json())
-      .then((info) => setData(info));
+      .then((info) => setData(info.reverse()));
   }, []);
 
   useEffect(() => {
     fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
-      .then((info) => setOrders(info));
+      .then((info) => setOrders(info.reverse()));
   }, []);
 
   let rowNumberOrders = (currentPageOrders - 1) * itemsPerPage + 1;
@@ -167,6 +167,8 @@ const UserDashboard = () => {
           <tbody>
             <tr>
               <th>SL No.</th>
+              <th>Date</th>
+              <th>Order ID</th>
               <th>Package</th>
               <th>Price</th>
               <th>Payment Status</th>
@@ -183,6 +185,8 @@ const UserDashboard = () => {
               .map((order) => (
                 <tr key={order._id}>
                   <td>{rowNumberOrders++}</td>
+                  <td>{order.orderDate}</td>
+                  <td>{order.orderId}</td>
                   <td>{order.packageName}</td>
                   <td>{order.packagePrice}</td>
                   <td>{order.paymentStatus}</td>

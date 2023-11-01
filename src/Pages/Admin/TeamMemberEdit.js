@@ -9,6 +9,29 @@ const TeamMemberEdit = () => {
   const [user] = useAuthState(auth);
   const { id } = useParams();
 
+  const [uploadedImageUrl, setUploadedImageUrl] = useState("");
+
+  const handleImageUpload = async (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+  
+    try {
+      const response = await fetch("https://api.imgbb.com/1/upload?key=1f8cc98e0f42a06989fb5e2589a9a8a4", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        setUploadedImageUrl(data.data.url);
+      } else {
+        console.error("Image upload failed");
+      }
+    } catch (error) {
+      console.error("Image upload error:", error);
+    }
+  };
+
   useEffect(() => {
     fetch(`http://localhost:5000/team/${id}`)
       .then((res) => res.json())
@@ -20,13 +43,13 @@ const TeamMemberEdit = () => {
 
     const personName = event.target.personName.value;
     const personTitle = event.target.personTitle.value;
-    const personImg = event.target.personImg.value;
     const facebook = event.target.facebook.value;
     const twitter = event.target.twitter.value;
 
     const team = {
       personName,
-      personImg,
+      
+      personImg: uploadedImageUrl,
       personTitle,
       facebook,
       twitter,
@@ -46,11 +69,10 @@ const TeamMemberEdit = () => {
       });
   };
   return (
-    <>
+    <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
       <form class="form" onSubmit={updateTeam}>
-      <div class="container">
+        <div class="container">
           <div class="justify-content-center align-items-baseline">
-            
             <div class="col-sm">
               <label className="mt-1">Enter Person Name</label>
               <div class="form-group mb-3">
@@ -75,7 +97,7 @@ const TeamMemberEdit = () => {
                 />
               </div>
             </div>
-            <div class="col-sm">
+            {/* <div class="col-sm">
               <label className="mt-1">Enter Person Image URL</label>
               <div class="form-group mb-3">
                 <input
@@ -84,10 +106,27 @@ const TeamMemberEdit = () => {
                   placeholder="Enter Person Image URL"
                   name="personImg"
                   defaultValue={team.personImg}
-                  
                 />
               </div>
-            </div>
+            </div> */}
+
+
+<div class="col-sm">
+  <label className="mt-1">Upload Person Image</label>
+  <div class="form-group mb-3">
+    <input
+      type="file"
+      class="form-control"
+      name="personImgFile"
+      onChange={(e) => {
+        const file = e.target.files[0];
+        handleImageUpload(file);
+      }}
+    />
+  </div>
+</div>
+
+
             <div class="col-sm">
               <label className="mt-1">Enter Facebook Link</label>
               <div class="form-group mb-3">
@@ -121,7 +160,7 @@ const TeamMemberEdit = () => {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

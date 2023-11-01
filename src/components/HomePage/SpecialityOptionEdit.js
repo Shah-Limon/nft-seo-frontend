@@ -55,7 +55,7 @@ const SpecialityOptionEdit = () => {
   }, [id]);
 
   return (
-    <>
+    <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
       {speciality.map((e) => (
         <form onSubmit={handleEditSpeciality}>
           <div class="container">
@@ -205,7 +205,7 @@ const SpecialityOptionEdit = () => {
           </div>
         </form>
       ))}
-    </>
+    </div>
   );
 };
 

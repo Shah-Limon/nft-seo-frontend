@@ -2,17 +2,36 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import axios from "axios";
 
 const EditPackage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [p, setPackage] = useState([]);
   const [user] = useAuthState(auth);
+  const [imgUrl, setImgUrl] = useState(p.img || "");
+  const [imageFile, setImageFile] = useState(null);
+
+  const handleImageUpload = async (event) => {
+    const formData = new FormData();
+    formData.append("image", event.target.files[0]);
+
+    try {
+      const response = await axios.post(
+        "https://api.imgbb.com/1/upload?key=1f8cc98e0f42a06989fb5e2589a9a8a4",
+        formData
+      );
+      setImgUrl(response.data.data.url);
+    } catch (error) {
+      console.error("Image upload failed: ", error);
+    }
+  };
 
   useEffect(() => {
     fetch(`http://localhost:5000/package/${id}`)
       .then((res) => res.json())
       .then((info) => setPackage(info));
+    setImgUrl(p.img || "");
   }, []);
 
   let rowNumber = 1;
@@ -21,7 +40,6 @@ const EditPackage = () => {
     event.preventDefault();
     const packageName = event.target.packageName.value;
     const price = event.target.price.value;
-    const img = event.target.img.value;
     const featureOne = event.target.featureOne.value;
     const featureTwo = event.target.featureTwo.value;
     const featureThree = event.target.featureThree.value;
@@ -36,7 +54,7 @@ const EditPackage = () => {
     const websiteCheck = {
       packageName,
       price,
-      img,
+      img: imgUrl,
       featureOne,
       featureTwo,
       featureThree,
@@ -69,7 +87,7 @@ const EditPackage = () => {
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
-              <label className="mt-1">Package Name</label>
+              <label className="mt-1 mb-15">Package Name</label>
               <div class="form-group mb-3">
                 <input
                   type="text"
@@ -93,17 +111,25 @@ const EditPackage = () => {
               </div>
             </div>
             <div class="col-sm">
-              <label className="mt-1">Enter Package Image Url</label>
+              <label className="mt-1">Upload Image</label>
               <div class="form-group mb-3">
+                <label for="file-upload" className="custom-file-upload">
+                  Choose File
+                </label>
                 <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Package Image Url"
-                  name="img"
-                  defaultValue={p.img}
+                  type="file"
+                  id="file-upload"
+                  className="custom-file-input"
+                  name="image"
+                  accept="image/*"
+                  onChange={handleImageUpload}
                 />
+                {imgUrl && (
+                  <img src={imgUrl} alt="Uploaded" style={{ width: "100px" }} />
+                )}
               </div>
             </div>
+
             <div class="col-sm">
               <label className="mt-1">Feature One</label>
               <div class="form-group mb-3">

@@ -39,7 +39,7 @@ const TestimonialTitle = () => {
   };
 
   return (
-    <div>
+    <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
       <form class="form" onSubmit={handleTitle}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">

@@ -13,7 +13,7 @@ const SupportPage = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/tickets`)
       .then((res) => res.json())
-      .then((info) => setTickets(info));
+      .then((info) => setTickets(info.reverse()));
   }, []);
 
   return (
@@ -22,7 +22,7 @@ const SupportPage = () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="row mb-0">
+              <div className="row" style={{ float: "right" }}>
                 <div className="col">
                   <Link
                     to="/user-dashboard/create-ticket/"
@@ -38,7 +38,7 @@ const SupportPage = () => {
                   <span>Support</span>
                 </h6>
 
-                <h3 className="heading">
+                <h3 className="heading mb-15">
                   We Hope You Find What You
                   <br />
                   are Looking for
@@ -50,16 +50,17 @@ const SupportPage = () => {
                     <tbody>
                       <tr>
                         <th>SL No.</th>
+                        <th>Ticket ID</th>
                         <th>Subject</th>
                         <th>Status</th>
 
                         <th>View</th>
-                        
                       </tr>
                       {tickets.map((item, index) => (
                         <tr key={item._id}>
                           <td>{index + 1}</td>
-                         
+
+                          <td>{item.TicketId}</td>
                           <td>{item.subject}</td>
                           <td>{item.ticketStatus}</td>
 
@@ -68,7 +69,6 @@ const SupportPage = () => {
                               Edit
                             </Link>
                           </td>
-                         
                         </tr>
                       ))}
                     </tbody>

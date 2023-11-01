@@ -41,7 +41,7 @@ const TeamList = () => {
   };
 
   return (
-    <div>
+    <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
       <form class="form" onSubmit={handleTeamTitle}>
         {title.map((e) => (
           <div class="container">

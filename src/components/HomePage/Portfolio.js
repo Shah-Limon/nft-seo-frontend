@@ -421,7 +421,7 @@ const Portfolio = () => {
                 >
                   {choose.map((e) => (
                     <>
-                      <img src={e.img} alt="" />
+                      <img height={616} width={677} src={e.img} alt="" />
                     </>
                   ))}
                 </div>

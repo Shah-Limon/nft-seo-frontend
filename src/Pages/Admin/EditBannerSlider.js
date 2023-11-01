@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios"; // Import Axios
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+
 const EditBannerSlider = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -15,35 +17,51 @@ const EditBannerSlider = () => {
 
   let rowNumber = 1;
 
-  const handleSlider = (event) => {
+  const handleSlider = async (event) => {
     event.preventDefault();
 
     const sliderTitle = event.target.sliderTitle.value;
     const sliderDesc = event.target.sliderDesc.value;
-    const sliderImg = event.target.sliderImg.value;
+    const fileInput = event.target.sliderImg.files[0]; // Get the selected file
 
-    const sliderUpdate = {
-      sliderTitle,
-      sliderDesc,
-      sliderImg,
-    };
+    // Upload the image to imgbb
+    try {
+      const formData = new FormData();
+      formData.append("image", fileInput);
+      formData.append("key", "1f8cc98e0f42a06989fb5e2589a9a8a4"); // Your imgbb API key
 
-    const url = `http://localhost:5000/slider/${id}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(sliderUpdate),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        navigate("/admin/setting-homepage/");
-      });
+      const imgbbResponse = await axios.post(
+        "https://api.imgbb.com/1/upload",
+        formData
+      );
+
+      const sliderImg = imgbbResponse.data.data.url; // Get the image URL from the imgbb response
+
+      const sliderUpdate = {
+        sliderTitle,
+        sliderDesc,
+        sliderImg,
+      };
+
+      const url = `http://localhost:5000/slider/${id}`;
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(sliderUpdate),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          navigate("/admin/setting-homepage/");
+        });
+    } catch (error) {
+      console.error("Image upload failed:", error);
+    }
   };
 
   return (
-    <div>
+    <div className="payment-setting" data-aos="fade-up" data-aos-duration={3000}>
       <form class="form" onSubmit={handleSlider}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
@@ -75,14 +93,12 @@ const EditBannerSlider = () => {
               </div>
             </div>
             <div class="col-sm">
-              <label className="mt-1">Enter Slider Image URL</label>
+              <label className="mt-1">Upload Slider Image</label>
               <div class="form-group mb-3">
                 <input
-                  type="text"
+                  type="file"
                   class="form-control"
-                  placeholder="Enter Slider Image URL"
                   name="sliderImg"
-                  defaultValue={sliders.sliderImg}
                 />
               </div>
             </div>

@@ -33,16 +33,7 @@ const Setting = () => {
                 </div>
               </div>
             </div>
-            <div className="col-xl-3 col-md-6">
-              <div className="project-box">
-                <div className="image"></div>
-                <div className="content">
-                  <Link to="/admin/setting-header/" className="h5 title">
-                    Header Setting
-                  </Link>
-                </div>
-              </div>
-            </div>
+            
             <div className="col-xl-3 col-md-6">
               <div className="project-box">
                 <div className="image"></div>
@@ -73,16 +64,7 @@ const Setting = () => {
                 </div>
               </div>
             </div>
-            <div className="col-xl-3 col-md-6">
-              <div className="project-box">
-                <div className="image"></div>
-                <div className="content">
-                  <Link to="/admin/about-page" className="h5 title">
-                    About Page Setting
-                  </Link>
-                </div>
-              </div>
-            </div>
+           
             <div className="col-xl-3 col-md-6">
               <div className="project-box">
                 <div className="image"></div>

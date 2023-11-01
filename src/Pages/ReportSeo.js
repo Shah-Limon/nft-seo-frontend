@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ReportSeo = () => {
   const { id } = useParams();
@@ -10,10 +10,28 @@ const ReportSeo = () => {
       .then((res) => res.json())
       .then((data) => setWebsite(data));
   }, [id]);
+  const downloadPDF = () => {
+    // You can fetch the PDF link from your website data
+    const pdfLink = website.pdfLink;
+
+    if (pdfLink) {
+      // Create an anchor element to trigger the download
+      const link = document.createElement("a");
+      link.href = pdfLink;
+      link.download = "seo_report.pdf";
+      link.click();
+    } else {
+      alert("PDF not available");
+    }
+  };
 
   return (
     <>
-      <div class="container mt-5 payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+      <div
+        class="container mt-5 payment-setting"
+        data-aos="fade-up"
+        data-aos-duration={2000}
+      >
         <div class="row">
           <div class="col">
             <h3>SEO Report Dashboard</h3>
@@ -65,6 +83,15 @@ const ReportSeo = () => {
                 </tr>
               </tbody>
             </table>
+            <div className="row mb-0">
+            <div className="col">
+                {website.pdfLink && ( // Only render the download button if pdfLink is available
+                  <button type="button" className="action-btn" onClick={downloadPDF}>
+                    <span>Download PDF</span>
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

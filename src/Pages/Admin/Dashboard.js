@@ -15,8 +15,9 @@ const Dashboard = () => {
   return (
     <>
       <DashboardMenu></DashboardMenu>
-     
+
       <div className="container">
+        <h5 className="text-center mt-15">Report List for User</h5>
         <table className="rwd-table">
           <tbody>
             <tr>

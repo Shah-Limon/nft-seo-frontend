@@ -40,9 +40,9 @@ const EditFooterLink = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
       <form class="form mb-15" onSubmit={handleLinks}>
-        <h4 className="mb-15">Update Links & CopyRight</h4>
+        <h4 className="mb-15">Update About & CopyRight</h4>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">

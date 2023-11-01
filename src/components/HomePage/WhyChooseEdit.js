@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import auth from "../../firebase.init";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 const WhyChooseEdit = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
+  const { id } = useParams();
   const [choose, SetChoose] = useState([]);
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imgbbApiKey] = useState("1f8cc98e0f42a06989fb5e2589a9a8a4"); // Your imgbb API key
 
   useEffect(() => {
     fetch(`http://localhost:5000/why-choose/`)
@@ -14,11 +16,8 @@ const WhyChooseEdit = () => {
       .then((info) => SetChoose(info));
   }, []);
 
-  const [user] = useAuthState(auth);
-
-  const handleWhyEdit = (event) => {
+  const handleWhyEdit = async (event) => {
     event.preventDefault();
-    const img = event.target.img.value;
     const whyToptext = event.target.whyToptext.value;
     const bannerHeadingText1 = event.target.bannerHeadingText1.value;
     const bannerHeadingText2 = event.target.bannerHeadingText2.value;
@@ -31,7 +30,29 @@ const WhyChooseEdit = () => {
     const cardTitleFour = event.target.cardTitleFour.value;
     const cardDescFour = event.target.cardDescFour.value;
 
-    const choose = {
+    // Determine if an image is being uploaded or if a stored image link should be used
+    let img = imageFile ? imagePreview : choose[0].img;
+
+    // If an image is being uploaded, send it to imgbb
+    if (imageFile) {
+      try {
+        const formData = new FormData();
+        formData.append("image", imageFile);
+        formData.append("key", imgbbApiKey);
+
+        const imgbbResponse = await axios.post(
+          "https://api.imgbb.com/1/upload",
+          formData
+        );
+
+        img = imgbbResponse.data.data.url;
+      } catch (error) {
+        console.error("Image upload to imgbb failed:", error);
+        return; // Don't proceed if image upload fails
+      }
+    }
+
+    const chooseData = {
       img,
       whyToptext,
       bannerHeadingText1,
@@ -52,7 +73,7 @@ const WhyChooseEdit = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(choose),
+      body: JSON.stringify(chooseData),
     })
       .then((res) => res.json())
       .then((result) => {
@@ -60,25 +81,46 @@ const WhyChooseEdit = () => {
       });
   };
 
+  const handleImageChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setImageFile(selectedFile);
+
+    const previewURL = URL.createObjectURL(selectedFile);
+    setImagePreview(previewURL);
+  };
+
   return (
     <div>
-      <form class="form" onSubmit={handleWhyEdit}>
+      <form className="form" onSubmit={handleWhyEdit}>
         {choose.map((e) => (
-          <div class="container">
-            <div class="justify-content-center align-items-baseline">
-              <div class="col-sm">
+          <div className="container" key={e.id}>
+            <div className="justify-content-center align-items-baseline">
+              <div className="col-sm">
                 <label className="mt-1">
-                  Enter the Why Choose Image (Image Size: 616px*677px)
+                  Upload Image 
                 </label>
-                <div class="form-group mb-3">
+                <div className="form-group mb-3">
                   <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter the Why Choose Image"
-                    name="img"
-                    defaultValue={e.img}
+                    type="file"
+                    className="form-control"
+                    accept="image/*"
+                    onChange={handleImageChange}
                   />
                 </div>
+                {imagePreview && (
+                  <img
+                    src={imagePreview}
+                    alt="Images"
+                    style={{ maxWidth: "100px" }}
+                  />
+                )}
+                {!imageFile && !imagePreview && e.img && (
+                  <img
+                    src={e.img}
+                    alt="Stored Images"
+                    style={{ maxWidth: "100px" }}
+                  />
+                )}
               </div>
 
               <div class="col-sm">
@@ -217,8 +259,8 @@ const WhyChooseEdit = () => {
                 </div>
               </div>
 
-              <div class="col-sm">
-                <button type="submit" class="action-btn">
+              <div className="col-sm">
+                <button type="submit" className="action-btn">
                   <span>Update Why Choose</span>
                 </button>
               </div>

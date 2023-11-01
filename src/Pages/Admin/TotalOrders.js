@@ -113,6 +113,7 @@ const TotalOrders = () => {
             <tr>
               <th>SL No.</th>
               <th>Date</th>
+              <th>Order ID</th>
 
               <th>Name</th>
               <th>Package</th>
@@ -128,6 +129,7 @@ const TotalOrders = () => {
               <tr key={item._id}>
                 <td>{index + 1 + (currentPage - 1) * itemsPerPage}</td>
                 <td>{item.orderDate}</td>
+                <td>{item.orderId}</td>
                 <td>{item.customerName}</td>
                 <td>{item.packageName}</td>
                 <td>${item.packagePrice}</td>
