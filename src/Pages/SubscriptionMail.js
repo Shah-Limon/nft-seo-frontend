@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BackToAdminDashboard from "./Admin/BackToAdminDashboard";
 
 const SubscriptionMail = () => {
   const [mail, setMail] = useState([]);
@@ -13,6 +14,7 @@ const SubscriptionMail = () => {
   return (
     <>
       <div className="container payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+      <BackToAdminDashboard></BackToAdminDashboard>
        
         <table className="rwd-table">
         <h5 className="mb-15">Subscription Email</h5>

@@ -6,36 +6,46 @@ import {
 import auth from "../firebase.init";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-const Register = () => {const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const {
-      register,
-      formState: { errors },
-      handleSubmit,
-    } = useForm();
-    const navigate = useNavigate();
-  
-    const [createUserWithEmailAndPassword, user, loading, error] =
-      useCreateUserWithEmailAndPassword(auth);
-  
-    if (loading || gLoading) {
-      return <loading></loading>;
-    }
-  
-    if (user || gUser) {
-      console.log(user || gUser);
-    }
-  
-    const onSubmit = (data) => {
-      console.log(data);
-      createUserWithEmailAndPassword(data.email, data.password);
-      navigate("/");
-    };
+
+const Register = () => {
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const navigate = useNavigate();
+  const [logo, setLogo] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/logo`)
+      .then((res) => res.json())
+      .then((info) => setLogo(info));
+  }, []);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  if (loading || gLoading) {
+    return <loading></loading>;
+  }
+
+  if (user || gUser) {
+    console.log(user || gUser);
+  }
+
+  const onSubmit = (data) => {
+    console.log(data);
+    createUserWithEmailAndPassword(data.email, data.password);
+    navigate("/");
+  };
+
+ 
   return (
     <>
       <div className="main-content">
         <div className="page-content">
-          
           <section className="bg-auth">
             <div className="container">
               <div className="row justify-content-center">
@@ -47,12 +57,15 @@ const Register = () => {const [signInWithGoogle, gUser, gLoading, gError] = useS
                     <div className="row g-0">
                       <div className="col-lg-6 text-center">
                         <div className="card-body p-4">
-                          <Link to="/">
+                        {
+                            logo.map(e =>
+                              <Link to="/">
                             <img
-                              src="https://themesflat.co/html/cyfoniihtml/assets/images/logo/logo.png"
+                              src={e.logo}
                               alt="logo"
                             />
-                          </Link>
+                          </Link>)
+                          }
                           <div className="mt-5">
                             <img
                               src="https://themesdesign.in/jobcy/layout/assets/images/auth/sign-up.png"

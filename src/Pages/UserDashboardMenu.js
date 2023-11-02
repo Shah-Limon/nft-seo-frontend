@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const UserDashboardMenu = () => {
   const [orders, setOrders] = useState([]);
   const [user] = useAuthState(auth);
+  const handleSignout = () => {
+    signOut(auth);
+  };
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/orders`)
@@ -24,6 +29,22 @@ const UserDashboardMenu = () => {
       <section className="project s2">
         <div className="shape right" />
         <div className="container">
+        <div className="row mb-15">
+              <div
+                className="col"
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <div>
+                  {user ? (
+                    <Link className="action-btn" onClick={handleSignout}>
+                      <span>Signout</span>
+                    </Link>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
+            </div>
           <div className="row">
             <div className="col-xl-4 col-md-6">
               <div className="project-box">
@@ -40,7 +61,7 @@ const UserDashboardMenu = () => {
                 <div className="image"></div>
                 <div className="content">
                   <Link to="/user-dashboard/spend/" className="h5 title">
-                    Total Spend ({totalSpend})
+                    Total Spend ({totalSpend}$)
                   </Link>
                 </div>
               </div>

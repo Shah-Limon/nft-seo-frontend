@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import BackToAdminDashboard from "./Admin/BackToAdminDashboard";
 
 const HelpDeskAction = () => {
   const { id } = useParams();
@@ -15,6 +16,7 @@ const HelpDeskAction = () => {
       .then((res) => res.json())
       .then((info) => setTicket(info));
   }, [id]);
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/reply-tickets`)
@@ -52,8 +54,32 @@ const HelpDeskAction = () => {
       });
   };
 
+
+  const HandleTicketStatus = (event) => {
+    event.preventDefault();
+    const ticketStatus = event.target.ticketStatus.value;
+
+    const ticket = {
+      ticketStatus,
+    };
+
+    const url = `http://localhost:5000/ticket/${id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(ticket),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        navigate("/admin/help-desk/");
+      });
+  };
+
   return (
     <>
+     <BackToAdminDashboard></BackToAdminDashboard>
       <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
         <div className="container">
           <div className="row">
@@ -65,21 +91,47 @@ const HelpDeskAction = () => {
                 <h3 className="heading">Help Center</h3>
               </div>
               <div className="touch__main">
+
+
+                <form onSubmit={HandleTicketStatus}>
+                <div className="row">
+                    <div className="col">
+                      <label>Status: </label>
+                      <select name="ticketStatus">
+                        <option value="Solved">Solved</option>
+                        <option value="Replied">Replied</option>
+                      </select>
+                    </div>
+
+                  </div>
+                  <div className="row mb-0">
+                    <div className="col">
+                      <button type="sumbit" className="action-btn">
+                        <span>Action</span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+
                 <form
                   className="form-box box__color"
                   onSubmit={HandleTicketReply}
                 >
                   <input
+                    hidden
                     type="text"
                     name="ticketCreator"
                     defaultValue={ticket.ticketCreator}
                   />
                   <input
+                    hidden
                     type="text"
                     name="ticketID"
                     defaultValue={ticket._id}
                   />
                   <input
+                    hidden
                     type="text"
                     name="creatorMessage"
                     defaultValue={ticket.message}
@@ -97,21 +149,23 @@ const HelpDeskAction = () => {
                       />
                     </div>
                   </div>
+                  
                   <div className="row">
                     <div className="col">
                       <label>User's Message</label>
                       <p>{ticket.message}</p>
                       <div className="mt-15">
-                      
-                      {tickets.map(
-                        (t) =>
-                          ticket._id === t.ticketID && 
-                          <div className="mt-15"><label>Admin's Message</label>
-                          <p>{t.adminMessage}</p></div>
-                      )}
+                        {tickets.map(
+                          (t) =>
+                            ticket._id === t.ticketID && (
+                              <div className="mt-15">
+                                <label>Admin's Message</label>
+                                <p>{t.adminMessage}</p>
+                              </div>
+                            )
+                        )}
+                      </div>
                     </div>
-                    </div>
-                    
                   </div>
 
                   <div className="row">

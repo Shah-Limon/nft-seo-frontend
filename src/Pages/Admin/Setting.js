@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 import { Link, useParams } from "react-router-dom";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const Setting = () => {
   const { id } = useParams();
@@ -15,6 +16,7 @@ const Setting = () => {
   }, [id]);
   return (
     <>
+    
       <section
         className="project s2 payment-setting"
         data-aos="fade-up"
@@ -22,11 +24,14 @@ const Setting = () => {
       >
         <div className="shape right" />
         <div className="container">
-          <div className="row">
+        <BackToAdminDashboard></BackToAdminDashboard>
+          <div className="row mt-15">
             <div className="col-xl-3 col-md-6">
+              
               <div className="project-box">
                 <div className="image"></div>
                 <div className="content">
+                  
                   <Link to="/admin/setting-general/" className="h5 title">
                     General Setting
                   </Link>

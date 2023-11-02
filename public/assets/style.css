@@ -479,11 +479,6 @@ li.footer-email {
   margin-top: -26px;
 }
 
-
-.about-page, .payment-setting {
-  height: 100vh;
-}
-
 .box__color select option {
   color: #ffffff !important;
 }
@@ -514,4 +509,62 @@ li.footer-email {
 /* Add space between the image and the input */
 .custom-file-input + img {
   margin-top: 10px; /* Adjust the margin value as needed */
+}
+
+@media (min-width: 1024px) {
+  .payment-setting {
+    height: 100vh;
+  }
+}
+
+.pagination-contact {
+  display: flex;
+}
+.card-box__features_card {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-box__features {
+  background: linear-gradient(
+    89.96deg,
+    rgba(255, 255, 255, 0.05) 0.03%,
+    rgba(255, 255, 255, 0.008) 49.66%,
+    rgba(255, 255, 255, 0.05) 99.96%
+  );
+  backdrop-filter: blur(2px);
+  padding: 31px 23px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  z-index: 3;
+}
+@media screen and (max-width: 991px) {
+  .margin__mobile {
+    margin-top: 100px;
+  }
+}
+@media screen and (max-width: 667px) {
+  tbody,
+  td,
+  tfoot,
+  th,
+  thead,
+  tr {
+    background: #fff;
+  }
+}
+
+
+
+@media (min-width: 676px) {
+  .menu-item__dashlink {
+    display: none;
+  }
+  .project.s2 .shape {
+    top: 0;
+  }
+  
 }

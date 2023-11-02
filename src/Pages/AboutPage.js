@@ -40,7 +40,11 @@ const AboutPage = () => {
   }, []);
   return (
     <>
-      <section className="about about-page payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+      <section
+        className="about about-page payment-setting"
+        data-aos="fade-up"
+        data-aos-duration={2000}
+      >
         <div className="shape" />
         <div className="container">
           {about.map((AboutData) => (
@@ -102,7 +106,11 @@ const AboutPage = () => {
           ))}
         </div>
       </section>
-      <section className="portfolio" data-aos="fade-up" data-aos-duration={2000}>
+      <section
+        className="portfolio"
+        data-aos="fade-up"
+        data-aos-duration={2000}
+      >
         <div className="shape" />
         <div className="container">
           <div className="row">
@@ -511,8 +519,7 @@ const AboutPage = () => {
                 >
                   {choose.map((e) => (
                     <>
-                      <img width={616}
-                      height={677} src={e.img} alt="" />
+                      <img width={616} height={677} src={e.img} alt="" />
                     </>
                   ))}
                 </div>

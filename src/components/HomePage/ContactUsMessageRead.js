@@ -96,7 +96,14 @@ const ContactUsMessageRead = () => {
                         style={{ display: "flex", justifyContent: "flex-end" }}
                       >
                         <button type="submit" className="action-btn">
-                          <span><img src="https://i.ibb.co/0p5VPN9/message.png" alt="message" border="0"/> Read</span>
+                          <span>
+                            <img
+                              src="https://i.ibb.co/0p5VPN9/message.png"
+                              alt="message"
+                              border="0"
+                            />
+                            Mark as Read
+                          </span>
                         </button>
                       </div>
                     </div>

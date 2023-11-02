@@ -10,6 +10,30 @@ const OurSpeciality = () => {
       .then((res) => res.json())
       .then((info) => SetSpeciality(info));
   }, [id]);
+
+
+
+
+
+  const [packages, setPackages] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/packages`)
+      .then((res) => res.json())
+      .then((info) => setPackages(info));
+  }, []);
+  const [title, setTitle] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/package-titles/`)
+      .then((res) => res.json())
+      .then((info) => setTitle(info));
+  }, []);
+
+
+
+
+  
   return (
     <>
       <section className="speciality" data-aos="fade-up" data-aos-duration={3000}>

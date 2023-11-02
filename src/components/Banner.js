@@ -280,11 +280,13 @@ const Banner = () => {
     const email = event.target.email.value;
     const website = event.target.website.value;
     const userMail = event.target.userMail.value;
+    const auditStatus = event.target.auditStatus.value;
 
     const websiteCheck = {
       email,
       website,
       userMail,
+      auditStatus
     };
 
     const url = `http://localhost:5000/add-website`;
@@ -355,6 +357,7 @@ const Banner = () => {
                     class="form card-box"
                     style={{ width: "100%" }}
                   >
+                    <input required type="text" hidden name="auditStatus" value="Incomplete"/>
                     <div class="container">
                       <div class="row justify-content-center align-items-baseline">
                         <div class="col-sm">

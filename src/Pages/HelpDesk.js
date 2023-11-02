@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../firebase.init";
+import BackToAdminDashboard from "./Admin/BackToAdminDashboard";
 
 const HelpDesk = () => {
   const [user] = useAuthState(auth);
@@ -13,14 +14,16 @@ const HelpDesk = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/tickets`)
       .then((res) => res.json())
-      .then((info) => setTickets(info));
+      .then((info) => setTickets(info.reverse()));
   }, []);
 
   return (
     <>
+   
       <section className="faq">
         <div className="container">
-          <div className="row">
+        <BackToAdminDashboard></BackToAdminDashboard>
+          <div className="row mt-15">
             <div className="col-12">
               <div className="row mb-0"></div>
               <div className="block-text center">
@@ -36,6 +39,7 @@ const HelpDesk = () => {
                     <tbody>
                       <tr>
                         <th>SL No.</th>
+                        <th>Ticket ID</th>
                         <th>Subject</th>
                         <th>Sender</th>
                         <th>Status</th>
@@ -46,13 +50,14 @@ const HelpDesk = () => {
                         <tr key={item._id}>
                           <td>{index + 1}</td>
 
+                          <td>{item.TicketId}</td>
                           <td>{item.subject}</td>
                           <td>{item.ticketCreator}</td>
                           <td>{item.ticketStatus}</td>
 
                           <td>
                             <Link to={`/admin/help-desk/${item._id}`}>
-                              Edit
+                            View
                             </Link>
                           </td>
                         </tr>

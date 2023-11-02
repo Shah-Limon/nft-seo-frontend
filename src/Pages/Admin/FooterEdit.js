@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 const FooterEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -209,7 +210,8 @@ const FooterEdit = () => {
 
       <section className="participants payment-setting" data-aos="fade-up" data-aos-duration={3000}>
         <div className="container">
-          <div className="row">
+        <BackToAdminDashboard></BackToAdminDashboard>
+          <div className="row mt-15">
             <div className="col-lg-4">
               <div className="block-text center">
                 <div className="col">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const SettingPayment = () => {
   const { id } = useParams();
@@ -23,7 +24,8 @@ const SettingPayment = () => {
             <div className="shape" />
             <div className="shape right" />
             <div className="container">
-              <div className="row">
+            <BackToAdminDashboard></BackToAdminDashboard>
+              <div className="row mt-15">
                 <div className="col-12">
                   <div className="block-text center">
                     <h4 className="heading">

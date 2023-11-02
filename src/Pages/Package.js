@@ -20,6 +20,8 @@ const Package = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:5000/package/${id}`)
@@ -41,6 +43,9 @@ const Package = () => {
     const customerName = event.target.customerName.value;
     const customerWebsite = event.target.customerWebsite.value;
     const customerNote = event.target.customerNote.value;
+    const address = event.target.address.value;
+    const countryName = event.target.countryName.value;
+    const cityName = event.target.cityName.value;
 
     const order = {
       orderId,
@@ -53,6 +58,9 @@ const Package = () => {
       customerName,
       customerWebsite,
       customerNote,
+      address,
+      countryName,
+      cityName,
       orderDate: orderDate,
     };
 
@@ -78,8 +86,28 @@ const Package = () => {
     setOrderDate(`${day}/${month}/${year}`);
   }, []);
 
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((res) => res.json())
+      .then((data) => {
+        // Sort the list of countries alphabetically (A-Z) by common name
+        const sortedCountries = data.sort((a, b) =>
+          a.name.common.localeCompare(b.name.common)
+        );
+
+        setCountries(sortedCountries);
+      })
+      .catch((error) => {
+        console.error("Error fetching country data: ", error);
+      });
+  }, []);
+
   return (
-    <div className="container payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+    <div
+      className="container payment-setting"
+      data-aos="fade-up"
+      data-aos-duration={2000}
+    >
       <form className="form" onSubmit={handleOrder}>
         <input type="text" value={p._id} name="packageId" hidden />
         <input type="text" value={p.packageName} name="packageName" hidden />
@@ -108,13 +136,56 @@ const Package = () => {
         <div class="col-sm">
           <label className="mt-1">Your Full Name</label>
           <div class="form-group mb-3">
-            <input required type="text" class="form-control" name="customerName" />
+            <input
+              required
+              type="text"
+              class="form-control"
+              name="customerName"
+            />
+          </div>
+        </div>
+        <div class="col-sm">
+          <label className="mt-1">Address</label>
+          <div class="form-group mb-3">
+            <input required type="text" class="form-control" name="address" />
+          </div>
+        </div>
+        <div class="col-sm">
+          <label className="mt-1">City</label>
+          <div class="form-group mb-3">
+            <input required type="text" class="form-control" name="cityName" />
+          </div>
+        </div>
+        <div class="col-sm">
+          <label className="mt-1">Country</label>
+          <div class="form-group mb-3">
+            <select
+              required
+              className="form-control"
+              name="countryName"
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
+            >
+              <option value="" disabled>
+                Select a country
+              </option>
+              {countries.map((country) => (
+                <option key={country.cca3} value={country.name.common}>
+                  {country.name.common}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div class="col-sm">
           <label className="mt-1">Your Website</label>
           <div class="form-group mb-3">
-            <input required type="text" class="form-control" name="customerWebsite" />
+            <input
+              required
+              type="text"
+              class="form-control"
+              name="customerWebsite"
+            />
           </div>
         </div>
         <div class="col-sm">

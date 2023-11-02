@@ -108,8 +108,15 @@ const TestimonialsList = () => {
           </div>
         </div>
       </form> */}
+      
+
+{/* add title which are center */}
+      <div className="container">
+
+      <h3 className="text-center mb-15"> Testimonial List</h3>
+
       <div class="container">
-        <div class="justify-content-center align-items-baseline"></div>
+        <div class="justify-content-center align-items-baseline mt-15"></div>
         <div class="col-sm">
           {title.map((e) => (
             <>
@@ -123,10 +130,7 @@ const TestimonialsList = () => {
           ))}
         </div>
       </div>
-
-      <div className="container">
         <table className="rwd-table">
-          <h5>Testimonial List</h5>
           <tbody>
             <tr>
               <th>SL No.</th>

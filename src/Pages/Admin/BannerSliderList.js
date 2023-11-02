@@ -80,6 +80,7 @@ const BannerSliderList = () => {
 
   return (
     <div>
+      
       <form className="form" onSubmit={handleSlider}>
         <div className="container">
           <div className="justify-content-center align-items-baseline">

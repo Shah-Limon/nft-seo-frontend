@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const GeneralOption = () => {
   const { id } = useParams();
@@ -22,6 +23,7 @@ const GeneralOption = () => {
       <section className="participants payment-setting" data-aos="fade-up" data-aos-duration={3000}>
         <div className="container">
           <div className="row">
+          <BackToAdminDashboard></BackToAdminDashboard>
             <div className="col-12">
               <div className="block-text center">
                 <div className="col-md-4">

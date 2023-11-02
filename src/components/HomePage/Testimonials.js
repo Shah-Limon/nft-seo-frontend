@@ -11,6 +11,7 @@ const Testimonials = () => {
       .then((res) => res.json())
       .then((info) => setTestimonials(info));
   }, [id]);
+
   useEffect(() => {
     fetch(`http://localhost:5000/testimonials-title/`)
       .then((res) => res.json())
@@ -19,14 +20,18 @@ const Testimonials = () => {
 
   return (
     <>
-      <section className="testimonials s2" data-aos="fade-up" data-aos-duration={3000}>
+      <section
+        className="testimonials s2"
+        data-aos="fade-up"
+        data-aos-duration={3000}
+      >
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <div className="testimonials__main">
                 <div className="block-text center">
                   {title.map((e) => (
-                    <>
+                    <React.Fragment key={e.id}>
                       <h6 className="sub-heading">
                         <span>{e.titleTopText}</span>
                       </h6>
@@ -34,26 +39,28 @@ const Testimonials = () => {
                         {e.titleOne} <br />
                         {e.titleTwo}
                       </h3>
-                    </>
+                    </React.Fragment>
                   ))}
                 </div>
                 <div className="swiper testimonials-swiper s2">
                   <div className="swiper-wrapper">
                     {testimonials.map((e) => (
-                      <div className="swiper-slide">
-                        <div className="box-testimonial center">
-                          <div className="image">
-                            <img src={e.personImg} alt="" />
+                      <div className="col-lg-4 col-md-6 col-12 margin__mobile">
+                        <div>
+                          <div className="box-testimonial center">
+                            <div className="image">
+                              <img src={e.personImg} alt="" />
+                            </div>
+                            <div className="info">
+                              <h5 className="name">{e.personName}</h5>
+                              <p>{e.personTitle}</p>
+                              <img
+                                src="https://themesflat.co/html/cyfoniihtml/assets/images/icon/quote-2.png"
+                                alt=""
+                              />
+                            </div>
+                            <p className="text">{e.desc}</p>
                           </div>
-                          <div className="info">
-                            <h5 className="name">{e.personName}</h5>
-                            <p>{e.personTitle}</p>
-                            <img
-                              src="https://themesflat.co/html/cyfoniihtml/assets/images/icon/quote-2.png"
-                              alt=""
-                            />
-                          </div>
-                          <p className="text">{e.desc}</p>
                         </div>
                       </div>
                     ))}

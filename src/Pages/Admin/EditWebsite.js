@@ -15,6 +15,7 @@ const EditWebsite = () => {
   const handleEditWebsite = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
+    const auditStatus = event.target.auditStatus.value;
     const website = event.target.website.value;
     const metaDescription = event.target.metaDescription.value;
     const mobileFriendly = event.target.mobileFriendly.value;
@@ -29,6 +30,7 @@ const EditWebsite = () => {
 
     const edit = {
       email,
+      auditStatus,
       website,
       metaDescription,
       mobileFriendly,
@@ -40,6 +42,7 @@ const EditWebsite = () => {
       backlinks,
       img,
       pdfLink,
+
     };
 
     const url = `http://localhost:5000/edit-website/${id}`;
@@ -58,10 +61,12 @@ const EditWebsite = () => {
   const pdfLink = website.pdfLink || "Default Text If No PDF Link";
   console.log("pdfLink:", pdfLink);
   return (
-    <div>
+    <div className="mb-15">
       <form onSubmit={handleEditWebsite} class="form">
+
         <div class="container">
           <div class="justify-content-center align-items-baseline">
+          <input required type="text" name="auditStatus" value="Complete"/>
             <div class="col-sm">
               <label className="mt-1">Email</label>
               <div class="form-group mb-3">

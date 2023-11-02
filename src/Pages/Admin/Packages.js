@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 const Packages = () => {
   const navigate = useNavigate();
   const [packages, setPackages] = useState([]);
@@ -99,16 +100,20 @@ const Packages = () => {
 
   return (
     <div>
-      <div className="container">
-        <table className="rwd-table">
-          <div>
-            <div class="col-sm mb-15">
+      <div className="container h-100">
+      <div class="col-sm mb-15">
+    
               {title.map((e) => (
                 <Link to={`/package-title-edit/${e._id}`} class="action-btn">
                   <span>Edit Price Title</span>
+                <BackToAdminDashboard></BackToAdminDashboard>
                 </Link>
               ))}
             </div>
+        <table className="rwd-table">
+          
+          <div>
+            
           </div>
           <tbody>
             <tr>

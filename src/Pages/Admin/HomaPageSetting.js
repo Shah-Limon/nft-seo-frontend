@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const HomaPageSetting = () => {
   const { id } = useParams();
@@ -51,7 +52,8 @@ const HomaPageSetting = () => {
     <div>
       <section className="participants payment-setting">
         <div className="container">
-          <div className="row">
+        <BackToAdminDashboard></BackToAdminDashboard>
+          <div className="row mt-15">
             <div className="col-lg-3">
               <div className="block-text center">
                 <div className="col">

@@ -33,123 +33,126 @@ const Pricing = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="testimonials__main">
-                {
-                  title.map(e =>
-                    <div className="block-text center">
-                  <h6 className="sub-heading">
-                    <span>{e.titleTop}</span>
-                  </h6>
-                  <h3 className="heading">
-                    {e.titleOne} <br />
-                    {e.titleTwo}
-                  </h3>
-                  <p className="mt-15"> {e.description}</p>
-                
-                </div>)
-                }
+                {title.map((e) => (
+                  <div className="block-text center">
+                    <h6 className="sub-heading">
+                      <span>{e.titleTop}ss</span>
+                    </h6>
+                    <h3 className="heading">
+                      {e.titleOne} <br />
+                      {e.titleTwo}
+                    </h3>
+                    <p className="mt-15"> {e.description}</p>
+                  </div>
+                ))}
                 <div className="swiper testimonials-swiper s2">
-                  <div className="swiper-wrapper" style={{ gap: "15px" }}>
-                    {packages.map((p) => (
-                      <div className="swiper-slide">
-                        <div className="box-testimonial center">
-                          <div className="image">
-                            <img src={p.img} alt="" />
+                  <div className="container">
+                    <div className="row">
+                      {packages.map((p) => (
+                        <div className="col-lg-4 col-md-6 col-12 margin__mobile">
+                          <div className="swiper-slide">
+                            <div className="box-testimonial center">
+                              <div className="image">
+                                <img src={p.img} alt="" />
+                              </div>
+                              <div className="info">
+                                <h5 className="name">${p.price} USD</h5>
+
+                                <p>{p.packageName}</p>
+                                <img
+                                  src="https://themesflat.co/html/cyfoniihtml/assets/images/icon/quote-2.png"
+                                  alt=""
+                                />
+                              </div>
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureOne}</span>
+                              </li>
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureTwo}</span>
+                              </li>{" "}
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureThree}</span>
+                              </li>{" "}
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureFour}</span>
+                              </li>{" "}
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureFive}</span>
+                              </li>{" "}
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureSix}</span>
+                              </li>{" "}
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureSeven}</span>
+                              </li>{" "}
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureEight}</span>
+                              </li>{" "}
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureNine}</span>
+                              </li>
+                              <li className="text1">
+                                <img
+                                  style={margin0}
+                                  src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
+                                  alt="images"
+                                ></img>
+                                <span>{p.featureTen}</span>
+                              </li>
+                              <Link class="action-btn" to={`/package/${p._id}`}>
+                                {" "}
+                                <span>Buy Now</span>
+                              </Link>
+                            </div>
                           </div>
-                          <div className="info">
-                            <h5 className="name">${p.price}usd</h5>
-                            <p>{p.packageName}</p>
-                            <img
-                              src="https://themesflat.co/html/cyfoniihtml/assets/images/icon/quote-2.png"
-                              alt=""
-                            />
-                          </div>
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureOne}</span>
-                          </li>
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureTwo}</span>
-                          </li>{" "}
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureThree}</span>
-                          </li>{" "}
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureFour}</span>
-                          </li>{" "}
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureFive}</span>
-                          </li>{" "}
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureSix}</span>
-                          </li>{" "}
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureSeven}</span>
-                          </li>{" "}
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureEight}</span>
-                          </li>{" "}
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureNine}</span>
-                          </li>
-                          <li className="text1">
-                            <img
-                              style={margin0}
-                              src="https://i.ibb.co/HnrpzH6/icons8-tick-16.png"
-                              alt="images"
-                            ></img>
-                            <span>{p.featureTen}</span>
-                          </li>
-                          <Link class="action-btn" to={`/package/${p._id}`}>
-                            {" "}
-                            <span>Buy Now</span>
-                          </Link>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

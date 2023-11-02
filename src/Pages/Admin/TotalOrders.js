@@ -64,6 +64,7 @@ import "./Dashboard.css";
 import { Link } from "react-router-dom";
 import DashboardMenu from "./DashboardMenu";
 import OrderMenu from "./OrderMenu";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const TotalOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -102,7 +103,9 @@ const TotalOrders = () => {
 
   return (
     <>
+     <BackToAdminDashboard></BackToAdminDashboard>
       <DashboardMenu></DashboardMenu>
+
      <div className="project s2">
      <div className="container">
         <h4 className="text-center">Total Sales $({totalSpend})usd</h4>

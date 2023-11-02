@@ -56,7 +56,7 @@ const SupportPage = () => {
 
                         <th>View</th>
                       </tr>
-                      {tickets.map((item, index) => (
+                      {tickets.map((item, index) => ( item.ticketCreator === user?.email &&
                         <tr key={item._id}>
                           <td>{index + 1}</td>
 
@@ -65,8 +65,8 @@ const SupportPage = () => {
                           <td>{item.ticketStatus}</td>
 
                           <td>
-                            <Link to={`/user-dashboard/support/${item._id}`}>
-                              Edit
+                            <Link to={`/user-dashboard/ticket/${item._id}`}>
+                              View
                             </Link>
                           </td>
                         </tr>

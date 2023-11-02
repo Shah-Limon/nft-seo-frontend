@@ -9,12 +9,14 @@ import Team from "../components/HomePage/Team";
 import Testimonials from "../components/HomePage/Testimonials";
 
 import Pricing from "../components/HomePage/Pricing";
+import FeaturesPage from "./FeaturesPage";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
       <AboutUs></AboutUs>
+      <FeaturesPage></FeaturesPage>
       <OurSpeciality></OurSpeciality>
       <Portfolio></Portfolio>
       <Pricing></Pricing>

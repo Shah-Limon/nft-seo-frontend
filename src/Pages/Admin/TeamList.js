@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 const TeamList = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
+  const { id } = useParams();
   const [team, setTeam] = useState([]);
   const [title, setTitle] = useState([]);
   const [user] = useAuthState(auth);
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imgbbApiKey] = useState("1f8cc98e0f42a06989fb5e2589a9a8a4"); // Your imgbb API key
 
   useEffect(() => {
     fetch(`http://localhost:5000/teams`)
@@ -22,16 +27,37 @@ const TeamList = () => {
 
   let rowNumber = 1;
 
-  const updateTeam = (event) => {
+  const updateTeam = async (event) => {
     event.preventDefault();
 
     const personName = event.target.personName.value;
     const personTitle = event.target.personTitle.value;
-    const personImg = event.target.personImg.value;
     const facebook = event.target.facebook.value;
     const twitter = event.target.twitter.value;
 
-    const team = {
+    // Determine if an image is being uploaded or if a stored image link should be used
+    let personImg = imageFile ? imagePreview : '';
+
+    // If an image is being uploaded, send it to imgbb
+    if (imageFile) {
+      try {
+        const formData = new FormData();
+        formData.append("image", imageFile);
+        formData.append("key", imgbbApiKey);
+
+        const imgbbResponse = await axios.post(
+          "https://api.imgbb.com/1/upload",
+          formData
+        );
+
+        personImg = imgbbResponse.data.data.url;
+      } catch (error) {
+        console.error("Image upload to imgbb failed:", error);
+        return; // Don't proceed if image upload fails
+      }
+    }
+
+    const teamData = {
       personName,
       personImg,
       personTitle,
@@ -45,7 +71,7 @@ const TeamList = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(team),
+      body: JSON.stringify(teamData),
     })
       .then((res) => res.json())
       .then((result) => {
@@ -53,86 +79,101 @@ const TeamList = () => {
       });
   };
 
+  const handleImageChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setImageFile(selectedFile);
+
+    const previewURL = URL.createObjectURL(selectedFile);
+    setImagePreview(previewURL);
+  };
+
   return (
     <div>
-      <form class="form" onSubmit={updateTeam}>
-        <div class="container">
-          <div class="justify-content-center align-items-baseline">
+      <form className="form" onSubmit={updateTeam}>
+        <div className="container">
+          <div className="justify-content-center align-items-baseline">
             <h4 className="sub-heading">
               <span>Add Team Member</span>
             </h4>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Enter Person Name</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Enter Person Name"
                   name="personName"
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Enter Person Title</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Enter Person Title"
                   name="personTitle"
                 />
               </div>
             </div>
-            <div class="col-sm">
-              <label className="mt-1">Enter Person Image URL</label>
-              <div class="form-group mb-3">
+            <div className="col-sm">
+              <label className="mt-1">Upload Person Image</label>
+              <div className="form-group mb-3">
                 <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Person Image URL"
-                  name="personImg"
+                  type="file"
+                  className="form-control"
+                  accept="image/*"
+                  onChange={handleImageChange}
                 />
               </div>
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt="Images"
+                  style={{ maxWidth: "100px" }}
+                />
+             ) }
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Enter Facebook Link</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
-                  placeholder="Type Feature Two"
+                  className="form-control"
+                  placeholder="Type Facebook Link"
                   name="facebook"
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Enter Twitter Link</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
-                  placeholder="Type Feature Two"
+                  className="form-control"
+                  placeholder="Type Twitter Link"
                   name="twitter"
                 />
               </div>
             </div>
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div className="col-sm">
+              <button type="submit" className="action-btn">
                 <span>Add Team Member</span>
               </button>
             </div>
           </div>
         </div>
       </form>
-      <div class="container">
-        <div class="justify-content-center align-items-baseline">
-          <div class="col-sm">
+      <div className="container">
+        <div className="justify-content-center align-items-baseline">
+          <div className="col-sm">
             {title.map((e) => (
               <Link
                 to={`/admin/edit-team-title/${e._id}`}
                 type="submit"
-                class="action-btn"
+                className="action-btn"
               >
                 <span>Update Team Section Title</span>
               </Link>
@@ -140,14 +181,12 @@ const TeamList = () => {
           </div>
         </div>
       </div>
-      )
       <div className="container">
         <table className="rwd-table">
           <tbody>
             <tr>
               <th>SL No.</th>
               <th>Team Person Name</th>
-
               <th>Edit</th>
             </tr>
             {team.map((item) => (
