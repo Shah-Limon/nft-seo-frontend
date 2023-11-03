@@ -81,7 +81,6 @@ import AdminRoute from './components/Shared/AdminRoute';
 import ManagerRoute from './components/Shared/ManagerRoute';
 import ResetPassword from './Pages/ResetPassword';
 import UpdatePassword from './Pages/UpdatePassword';
-import FeaturesPage from './Pages/FeaturesPage';
 import EditFeaturesPage from './Pages/Admin/EditFeaturesPage';
 import EditFeature from './Pages/Admin/EditFeature';
 

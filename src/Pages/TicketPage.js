@@ -116,7 +116,9 @@ const TicketPage = () => {
   const [user] = useAuthState(auth);
 
   // State variable to store the current date
-  const [currentDate, setCurrentDate] = useState(new Date().toISOString());
+  // const currentDate = new Date().toISOString().split('T')[0];
+  const currentDate = new Date().toLocaleDateString('en-GB'); // 'en-GB' represents the 'dd-mm-yyyy' format
+
 
   const generateUniqueTicketId = () => {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -134,6 +136,7 @@ const TicketPage = () => {
     const ticketCreator = event.target.ticketCreator.value;
     const message = event.target.message.value;
     const subject = event.target.subject.value;
+    const names = event.target.names.value;
     const TicketId = generateUniqueTicketId();
 
     const ticket = {
@@ -143,6 +146,7 @@ const TicketPage = () => {
       message,
       subject,
       currentDate, // Include the current date
+      names
     };
 
     const url = `http://localhost:5000/add-ticket`;
@@ -183,6 +187,17 @@ const TicketPage = () => {
 
                   <div className="row">
                     <div className="col">
+                      <label>Name</label>
+                      <input
+                        required
+                        type="text"
+                        className="form-control"
+                        name="names"
+                      />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col">
                       <label>Subject</label>
                       <input
                         required
@@ -202,8 +217,9 @@ const TicketPage = () => {
 
                   <div className="row">
                     <div className="col">
-                      <label>Date</label>
+                     
                       <input
+                      hidden
                         type="text"
                         value={currentDate}
                         name="currentDate"

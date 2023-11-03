@@ -10,6 +10,7 @@ const HelpDeskAction = () => {
 
   const [tickets, setTickets] = useState([]);
   const [ticket, setTicket] = useState([]);
+  const [currentDateTime, setCurrentDateTime] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:5000/ticket/${id}`)
@@ -17,16 +18,42 @@ const HelpDeskAction = () => {
       .then((info) => setTicket(info));
   }, [id]);
 
-
   useEffect(() => {
     fetch(`http://localhost:5000/reply-tickets`)
       .then((res) => res.json())
       .then((info) => setTickets(info));
   }, []);
 
+  // State variable to store the current date
+  
+  
+
+  useEffect(() => {
+    fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT+5`)
+      .then((res) => res.json())
+      .then((info) => {
+        const apiDateTime = new Date(info.utc_datetime);
+        const formattedTime = apiDateTime.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+          timeZoneName: 'short' // Display the timezone abbreviation
+        });
+        const formattedDate = apiDateTime.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        setCurrentDateTime(`${formattedTime} - ${formattedDate}`);
+      });
+  }, []);
+
+  const currentDate = currentDateTime
+
   const HandleTicketReply = (event) => {
     event.preventDefault();
     const ticketCreator = event.target.ticketCreator.value;
+    const whoReplied = event.target.whoReplied.value;
     const ticketID = event.target.ticketID.value;
     const creatorMessage = event.target.creatorMessage.value;
     const subject = event.target.subject.value;
@@ -34,10 +61,12 @@ const HelpDeskAction = () => {
 
     const contact = {
       ticketCreator,
+      whoReplied,
       ticketID,
       creatorMessage,
       subject,
       adminMessage,
+      currentDate,
     };
 
     const url = `http://localhost:5000/add-ticket-reply`;
@@ -50,10 +79,9 @@ const HelpDeskAction = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/");
+        navigate("/admin/help-desk/");
       });
   };
-
 
   const HandleTicketStatus = (event) => {
     event.preventDefault();
@@ -79,7 +107,7 @@ const HelpDeskAction = () => {
 
   return (
     <>
-     <BackToAdminDashboard></BackToAdminDashboard>
+      <BackToAdminDashboard></BackToAdminDashboard>
       <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
         <div className="container">
           <div className="row">
@@ -91,28 +119,27 @@ const HelpDeskAction = () => {
                 <h3 className="heading">Help Center</h3>
               </div>
               <div className="touch__main">
-
-
-                <form onSubmit={HandleTicketStatus}>
-                <div className="row">
-                    <div className="col">
-                      <label>Status: </label>
-                      <select name="ticketStatus">
-                        <option value="Solved">Solved</option>
-                        <option value="Replied">Replied</option>
-                      </select>
+                <form onSubmit={HandleTicketStatus} className="form-box__left">
+                  <div className="row">
+                    <div className="col mb-15 ">
+                      <div>
+                        <label className="mb-15">Status: </label>
+                        <br></br>
+                        <select name="ticketStatus">
+                          <option value="Solved">Solved</option>
+                          <option value="Replied">Replied</option>
+                        </select>
+                      </div>
                     </div>
-
                   </div>
                   <div className="row mb-0">
                     <div className="col">
                       <button type="sumbit" className="action-btn">
-                        <span>Action</span>
+                        <span>Submit</span>
                       </button>
                     </div>
                   </div>
                 </form>
-
 
                 <form
                   className="form-box box__color"
@@ -123,6 +150,15 @@ const HelpDeskAction = () => {
                     type="text"
                     name="ticketCreator"
                     defaultValue={ticket.ticketCreator}
+                  />
+                  <input hidden type="text" name="whoReplied" value="Admin" />
+
+                  <input
+                   
+                    type="text"
+                    value={currentDate}
+                    name="currentDate"
+                    readOnly
                   />
                   <input
                     hidden
@@ -149,22 +185,46 @@ const HelpDeskAction = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="row">
                     <div className="col">
-                      <label>User's Message</label>
+                      <label>
+                        {ticket.names} Message ({ticket.currentDate})
+                      </label>
                       <p>{ticket.message}</p>
-                      <div className="mt-15">
-                        {tickets.map(
-                          (t) =>
-                            ticket._id === t.ticketID && (
-                              <div className="mt-15">
-                                <label>Admin's Message</label>
-                                <p>{t.adminMessage}</p>
-                              </div>
-                            )
-                        )}
-                      </div>
+                      {tickets.map((t) => (
+                        <div className="mt-15">
+                          {ticket._id === t.ticketID && (
+                            <div className="mt-15">
+                              {t.whoReplied === "Admin" ? (
+                                <div>
+                                  <label>
+                                    Admin's Message ({t.currentDate})
+                                  </label>
+                                  <p>{t.adminMessage}</p>
+                                </div>
+                              ) : (
+                                <></>
+                              )}
+                            </div>
+                          )}
+
+                          {ticket._id === t.ticketID && (
+                            <div className="mt-15">
+                              {t.whoReplied === "user" ? (
+                                <div>
+                                  <label>
+                                    {ticket.names} Message ({t.currentDate})
+                                  </label>
+                                  <p>{t.creatorMessageReply}</p>
+                                </div>
+                              ) : (
+                                <></>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      ))}
                     </div>
                   </div>
 

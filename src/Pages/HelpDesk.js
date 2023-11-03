@@ -39,6 +39,7 @@ const HelpDesk = () => {
                     <tbody>
                       <tr>
                         <th>SL No.</th>
+                        <th>Date</th>
                         <th>Ticket ID</th>
                         <th>Subject</th>
                         <th>Sender</th>
@@ -49,7 +50,9 @@ const HelpDesk = () => {
                       {tickets.map((item, index) => (
                         <tr key={item._id}>
                           <td>{index + 1}</td>
+                         
 
+                          <td>{item.currentDate}</td>
                           <td>{item.TicketId}</td>
                           <td>{item.subject}</td>
                           <td>{item.ticketCreator}</td>

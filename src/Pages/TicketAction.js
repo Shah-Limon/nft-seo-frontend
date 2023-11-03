@@ -193,7 +193,7 @@ const TicketAction = () => {
                   <div className="row">
                     <div className="col">
                       <label>Reply</label>
-                      <textarea required name="creatorReply" cols={30} rows={10} />
+                      <p required name="creatorReply" cols={30} rows={10} />
                     </div>
                   </div>
                   <div className="row mb-0">
