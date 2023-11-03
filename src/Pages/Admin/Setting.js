@@ -16,7 +16,6 @@ const Setting = () => {
   }, [id]);
   return (
     <>
-    
       <section
         className="project s2 payment-setting"
         data-aos="fade-up"
@@ -24,21 +23,19 @@ const Setting = () => {
       >
         <div className="shape right" />
         <div className="container">
-        <BackToAdminDashboard></BackToAdminDashboard>
+          <BackToAdminDashboard></BackToAdminDashboard>
           <div className="row mt-15">
             <div className="col-xl-3 col-md-6">
-              
               <div className="project-box">
                 <div className="image"></div>
                 <div className="content">
-                  
                   <Link to="/admin/setting-general/" className="h5 title">
                     General Setting
                   </Link>
                 </div>
               </div>
             </div>
-            
+
             <div className="col-xl-3 col-md-6">
               <div className="project-box">
                 <div className="image"></div>
@@ -69,7 +66,7 @@ const Setting = () => {
                 </div>
               </div>
             </div>
-           
+
             <div className="col-xl-3 col-md-6">
               <div className="project-box">
                 <div className="image"></div>
@@ -85,8 +82,18 @@ const Setting = () => {
                 </div>
               </div>
             </div>
-            
-           
+            <div className="col-xl-3 col-md-6">
+              <div className="project-box">
+                <div className="image"></div>
+                <div className="content">
+                  {contact.map((e) => (
+                    <Link to="/admin/feature-page" className="h5 title">
+                      Features Page Setting
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

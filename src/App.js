@@ -81,6 +81,9 @@ import AdminRoute from './components/Shared/AdminRoute';
 import ManagerRoute from './components/Shared/ManagerRoute';
 import ResetPassword from './Pages/ResetPassword';
 import UpdatePassword from './Pages/UpdatePassword';
+import FeaturesPage from './Pages/FeaturesPage';
+import EditFeaturesPage from './Pages/Admin/EditFeaturesPage';
+import EditFeature from './Pages/Admin/EditFeature';
 
 
 function App() {
@@ -145,6 +148,12 @@ function App() {
         <Route path='/admin/edit-slider/:id' element={<RequireAuth><AdminRoute><EditBannerSlider></EditBannerSlider></AdminRoute></RequireAuth>}></Route>
 
 
+
+
+
+
+        <Route path='/admin/feature-page/' element={<RequireAuth><AdminRoute><EditFeaturesPage></EditFeaturesPage></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/edit-feature/:id' element={<RequireAuth><AdminRoute><EditFeature></EditFeature></AdminRoute></RequireAuth>}></Route>
 
 
         <Route path='/admin/about-edit/:id' element={<RequireAuth><AdminRoute><AboutUsEdit></AboutUsEdit></AdminRoute></RequireAuth>}></Route>
