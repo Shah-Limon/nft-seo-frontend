@@ -6,7 +6,7 @@ const ThankYou = () => {
     const [product, setProduct] = useState([]);
   
     useEffect(() => {
-      fetch(`https://nft-seo-server.onrender.com//product/${id}`)
+      fetch(`https://nft-seo-server.onrender.com/product/${id}`)
         .then((res) => res.json())
         .then((info) => setProduct(info));
     }, [product]);

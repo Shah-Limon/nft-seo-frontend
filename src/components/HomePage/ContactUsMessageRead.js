@@ -10,7 +10,7 @@ const ContactUsMessageRead = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//contact-message/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/contact-message/${id}`)
       .then((res) => res.json())
       .then((info) => setContact(info));
   }, [id]);
@@ -23,7 +23,7 @@ const ContactUsMessageRead = () => {
       messageStatus,
     };
 
-    const url = `https://nft-seo-server.onrender.com//contact-message/${id}`;
+    const url = `https://nft-seo-server.onrender.com/contact-message/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

@@ -10,7 +10,7 @@ const EditRoadMaps = () => {
   const [road, SetRoad] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//road/`)
+    fetch(`https://nft-seo-server.onrender.com/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);
@@ -59,7 +59,7 @@ const EditRoadMaps = () => {
       cardDescFive,
     };
 
-    const url = `https://nft-seo-server.onrender.com//edit-road/${id}`;
+    const url = `https://nft-seo-server.onrender.com/edit-road/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

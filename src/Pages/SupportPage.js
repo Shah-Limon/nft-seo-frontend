@@ -11,7 +11,7 @@ const SupportPage = () => {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//tickets`)
+    fetch(`https://nft-seo-server.onrender.com/tickets`)
       .then((res) => res.json())
       .then((info) => setTickets(info.reverse()));
   }, []);

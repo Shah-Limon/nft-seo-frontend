@@ -18,7 +18,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//logo`)
+    fetch(`https://nft-seo-server.onrender.com/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);

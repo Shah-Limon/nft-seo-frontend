@@ -13,7 +13,7 @@ const SolvedTicket = () => {
   const paginationDigits = 3;
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//tickets`)
+    fetch(`https://nft-seo-server.onrender.com/tickets`)
       .then((res) => res.json())
       .then((info) => setTickets(info.reverse()));
   }, []);

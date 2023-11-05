@@ -7,7 +7,7 @@ const EditCategory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//category/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/category/${id}`)
       .then((res) => res.json())
       .then((info) => setCategory(info));
   }, [id]);
@@ -17,7 +17,7 @@ const EditCategory = () => {
     const Category = event.target.Category.value;
     const editCategory = { Category };
 
-    const url = `https://nft-seo-server.onrender.com//edit-category/${category._id}`;
+    const url = `https://nft-seo-server.onrender.com/edit-category/${category._id}`;
     fetch(url, {
       method: "PUT",
       headers: {

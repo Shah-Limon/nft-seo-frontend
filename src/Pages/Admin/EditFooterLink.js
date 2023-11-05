@@ -20,7 +20,7 @@ const EditFooterLink = () => {
       CopyRight,
     };
 
-    const url = `https://nft-seo-server.onrender.com//footer-link/${id}/`;
+    const url = `https://nft-seo-server.onrender.com/footer-link/${id}/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -35,7 +35,7 @@ const EditFooterLink = () => {
   };
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//footer-link/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/footer-link/${id}`)
       .then((res) => res.json())
       .then((info) => setFooterLink(info));
   }, [id]);

@@ -7,7 +7,7 @@ const TestimonialTitle = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//testimonial-title/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/testimonial-title/${id}`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);
@@ -24,7 +24,7 @@ const TestimonialTitle = () => {
       titleTwo,
     };
 
-    const url = `https://nft-seo-server.onrender.com//testimonial-title/${id}`;
+    const url = `https://nft-seo-server.onrender.com/testimonial-title/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

@@ -49,7 +49,7 @@ const SpecialityOptionEdit = () => {
       btnUrl,
     };
 
-    const url = `https://nft-seo-server.onrender.com//edit-about/${id}`;
+    const url = `https://nft-seo-server.onrender.com/edit-about/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -72,7 +72,7 @@ const SpecialityOptionEdit = () => {
   };
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//about/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/about/${id}`)
       .then((res) => res.json())
       .then((info) => {
         const storedImg = info[0].img;

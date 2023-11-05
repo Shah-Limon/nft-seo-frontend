@@ -10,7 +10,7 @@ const Setting = () => {
   const [contact, setContact] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//contact/`)
+    fetch(`https://nft-seo-server.onrender.com/contact/`)
       .then((res) => res.json())
       .then((info) => setContact(info));
   }, [id]);

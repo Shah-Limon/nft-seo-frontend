@@ -16,32 +16,32 @@ const HomaPageSetting = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//about`)
+    fetch(`https://nft-seo-server.onrender.com/about`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//banner/`)
+    fetch(`https://nft-seo-server.onrender.com/banner/`)
       .then((res) => res.json())
       .then((info) => setBanner(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//speciality/`)
+    fetch(`https://nft-seo-server.onrender.com/speciality/`)
       .then((res) => res.json())
       .then((info) => SetSpeciality(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//why-choose/`)
+    fetch(`https://nft-seo-server.onrender.com/why-choose/`)
       .then((res) => res.json())
       .then((info) => SetChoose(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//road/`)
+    fetch(`https://nft-seo-server.onrender.com/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//team-title`)
+    fetch(`https://nft-seo-server.onrender.com/team-title`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

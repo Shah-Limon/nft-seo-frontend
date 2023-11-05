@@ -11,7 +11,7 @@ const SettingPayment = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//payments`)
+    fetch(`https://nft-seo-server.onrender.com/payments`)
       .then((res) => res.json())
       .then((info) => setPaymentEmail(info));
   }, []);

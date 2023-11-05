@@ -12,7 +12,7 @@ const MyOrders = () => {
 
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//orders`)
+    fetch(`https://nft-seo-server.onrender.com/orders`)
       .then((res) => res.json())
       .then((info) => setorders(info));
   }, []);

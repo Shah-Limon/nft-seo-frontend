@@ -8,13 +8,13 @@ const Category = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//category/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/category/${id}`)
       .then((res) => res.json())
       .then((info) => setCategory(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//products`)
+    fetch(`https://nft-seo-server.onrender.com/products`)
       .then((res) => res.json())
       .then((info) => setProducts(info));
   }, []);

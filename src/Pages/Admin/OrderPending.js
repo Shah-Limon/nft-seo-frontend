@@ -13,7 +13,7 @@ const OrderPending = () => {
   const paginationDigits = 3;
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//orders`)
+    fetch(`https://nft-seo-server.onrender.com/orders`)
       .then((res) => res.json())
       .then((info) => {
         setOrders(info.reverse());

@@ -7,7 +7,7 @@ const EditOrder = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//order/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/order/${id}`)
       .then((res) => res.json())
       .then((info) => setOrder(info));
   }, [order]);
@@ -22,7 +22,7 @@ const EditOrder = () => {
     
     const orderEdit = {customerName, customerAddress, customerUpozilaName, customerDistrictName, customerPhoneNumber};
 
-    const url = `https://nft-seo-server.onrender.com//order-edit/${order._id}`;
+    const url = `https://nft-seo-server.onrender.com/order-edit/${order._id}`;
     fetch(url, {
         method: 'PUT',
         headers: {

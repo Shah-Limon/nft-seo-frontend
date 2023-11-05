@@ -4,7 +4,7 @@ const RoadMap = () => {
   const [road, SetRoad] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//road/`)
+    fetch(`https://nft-seo-server.onrender.com/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);

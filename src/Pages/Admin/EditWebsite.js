@@ -8,7 +8,7 @@ const EditWebsite = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//website/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/website/${id}`)
       .then((res) => res.json())
       .then((info) => setWebsite(info));
   }, [id]);
@@ -46,7 +46,7 @@ const EditWebsite = () => {
 
     };
 
-    const url = `https://nft-seo-server.onrender.com//edit-website/${id}`;
+    const url = `https://nft-seo-server.onrender.com/edit-website/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

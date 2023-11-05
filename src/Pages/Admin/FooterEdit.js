@@ -11,12 +11,12 @@ const FooterEdit = () => {
   const [social, setSocial] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//footer-links/`)
+    fetch(`https://nft-seo-server.onrender.com/footer-links/`)
       .then((res) => res.json())
       .then((info) => setFooterLink(info));
   }, [id]);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//footer-social/`)
+    fetch(`https://nft-seo-server.onrender.com/footer-social/`)
       .then((res) => res.json())
       .then((info) => setSocial(info));
   }, [id]);
@@ -35,7 +35,7 @@ const FooterEdit = () => {
   //     youtube,
   //   };
 
-  //   const url = `https://nft-seo-server.onrender.com//footer-social/`;
+  //   const url = `https://nft-seo-server.onrender.com/footer-social/`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {
@@ -65,7 +65,7 @@ const FooterEdit = () => {
   //     linkFive,
   //   };
 
-  //   const url = `https://nft-seo-server.onrender.com//footer-link`;
+  //   const url = `https://nft-seo-server.onrender.com/footer-link`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {

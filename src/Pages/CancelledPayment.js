@@ -15,7 +15,7 @@ const CancelledPayment = () => {
     const updatePaymentStatus = async () => {
       try {
         const updateOrder = { paymentStatus: "Cancelled" };
-        const url = `https://nft-seo-server.onrender.com//payment-cancelled/${id}`;
+        const url = `https://nft-seo-server.onrender.com/payment-cancelled/${id}`;
         const response = await fetch(url, {
           method: "PUT",
           headers: {

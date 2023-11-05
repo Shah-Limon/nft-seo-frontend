@@ -7,7 +7,7 @@ const OrderDeliveryUpdate = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//order/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/order/${id}`)
       .then((res) => res.json())
       .then((info) => setorder(info));
   }, [id]);
@@ -18,7 +18,7 @@ const OrderDeliveryUpdate = () => {
     
     const deliveryUpdate = {deliveryStatus};
 
-    const url = `https://nft-seo-server.onrender.com//delivery-status/${order._id}`;
+    const url = `https://nft-seo-server.onrender.com/delivery-status/${order._id}`;
     fetch(url, {
         method: 'PUT',
         headers: {

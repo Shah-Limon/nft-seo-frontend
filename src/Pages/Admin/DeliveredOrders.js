@@ -12,7 +12,7 @@ const DeliveredOrders = () => {
   const itemsPerPage = 10;
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//orders`)
+    fetch(`https://nft-seo-server.onrender.com/orders`)
       .then((res) => res.json())
       .then((info) => {
         setOrders(info.reverse());

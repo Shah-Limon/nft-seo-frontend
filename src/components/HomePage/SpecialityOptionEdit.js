@@ -35,7 +35,7 @@ const SpecialityOptionEdit = () => {
       cardDescriptionFour,
     };
 
-    const url = `https://nft-seo-server.onrender.com//edit-speciality/${id}`;
+    const url = `https://nft-seo-server.onrender.com/edit-speciality/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -50,7 +50,7 @@ const SpecialityOptionEdit = () => {
   }
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//speciality/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/speciality/${id}`)
       .then((res) => res.json())
       .then((info) => SetSpeciality(info));
   }, [id]);

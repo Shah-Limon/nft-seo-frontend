@@ -15,12 +15,12 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//logo`)
+    fetch(`https://nft-seo-server.onrender.com/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//users`)
+    fetch(`https://nft-seo-server.onrender.com/users`)
       .then((res) => res.json())
       .then((info) => setAdmin(info));
   }, []);

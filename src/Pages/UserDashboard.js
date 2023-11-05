@@ -15,13 +15,13 @@ const UserDashboard = () => {
   const [currentPageData, setCurrentPageData] = useState(1);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//website`)
+    fetch(`https://nft-seo-server.onrender.com/website`)
       .then((res) => res.json())
       .then((info) => setData(info.reverse()));
   }, []);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//orders`)
+    fetch(`https://nft-seo-server.onrender.com/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info.reverse()));
   }, []);

@@ -7,7 +7,7 @@ const ManageUsers = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//users`)
+    fetch(`https://nft-seo-server.onrender.com/users`)
       .then((res) => res.json())
       .then((info) => setUsers(info));
   }, []);
@@ -23,7 +23,7 @@ const ManageUsers = () => {
       userRole,
     };
 
-    const url = `https://nft-seo-server.onrender.com//add-user`;
+    const url = `https://nft-seo-server.onrender.com/add-user`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -37,7 +37,7 @@ const ManageUsers = () => {
       });
   };
   const handleDeleteUser = (userId) => {
-    fetch(`https://nft-seo-server.onrender.com//user/${userId}`, {
+    fetch(`https://nft-seo-server.onrender.com/user/${userId}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

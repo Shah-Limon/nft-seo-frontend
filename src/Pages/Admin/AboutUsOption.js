@@ -28,7 +28,7 @@ const AboutUsOption = () => {
         btnUrl,
     };
 
-    const url = `https://nft-seo-server.onrender.com//add-about`;
+    const url = `https://nft-seo-server.onrender.com/add-about`;
     fetch(url, {
       method: "POST",
       headers: {

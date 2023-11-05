@@ -7,7 +7,7 @@ const ManagerRoute = ({ children }) => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch("https://nft-seo-server.onrender.com//users")
+    fetch("https://nft-seo-server.onrender.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data.reverse()));
   }, []);

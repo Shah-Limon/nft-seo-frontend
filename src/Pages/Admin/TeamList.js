@@ -16,12 +16,12 @@ const TeamList = () => {
   const [imgbbApiKey] = useState("1f8cc98e0f42a06989fb5e2589a9a8a4"); // Your imgbb API key
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//teams`)
+    fetch(`https://nft-seo-server.onrender.com/teams`)
       .then((res) => res.json())
       .then((info) => setTeam(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//team-title/`)
+    fetch(`https://nft-seo-server.onrender.com/team-title/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);
@@ -66,7 +66,7 @@ const TeamList = () => {
       twitter,
     };
 
-    const url = `https://nft-seo-server.onrender.com//add-team`;
+    const url = `https://nft-seo-server.onrender.com/add-team`;
     fetch(url, {
       method: "POST",
       headers: {

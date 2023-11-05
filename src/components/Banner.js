@@ -14,7 +14,7 @@
 //   const [banner, setBanner] = useState([]);
 
 //   useEffect(() => {
-//     fetch(`https://nft-seo-server.onrender.com//banner/`)
+//     fetch(`https://nft-seo-server.onrender.com/banner/`)
 //       .then((res) => res.json())
 //       .then((info) => setBanner(info));
 //   }, [id]);
@@ -41,7 +41,7 @@
 //       userMail,
 //     };
 
-//     const url = `https://nft-seo-server.onrender.com//add-website`;
+//     const url = `https://nft-seo-server.onrender.com/add-website`;
 //     fetch(url, {
 //       method: "POST",
 //       headers: {
@@ -253,12 +253,12 @@ const Banner = () => {
   const [sliders, setSliders] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//banner/`)
+    fetch(`https://nft-seo-server.onrender.com/banner/`)
       .then((res) => res.json())
       .then((info) => setBanner(info));
   }, [id]);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//sliders/`)
+    fetch(`https://nft-seo-server.onrender.com/sliders/`)
       .then((res) => res.json())
       .then((info) => setSliders(info));
   }, [id]);
@@ -289,7 +289,7 @@ const Banner = () => {
       auditStatus
     };
 
-    const url = `https://nft-seo-server.onrender.com//add-website`;
+    const url = `https://nft-seo-server.onrender.com/add-website`;
     fetch(url, {
       method: "POST",
       headers: {

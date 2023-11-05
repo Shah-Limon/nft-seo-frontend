@@ -17,24 +17,24 @@ const AboutPage = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//about/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/about/${id}`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//why-choose/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/why-choose/${id}`)
       .then((res) => res.json())
       .then((info) => setChoose(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//teams`)
+    fetch(`https://nft-seo-server.onrender.com/teams`)
       .then((res) => res.json())
       .then((info) => setTeam(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//team-title/`)
+    fetch(`https://nft-seo-server.onrender.com/team-title/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

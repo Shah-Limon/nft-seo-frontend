@@ -13,7 +13,7 @@ const GeneralOption = () => {
   const [logo, setLogo] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//logo`)
+    fetch(`https://nft-seo-server.onrender.com/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);

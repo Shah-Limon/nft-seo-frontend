@@ -11,7 +11,7 @@ const BannerSliderList = () => {
   const [image, setImage] = useState(null); // To store the uploaded image
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com//sliders`)
+    fetch(`https://nft-seo-server.onrender.com/sliders`)
       .then((res) => res.json())
       .then((info) => setSliders(info));
   }, []);
@@ -57,7 +57,7 @@ const BannerSliderList = () => {
           sliderImg,
         };
 
-        const url = `https://nft-seo-server.onrender.com//slider`;
+        const url = `https://nft-seo-server.onrender.com/slider`;
         const sliderResponse = await fetch(url, {
           method: "POST",
           headers: {
