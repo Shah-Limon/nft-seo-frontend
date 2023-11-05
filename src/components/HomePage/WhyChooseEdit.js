@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import BackToAdminDashboard from "../../Pages/Admin/BackToAdminDashboard";
 
 const WhyChooseEdit = () => {
   const navigate = useNavigate();
@@ -91,7 +92,8 @@ const WhyChooseEdit = () => {
 
   return (
     <div>
-      <form className="form" onSubmit={handleWhyEdit}>
+      <BackToAdminDashboard></BackToAdminDashboard>
+      <form className="form mb-15" onSubmit={handleWhyEdit}>
         {choose.map((e) => (
           <div className="container" key={e.id}>
             <div className="justify-content-center align-items-baseline">

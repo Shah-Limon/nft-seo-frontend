@@ -24,7 +24,7 @@ const PayNow = () => {
 
   return (
     <>
-      <section className="banner s2">
+      <section className="banner s2 hight-full">
         <div className="shape" />
         <div className="shape right" />
         <div className="container">

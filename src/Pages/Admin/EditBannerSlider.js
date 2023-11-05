@@ -3,6 +3,7 @@ import axios from "axios"; // Import Axios
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const EditBannerSlider = () => {
   const { id } = useParams();
@@ -62,6 +63,7 @@ const EditBannerSlider = () => {
 
   return (
     <div className="payment-setting" data-aos="fade-up" data-aos-duration={3000}>
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form class="form" onSubmit={handleSlider}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">

@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import BackToAdminDashboard from "../../Pages/Admin/BackToAdminDashboard";
 
 const ContactUsMessageRead = () => {
   const { id } = useParams();
@@ -38,10 +39,13 @@ const ContactUsMessageRead = () => {
 
   return (
     <>
-      <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
-        <div className="container">
+    
+      <section className="touch hight-full" data-aos="fade-up" data-aos-duration={2000}>
+      <div className="mb-15"><BackToAdminDashboard></BackToAdminDashboard></div>
+        <div className="container ">
           <div className="row">
             <div className="col-12">
+              
               <div className="block-text center">
                 <h6 className="sub-heading">
                   <span>Contact Message</span>

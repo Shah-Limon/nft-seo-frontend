@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 import axios from "axios";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const EditPackage = () => {
   const { id } = useParams();
@@ -83,6 +84,7 @@ const EditPackage = () => {
 
   return (
     <div>
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form class="form" onSubmit={handlePackages}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">

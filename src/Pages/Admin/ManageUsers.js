@@ -42,8 +42,6 @@ const ManageUsers = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        // After deletion, you can refresh the user list or update the state as needed.
-        // For example, you can filter out the deleted user from the state.
         const updatedUsers = users.filter((user) => user._id !== userId);
         setUsers(updatedUsers);
         navigate(`/admin/dashboard`);

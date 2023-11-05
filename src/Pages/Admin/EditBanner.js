@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const EditBanner = () => {
   const { id } = useParams();
@@ -52,6 +53,7 @@ const EditBanner = () => {
 
   return (
     <div>
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form class="form mb-15" onSubmit={handleBanner}>
         {banner.map((e) => (
           <div class="container">

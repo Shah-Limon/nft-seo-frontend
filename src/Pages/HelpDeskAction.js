@@ -10,7 +10,7 @@ const HelpDeskAction = () => {
 
   const [tickets, setTickets] = useState([]);
   const [ticket, setTicket] = useState([]);
-  const [currentDateTime, setCurrentDateTime] = useState("");
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/ticket/${id}`)
@@ -26,7 +26,7 @@ const HelpDeskAction = () => {
 
   // State variable to store the current date
   
-  
+  const [currentDateTime, setCurrentDateTime] = useState("");
 
   useEffect(() => {
     fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT+5`)
@@ -154,7 +154,7 @@ const HelpDeskAction = () => {
                   <input hidden type="text" name="whoReplied" value="Admin" />
 
                   <input
-                   
+                   hidden
                     type="text"
                     value={currentDate}
                     name="currentDate"

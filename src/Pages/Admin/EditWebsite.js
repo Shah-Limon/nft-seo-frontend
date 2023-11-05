@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom/dist";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const EditWebsite = () => {
   const [website, setWebsite] = useState([]);
@@ -62,16 +63,18 @@ const EditWebsite = () => {
   console.log("pdfLink:", pdfLink);
   return (
     <div className="mb-15">
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form onSubmit={handleEditWebsite} class="form">
 
         <div class="container">
           <div class="justify-content-center align-items-baseline">
-          <input required type="text" name="auditStatus" value="Complete"/>
+          <input hidden required type="text" name="auditStatus" value="Complete"/>
             <div class="col-sm">
               <label className="mt-1">Email</label>
               <div class="form-group mb-3">
                 <input
                   type="email"
+                  readOnly
                   class="form-control"
                   placeholder="Your Email"
                   name="email"
@@ -83,6 +86,7 @@ const EditWebsite = () => {
               <label className="mt-1">Website</label>
               <div class="form-group">
                 <input
+                readOnly
                   type="text"
                   class="form-control"
                   defaultValue={website.website}
@@ -178,7 +182,7 @@ const EditWebsite = () => {
               </div>
             </div>
             <div class="col-sm">
-              <label className="mt-3">Add PDF URL</label>
+              <label className="mt-3">Add PDF file</label>
               <input
                 type="text"
                 className="form-control"

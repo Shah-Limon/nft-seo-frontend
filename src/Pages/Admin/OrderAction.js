@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const OrderAction = () => {
   const [order, setOrder] = useState([]);
@@ -17,9 +18,8 @@ const OrderAction = () => {
     const orderStatus = event.target.orderStatus.value;
     const paymentStatus = event.target.paymentStatus.value;
     const updateOrder = {
-        orderStatus,
-        paymentStatus,
-
+      orderStatus,
+      paymentStatus,
     };
 
     const url = `http://localhost:5000/order/${id}`;
@@ -37,9 +37,17 @@ const OrderAction = () => {
   };
 
   return (
-    <div>
+    <div className="hight-full">
+      <BackToAdminDashboard></BackToAdminDashboard>
+
       <form class="form" onSubmit={handelOrderAction}>
         <div class="container">
+          <div className="mb-30">
+          <h5 className="mb-30">Current Payment Status :- {order.paymentStatus}</h5>
+            <h5 className="mb-30">Current Order Status :- {order.orderStatus}</h5>
+          
+            <h5 className="mb-30">Customer Name:- {order.customerName}</h5>
+          </div>
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
               <label className="mt-1">Update Payment Status</label>

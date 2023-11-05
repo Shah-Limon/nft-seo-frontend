@@ -105,7 +105,7 @@
 
 // export default TicketPage;
 
-import React, { useState } from "react"; // Import useState
+import React, { useEffect, useState } from "react"; // Import useState
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../firebase.init";
@@ -114,11 +114,34 @@ const TicketPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const [currentDateTime, setCurrentDateTime] = useState("");
+
+
 
   // State variable to store the current date
   // const currentDate = new Date().toISOString().split('T')[0];
-  const currentDate = new Date().toLocaleDateString('en-GB'); // 'en-GB' represents the 'dd-mm-yyyy' format
+  // const currentDate = new Date().toLocaleDateString('en-GB'); // 'en-GB' represents the 'dd-mm-yyyy' format
+  useEffect(() => {
+    fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT+5`)
+      .then((res) => res.json())
+      .then((info) => {
+        const apiDateTime = new Date(info.utc_datetime);
+        const formattedTime = apiDateTime.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+          timeZoneName: 'short' // Display the timezone abbreviation
+        });
+        const formattedDate = apiDateTime.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        setCurrentDateTime(`${formattedTime} - ${formattedDate}`);
+      });
+  }, []);
 
+  const currentDate = currentDateTime
 
   const generateUniqueTicketId = () => {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

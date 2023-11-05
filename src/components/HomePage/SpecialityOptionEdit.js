@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import BackToAdminDashboard from "../../Pages/Admin/BackToAdminDashboard";
 
 const SpecialityOptionEdit = () => {
   const navigate = useNavigate();
@@ -55,7 +56,9 @@ const SpecialityOptionEdit = () => {
   }, [id]);
 
   return (
+   
     <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+       <BackToAdminDashboard></BackToAdminDashboard>
       {speciality.map((e) => (
         <form onSubmit={handleEditSpeciality}>
           <div class="container">

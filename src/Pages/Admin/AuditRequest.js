@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import DashboardMenu from "./DashboardMenu";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const AuditRequest = () => {
   const [data, setData] = useState([]);
@@ -63,11 +64,11 @@ const AuditRequest = () => {
 
   return (
     <div>
+      <BackToAdminDashboard></BackToAdminDashboard>
       {users.map((u) =>
         user?.email === u.userEmail &&
         (u.userRole === "Admin" || u.userRole === "Manager") && (
           <div>
-            <DashboardMenu></DashboardMenu>
             <div className="container">
               <h5 className="text-center mt-15">Audit Request</h5>
               <div className="custom-ordermenu">

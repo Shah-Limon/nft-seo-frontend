@@ -18,14 +18,11 @@ const DashboardMenu = () => {
         <div className="container">
           <div className="row">
             <div className="row mb-15">
-              
               <div
                 className="col"
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
-               
                 <div>
-               
                   {user ? (
                     <Link className="action-btn" onClick={handleSignout}>
                       <span>Signout</span>
@@ -34,9 +31,7 @@ const DashboardMenu = () => {
                     <></>
                   )}
                 </div>
-               
               </div>
-              
             </div>
           </div>
           <div className="row">

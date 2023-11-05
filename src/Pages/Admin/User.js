@@ -47,7 +47,7 @@ const User = () => {
 
   return (
     <div
-     
+     className="hight-full"
       data-aos="fade-up"
       data-aos-duration={2000}
     >

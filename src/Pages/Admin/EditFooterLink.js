@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 const EditFooterLink = () => {
   const [footerLink, setFooterLink] = useState([]);
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const EditFooterLink = () => {
 
   return (
     <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form class="form mb-15" onSubmit={handleLinks}>
         <h4 className="mb-15">Update About & CopyRight</h4>
         <div class="container">

@@ -44,7 +44,7 @@ const Register = () => {
  
   return (
     <>
-      <div className="main-content">
+      <div className="main-content payment-setting" data-aos="fade-up" data-aos-duration={2000}>
         <div className="page-content">
           <section className="bg-auth">
             <div className="container">

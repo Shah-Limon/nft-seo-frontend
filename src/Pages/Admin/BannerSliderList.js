@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const BannerSliderList = () => {
   const { id } = useParams();
@@ -80,7 +81,7 @@ const BannerSliderList = () => {
 
   return (
     <div>
-      
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form className="form" onSubmit={handleSlider}>
         <div className="container">
           <div className="justify-content-center align-items-baseline">

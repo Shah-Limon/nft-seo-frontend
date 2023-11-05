@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  useAuthState,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -11,45 +12,49 @@ import { useEffect } from "react";
 const Login = () => {
   const [logo, setLogo] = useState([]);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const { register, formState: { errors }, handleSubmit,} = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
+
   useEffect(() => {
     fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
-  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
-  let from = location.state?.from?.pathname || "/";
+
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
   const [loginError, setLoginError] = useState(null);
-  if (loading || gLoading) {
-    return <div>Loading...</div>;
-  }
-  if (user || gUser) {
-    navigate("/user-dashboard");
-  }
+
+  const [userMail] = useAuthState(auth);
+
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password)
       .then(() => {
-        // Successful login
         navigate("/user-dashboard");
       })
       .catch((error) => {
-        // Handle login error and show the error message
         setLoginError("Incorrect email or password. Please try again.");
       });
   };
 
-
+  if (userMail) {
+    navigate("/user-dashboard");
+    return null;
+  }
 
   return (
     <>
-      <div className="main-content">
+      <div className="main-content payment-setting" data-aos="fade-up" data-aos-duration={2000}>
         <div className="page-content">
           <section className="bg-auth">
             <div className="container">
               <div className="row justify-content-center">
-                <div className="col-xl-10 col-lg-12">
+                <div className="col-lg-12">
                   <div
                     className="card auth-box mb-15"
                     style={{ background: "#0c0f2d" }}
@@ -57,15 +62,11 @@ const Login = () => {
                     <div className="row g-0">
                       <div className="col-lg-6 text-center">
                         <div className="card-body p-4">
-                          {
-                            logo.map(e =>
-                              <Link to="/">
-                            <img
-                              src={e.logo}
-                              alt="logo"
-                            />
-                          </Link>)
-                          }
+                          {logo.map((e) => (
+                            <Link to="/">
+                              <img src={e.logo} alt="logo" />
+                            </Link>
+                          ))}
                           <div className="mt-5">
                             <img
                               src="https://themesdesign.in/jobcy/layout/assets/images/auth/sign-in.png"
@@ -178,9 +179,7 @@ const Login = () => {
           </section>
         </div>
       </div>
-      {loginError && (
-        <div className="alert alert-danger">{loginError}</div>
-      )}
+      {loginError && <div className="alert alert-danger">{loginError}</div>}
     </>
   );
 };

@@ -299,7 +299,7 @@ const Banner = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/report-sent");
+        navigate("/submitted-website");
       });
   };
 
@@ -332,7 +332,7 @@ const Banner = () => {
                   <h6 className="sub-heading">
                     <span>{e.bannerToptext}</span>
                   </h6>
-                  <h2 className="heading">
+                  <h2 className="heading headling__slider">
                     {e.bannerHeadingText1} <br /> {e.bannerHeadingText2} {}
                     <span className="arlo_tm_animation_text_word">
                       <TypeAnimation

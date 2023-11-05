@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 const EditSocialLinks = () => {
   const [social, setSocial] = useState([]);
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ const EditSocialLinks = () => {
 
   return (
     <div>
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form class="form mb-15" onSubmit={handleFooter}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">

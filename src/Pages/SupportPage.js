@@ -15,10 +15,11 @@ const SupportPage = () => {
       .then((res) => res.json())
       .then((info) => setTickets(info.reverse()));
   }, []);
+  let rowNumber =1 ;
 
   return (
     <>
-      <section className="faq">
+      <section className="faq payment-setting" data-aos="fade-up" data-aos-duration={2000}>
         <div className="container">
           <div className="row">
             <div className="col-12">
@@ -44,38 +45,55 @@ const SupportPage = () => {
                   are Looking for
                 </h3>
 
+              {
+                tickets.filter(ticket=> ticket.ticketCreator === user?.email).length >= 1 &&
                 <div className="container">
-                  <h5 mt-15>List of the Submitted Tickets</h5>
-                  <table className="rwd-table" style={{ marginTop: "2rem" }}>
-                    <tbody>
-                      <tr>
-                        <th>SL No.</th>
-                        <th>Date</th>
-                        <th>Ticket ID</th>
-                        <th>Subject</th>
-                        <th>Status</th>
+                <h5 mt-15>List of the Submitted Tickets</h5>
+                <table className="rwd-table" style={{ marginTop: "2rem" }}>
+                  <tbody>
+                    <tr>
+                      <th>SL No.</th>
+                      <th>Date</th>
+                      <th>Ticket ID</th>
+                      <th>Subject</th>
+                      <th>Status</th>
 
-                        <th>View</th>
+                      <th>View</th>
+                    </tr>
+                    {tickets.map((item, index) => ( item.ticketCreator === user?.email &&
+                      <tr key={item._id}>
+                        <td>{rowNumber++}</td>
+
+                        <td>{item.currentDate}</td>
+                        <td>{item.TicketId}</td>
+                        <td>{item.subject}</td>
+                        <td>{item.ticketStatus}</td>
+
+                        <td>
+                          <Link to={`/user-dashboard/ticket/${item._id}`}>
+                            View
+                          </Link>
+                        </td>
                       </tr>
-                      {tickets.map((item, index) => ( item.ticketCreator === user?.email &&
-                        <tr key={item._id}>
-                          <td>{index + 1}</td>
-
-                          <td>{item.currentDate}</td>
-                          <td>{item.TicketId}</td>
-                          <td>{item.subject}</td>
-                          <td>{item.ticketStatus}</td>
-
-                          <td>
-                            <Link to={`/user-dashboard/ticket/${item._id}`}>
-                              View
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              }
+              {
+                tickets.filter(ticket=> ticket.ticketCreator === user?.email).length === 0 &&
+               <>
+               <div className="col">
+                  <Link
+                    to="/user-dashboard/create-ticket/"
+                    type="sumbit"
+                    className="action-btn"
+                  >
+                    <span>Create Ticket</span>
+                  </Link>
                 </div>
+               </>
+              }
               </div>
             </div>
           </div>

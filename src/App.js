@@ -83,6 +83,7 @@ import ResetPassword from './Pages/ResetPassword';
 import UpdatePassword from './Pages/UpdatePassword';
 import EditFeaturesPage from './Pages/Admin/EditFeaturesPage';
 import EditFeature from './Pages/Admin/EditFeature';
+import NewsLetterThank from './Pages/NewsLetterThank';
 
 
 function App() {
@@ -96,11 +97,14 @@ function App() {
         <Route path='/pricing' element={<PricePage></PricePage>}></Route>
 
 
-
-        <Route path='/user-dashboard/support/' element={<SupportPage></SupportPage>}></Route>
-        <Route path='/user-dashboard/create-ticket/' element={<TicketPage></TicketPage>}></Route>
+        <Route path='/user-dashboard' element={<RequireAuth><UserDashboard></UserDashboard></RequireAuth>}></Route>
+        <Route path='/user-dashboard/support/' element={<RequireAuth><SupportPage></SupportPage></RequireAuth>}></Route>
+        <Route path='/user-dashboard/create-ticket/' element={<RequireAuth><TicketPage></TicketPage></RequireAuth>}></Route>
         <Route path='/user-dashboard/support/:id' element={<RequireAuth><TicketAction></TicketAction></RequireAuth>}></Route>
         <Route path='/user-dashboard/ticket/:id' element={<RequireAuth><ViewTicketMessage></ViewTicketMessage></RequireAuth>}></Route>
+        
+        <Route path='/user-dashboard/my-orders/' element={<RequireAuth><MyOrders></MyOrders></RequireAuth>}></Route>
+        <Route path='/user-dashboard/spend/' element={<RequireAuth><TotalSpend></TotalSpend></RequireAuth>}></Route>
 
 
         <Route path='/contact-us' element={<ContactPage></ContactPage>}></Route>
@@ -110,14 +114,13 @@ function App() {
         <Route path='/reset' element={<ResetPassword></ResetPassword>}></Route>
         <Route path='/update-password' element={<UpdatePassword></UpdatePassword>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
-        <Route path='/report-sent' element={<EmailThankYou></EmailThankYou>}></Route>
+        <Route path='/submitted-website' element={<RequireAuth><EmailThankYou></EmailThankYou></RequireAuth>}></Route>
+        <Route path='/news-letter-submit' element={<NewsLetterThank></NewsLetterThank>}></Route>
         <Route path='/message-sent-success' element={<ContactMessageSuccessMessage></ContactMessageSuccessMessage>}></Route>
-        <Route path='/report/:id' element={<ReportSeo></ReportSeo>}></Route>
+        <Route path='/report/:id' element={<RequireAuth><ReportSeo></ReportSeo></RequireAuth>}></Route>
         <Route path='/package/:id' element={<RequireAuth><Package></Package></RequireAuth>}></Route>
         <Route path='/package-title-edit/:id' element={<RequireAuth><PackageTitleEdit></PackageTitleEdit></RequireAuth>}></Route>
-        <Route path='/user-dashboard' element={<RequireAuth><UserDashboard></UserDashboard></RequireAuth>}></Route>
-        <Route path='/user-dashboard/my-orders/' element={<RequireAuth><MyOrders></MyOrders></RequireAuth>}></Route>
-        <Route path='/user-dashboard/spend/' element={<RequireAuth><TotalSpend></TotalSpend></RequireAuth>}></Route>
+       
         <Route path='/pay-now/:id' element={<RequireAuth><PayNow></PayNow></RequireAuth>}></Route>
         <Route path='/pending-payment/' element={<RequireAuth><PendingPayment></PendingPayment></RequireAuth>}></Route>
         <Route path='/cancelled-payment/:id' element={<RequireAuth><CancelledPayment></CancelledPayment></RequireAuth>}></Route>
@@ -207,9 +210,8 @@ function App() {
 
 
 
-
-        <Route path='/admin/order/:id' element={<RequireAuth><AdminRoute><OrderAction></OrderAction></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/orders' element={<RequireAuth><AdminRoute><TotalOrders></TotalOrders></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/order/:id' element={<RequireAuth><AdminRoute><OrderAction></OrderAction></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/orders-pending' element={<RequireAuth><AdminRoute><OrderPending></OrderPending></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/payments/pending' element={<RequireAuth><AdminRoute><PaymentPending></PaymentPending></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/orders/accepted' element={<RequireAuth><AdminRoute><AcceptedOrder></AcceptedOrder></AdminRoute></RequireAuth>}></Route>

@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams } from "react-router-dom";
 import auth from "../firebase.init";
+import Loading from "../components/Shared/Loading";
 
 const CancelledPayment = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const formRef = useRef(null);
 
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    // Function to update payment status
     const updatePaymentStatus = async () => {
       try {
         const updateOrder = { paymentStatus: "Cancelled" };
@@ -23,18 +25,18 @@ const CancelledPayment = () => {
         });
 
         if (response.ok) {
-          // Wait for 2 seconds, then submit the form and navigate
           setTimeout(() => {
-            document.getElementById("cancelPaymentForm").submit();
+            formRef.current.submit();
+            setLoading(false);
             navigate("/user-dashboard");
-          }, 2000);
+          }, 1500);
         } else {
-          // Handle error if the update request fails
-          // You can add error handling logic here
+          console.error("Payment update failed.");
+          setLoading(false);
         }
       } catch (error) {
-        // Handle any other errors that may occur during the process
-        // You can add error handling logic here
+        console.error("An error occurred:", error);
+        setLoading(false);
       }
     };
 
@@ -43,28 +45,37 @@ const CancelledPayment = () => {
 
   return (
     <div>
-      <section className="testimonials s2">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="testimonials__main">
-                <div className="block-text center">
-                  <h4 className="heading">You have cancelled the payment</h4>
+      <div>
+        {loading ? (
+          <div>
+            <Loading></Loading>
+          </div>
+        ) : (
+          <section className="testimonials s2">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="testimonials__main">
+                    <div className="block-text center">
+                      <h4 className="heading">
+                        You have cancelled the payment
+                      </h4>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-      <form id="cancelPaymentForm" onSubmit={(event) => event.preventDefault()}>
-        <input
-          type="text"
-          hidden
-          name="paymentStatus"
-          value="Cancelled"
-        ></input>
-        <input type="submit" hidden value="Cancel Payment Now"></input>
-      </form>
+          </section>
+        )}
+        <form
+          ref={formRef}
+          id="cancelPaymentForm"
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <input type="text" hidden name="paymentStatus" value="Cancelled" />
+          <input type="submit" hidden value="Cancel Payment Now" />
+        </form>
+      </div>
     </div>
   );
 };

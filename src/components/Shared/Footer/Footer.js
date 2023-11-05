@@ -49,7 +49,7 @@ const Footer = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/");
+        navigate("/news-letter-submit");
       });
   };
 

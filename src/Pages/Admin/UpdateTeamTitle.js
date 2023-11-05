@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 const TeamList = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ const TeamList = () => {
 
   return (
     <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form class="form" onSubmit={handleTeamTitle}>
         {title.map((e) => (
           <div class="container">

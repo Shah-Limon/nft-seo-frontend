@@ -100,21 +100,17 @@ const Packages = () => {
 
   return (
     <div>
-      <div className="container h-100">
-      <div class="col-sm mb-15">
-    
-              {title.map((e) => (
-                <Link to={`/package-title-edit/${e._id}`} class="action-btn">
-                  <span>Edit Price Title</span>
-                <BackToAdminDashboard></BackToAdminDashboard>
-                </Link>
-              ))}
-            </div>
+      <div className="container hight-full">
+        <div class="col-sm mb-15">
+          {title.map((e) => (
+            <Link to={`/package-title-edit/${e._id}`} class="action-btn">
+              <span>Edit Price Title</span>
+              <BackToAdminDashboard></BackToAdminDashboard>
+            </Link>
+          ))}
+        </div>
         <table className="rwd-table">
-          
-          <div>
-            
-          </div>
+          <div></div>
           <tbody>
             <tr>
               <th>SL No.</th>
@@ -124,9 +120,9 @@ const Packages = () => {
             </tr>
             {packages.map((item, index) => (
               <tr key={item._id}>
-                <td>{index + 1}</td>
-                <td>{item.packageName}</td>
-                <td>{item.price}$</td>
+                <td data-th="SL No.">{index + 1}</td>
+                <td data-th="Package Name">{item.packageName}</td>
+                <td data-th="Price">{item.price}$</td>
                 <td data-th="Edit">
                   <Link to={`/admin/package-edit/${item._id}`}>Edit</Link>
                 </td>

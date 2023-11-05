@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import BackToAdminDashboard from "../../Pages/Admin/BackToAdminDashboard";
 
 const SpecialityOptionEdit = () => {
   const navigate = useNavigate();
@@ -86,6 +87,7 @@ const SpecialityOptionEdit = () => {
       data-aos="fade-up"
       data-aos-duration={2000}
     >
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form onSubmit={handleEditAbout}>
         {about.map((e) => (
           <div class="container">
@@ -103,14 +105,14 @@ const SpecialityOptionEdit = () => {
                 {imagePreview && (
                   <img
                     src={imagePreview}
-                    alt="Image Preview"
+                    alt="Images Preview"
                     style={{ maxWidth: "100px" }}
                   />
                 )}
                 {!imageFile && !imagePreview && storedImage && (
                   <img
                     src={storedImage}
-                    alt="Stored Image"
+                    alt="Storeds"
                     style={{ maxWidth: "100px" }}
                   />
                 )}

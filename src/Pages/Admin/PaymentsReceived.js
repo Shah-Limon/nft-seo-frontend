@@ -6,12 +6,12 @@ import OrderMenu from "./OrderMenu";
 const PaymentsReceived = () => {
   const [orders, setOrders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   useEffect(() => {
     fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
-      .then((info) => setOrders(info));
+      .then((info) => setOrders(info.reverse()));
   }, []);
 
   // Filter orders with paymentStatus === "Received	"
@@ -32,7 +32,7 @@ const PaymentsReceived = () => {
 
   return (
     <>
-      <div>
+      <div className="hight-full">
         <h4 className="text-center">Total Payment Received</h4>
         <OrderMenu></OrderMenu>
         <table className="rwd-table">
@@ -52,15 +52,15 @@ const PaymentsReceived = () => {
             </tr>
             {paginatedOrders.map((item, index) => (
               <tr key={item._id}>
-                <td>{index + 1 + (currentPage - 1) * itemsPerPage}</td>
-                <td>{item.orderDate}</td>
-                <td>{item.customerName}</td>
-                <td>{item.packageName}</td>
-                <td>${item.packagePrice}</td>
-                <td>{item.customerWebsite}</td>
-                <td>{item.customerEmail}</td>
-                <td>{item.customerNote}</td>
-                <td>{item.paymentStatus}</td>
+                <td data-th="SL No.">{index + 1 + (currentPage - 1) * itemsPerPage}</td>
+                <td data-th="Name">{item.orderDate}</td>
+                <td data-th="Package">{item.customerName}</td>
+                <td data-th="Price">{item.packageName}</td>
+                <td data-th="Website">${item.packagePrice}</td>
+                <td data-th="Email">{item.customerWebsite}</td>
+                <td data-th="Note">{item.customerEmail}</td>
+                <td data-th="Payment Status">{item.customerNote}</td>
+                <td data-th="Edit">{item.paymentStatus}</td>
                
                 <td>
                   <Link to={`/admin/order/${item._id}`}>Action</Link>

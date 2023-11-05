@@ -107,19 +107,9 @@ const CompleteAuditRequest = () => {
                   <ul>
                     <li>
                       <div className="d-flex">
-                      <Link
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                      >
-                        {"<"}
-                      </Link>
+                     
                       {renderPaginationLinks()}
-                      <Link
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === pageCount}
-                      >
-                        {">"}
-                      </Link>
+                     
                       </div>
                     </li>
                   </ul>

@@ -139,9 +139,31 @@ const ViewTicketMessage = () => {
 
   const [tickets, setTickets] = useState([]);
   const [ticket, setTicket] = useState({});
-
   // State variable to store the current date
-  const currentDate = new Date().toLocaleDateString("en-GB"); // 'en-GB' represents the 'dd-mm-yyyy' format
+  
+  const [currentDateTime, setCurrentDateTime] = useState("");
+
+  useEffect(() => {
+    fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT+5`)
+      .then((res) => res.json())
+      .then((info) => {
+        const apiDateTime = new Date(info.utc_datetime);
+        const formattedTime = apiDateTime.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+          timeZoneName: 'short' // Display the timezone abbreviation
+        });
+        const formattedDate = apiDateTime.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        setCurrentDateTime(`${formattedTime} - ${formattedDate}`);
+      });
+  }, []);
+
+  const currentDate = currentDateTime
 
   const HandleTicketReply = (event) => {
     event.preventDefault();
@@ -188,6 +210,9 @@ const ViewTicketMessage = () => {
       .then((info) => setTicket(info));
   }, [id]);
 
+
+
+  
   return (
     <>
       <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
@@ -248,7 +273,7 @@ const ViewTicketMessage = () => {
                             defaultValue={ticket.ticketCreator}
                           />
                           <input
-                            hidden
+                           hidden
                             type="text"
                             value={currentDate}
                             name="currentDate"

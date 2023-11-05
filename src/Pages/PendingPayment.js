@@ -15,7 +15,7 @@ const PendingPayment = () => {
 
   let rowNumber = 1;
   return (
-    <div className="container">
+    <div className="container hight-full">
       <table className="rwd-table">
         <tbody>
           <tr>

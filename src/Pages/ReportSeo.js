@@ -87,7 +87,7 @@ const ReportSeo = () => {
             <div className="col">
                 {website.pdfLink && ( // Only render the download button if pdfLink is available
                   <button type="button" className="action-btn" onClick={downloadPDF}>
-                    <span>Download PDF</span>
+                    <span>View PDF</span>
                   </button>
                 )}
               </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const Updatepaypal = () => {
   const { id } = useParams();
@@ -39,6 +40,7 @@ const Updatepaypal = () => {
 
   return (
     <>
+    <BackToAdminDashboard></BackToAdminDashboard>
       {paymentEmail.map((payment) => (
         <>
           <section className="banner s2 payment-setting" data-aos="fade-up" data-aos-duration={3000}>

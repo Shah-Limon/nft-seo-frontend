@@ -60,9 +60,9 @@ const UserDashboardMenu = () => {
               <div className="project-box">
                 <div className="image"></div>
                 <div className="content">
-                  <Link to="/user-dashboard/spend/" className="h5 title">
-                    Total Spend ({totalSpend}$)
-                  </Link>
+                  <p className="h5 title">
+                    Total Spent ({totalSpend}$)
+                  </p>
                 </div>
               </div>
             </div>

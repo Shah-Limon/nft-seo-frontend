@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const TeamList = () => {
   const navigate = useNavigate();
@@ -88,8 +89,9 @@ const TeamList = () => {
   };
 
   return (
-    <div>
-      <form className="form" onSubmit={updateTeam}>
+    <div data-aos="fade-up" data-aos-duration={2000}>
+<BackToAdminDashboard></BackToAdminDashboard>
+      <form className="form mb-30" onSubmit={updateTeam}>
         <div className="container">
           <div className="justify-content-center align-items-baseline">
             <h4 className="sub-heading">

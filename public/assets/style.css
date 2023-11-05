@@ -511,8 +511,11 @@ li.footer-email {
   margin-top: 10px; /* Adjust the margin value as needed */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 800px) {
   .payment-setting {
+    height: 100vh;
+  }
+  .hight-full {
     height: 100vh;
   }
 }
@@ -557,18 +560,14 @@ li.footer-email {
   }
 }
 
-
-
-@media (min-width: 676px) {
+@media (min-width: 767px) {
   .menu-item__dashlink {
     display: none;
   }
   .project.s2 .shape {
     top: 0;
   }
-  
 }
-
 
 .form-box__left {
   margin-top: 0;
@@ -577,10 +576,15 @@ li.footer-email {
   text-align: left;
 }
 
-
-
-.form-box__left  input.form-control, .form-box__left select, .form-box__left textarea {
-  background: linear-gradient(89.96deg, rgba(255, 255, 255, 0.05) 0.03%, rgba(255, 255, 255, 0.008) 49.67%, rgba(255, 255, 255, 0.05) 99.96%);
+.form-box__left input.form-control,
+.form-box__left select,
+.form-box__left textarea {
+  background: linear-gradient(
+    89.96deg,
+    rgba(255, 255, 255, 0.05) 0.03%,
+    rgba(255, 255, 255, 0.008) 49.67%,
+    rgba(255, 255, 255, 0.05) 99.96%
+  );
   backdrop-filter: blur(2px);
   border-radius: 6px;
   padding: 12px 15px;
@@ -593,6 +597,41 @@ li.footer-email {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.form-box__left  select option {
+.form-box__left select option {
   color: #000000 !important;
+}
+
+.feature_block {
+  padding: 56px 0 0 35px !important;
+}
+
+.block-text.center.feature_block p {
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+h2,
+.h2 {
+}
+
+@media only screen and (max-width: 767px) {
+  h2.headling__slider {
+    font-size: 27px;
+  }
+  .block-text.center.feature_block p {
+    padding: 0;
+  }
+}
+
+.features__center {
+  text-align: center;
+  padding: 0 0 57px !important;
+}
+
+.pagination__margin ul li a {
+  margin: 10px;
+}
+
+ul.custom-orders-ul {
+  flex-wrap: wrap;
 }
