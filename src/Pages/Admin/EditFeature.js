@@ -19,17 +19,17 @@ const EditFeature = () => {
 
   const handleFeature = async (event) => {
     event.preventDefault();
-    const topText = event.target.topText.value;
-    const title = event.target.title.value;
-    const subText = event.target.subText.value;
+    // const topText = event.target.topText.value;
+    // const title = event.target.title.value;
+    // const subText = event.target.subText.value;
     const featureDesc = event.target.featureDesc.value;
     const featureTitle = event.target.featureTitle.value;
 
     // Determine if an image is being uploaded or if a stored image link should be used
-    let featureImg = feature.img; // Default to the current image
+    let featureImg = feature.img; 
 
     if (!imageFile && feature.featureImg) {
-      featureImg = feature.featureImg; // Set to the database image if not uploading a new one
+      featureImg = feature.featureImg; 
     }
 
     // If an image is being uploaded, send it to imgbb
@@ -47,14 +47,14 @@ const EditFeature = () => {
         featureImg = imgbbResponse.data.data.url;
       } catch (error) {
         console.error("Image upload to imgbb failed:", error);
-        return; // Don't proceed if image upload fails
+        return; 
       }
     }
 
     const updatedFeature = {
-      topText,
-      title,
-      subText,
+      // topText,
+      // title,
+      // subText,
       featureImg,
       featureDesc,
       featureTitle,
@@ -70,7 +70,7 @@ const EditFeature = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/admin/setting-homepage/");
+        navigate("/admin/setting");
       });
   };
 
@@ -91,7 +91,7 @@ const EditFeature = () => {
             <h4 className="sub-heading">
               <span>Edit Features</span>
             </h4>
-            <div className="col-sm">
+            {/* <div className="col-sm">
               <label className="mt-1">Enter Title Top Text</label>
               <div className="form-group mb-3">
                 <input
@@ -126,7 +126,7 @@ const EditFeature = () => {
                   defaultValue={feature.subText}
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className="col-sm">
               <label className="mt-1">Enter Feature Title</label>

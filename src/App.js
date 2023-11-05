@@ -105,6 +105,7 @@ function App() {
 
         <Route path='/user-dashboard' element={<RequireAuth><UserDashboard></UserDashboard></RequireAuth>}></Route>
         <Route path='/user-dashboard/support/' element={<RequireAuth><SupportPage></SupportPage></RequireAuth>}></Route>
+
         <Route path='/user-dashboard/create-ticket/' element={<RequireAuth><TicketPage></TicketPage></RequireAuth>}></Route>
         <Route path='/user-dashboard/support/:id' element={<RequireAuth><TicketAction></TicketAction></RequireAuth>}></Route>
         <Route path='/user-dashboard/ticket/:id' element={<RequireAuth><ViewTicketMessage></ViewTicketMessage></RequireAuth>}></Route>
@@ -134,14 +135,17 @@ function App() {
 
 
         <Route path='/admin/dashboard' element={<RequireAuth><ManagerRoute><Dashboard></Dashboard></ManagerRoute></RequireAuth>}></Route>
+
+
         <Route path='/admin/help-desk' element={<RequireAuth><AdminRoute><HelpDesk></HelpDesk></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/help-desk/open-ticket' element={<RequireAuth><AdminRoute><OpenTicket></OpenTicket></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/help-desk/:id' element={<RequireAuth><AdminRoute> <HelpDeskAction></HelpDeskAction> </AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/help-desk/replied-ticket' element={<RequireAuth><AdminRoute><RepliedTicket></RepliedTicket></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/help-desk/solved-ticket' element={<RequireAuth><AdminRoute><SolvedTicket></SolvedTicket></AdminRoute></RequireAuth>}></Route>
 
 
 
-        <Route path='/admin/help-desk/:id' element={<RequireAuth><AdminRoute> <HelpDeskAction></HelpDeskAction> </AdminRoute></RequireAuth>}></Route>
+       
 
 
 

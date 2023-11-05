@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 import BackToAdminDashboard from "./BackToAdminDashboard";
 const Packages = () => {
@@ -22,7 +22,7 @@ const Packages = () => {
       .then((info) => setPackages(info));
   }, []);
 
-  let rowNumber = 1;
+
 
   const handlePackagesTitle = (event) => {
     event.preventDefault();

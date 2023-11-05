@@ -2,23 +2,20 @@ import React, { useState } from "react";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const Login = () => {
   const [logo, setLogo] = useState([]);
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     fetch(`http://localhost:5000/logo`)
@@ -26,7 +23,7 @@ const Login = () => {
       .then((info) => setLogo(info));
   }, []);
 
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword] =
     useSignInWithEmailAndPassword(auth);
   const [loginError, setLoginError] = useState(null);
 

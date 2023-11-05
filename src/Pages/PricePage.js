@@ -48,10 +48,10 @@ const PricePage = () => {
                 <div className="swiper testimonials-swiper s2">
                   <div className="container">
                     <div className="row">
-                      {packages.map((p) => (
+                      {packages.map((p , i) => (
                         <div className="col-lg-4 col-md-6 col-12 margin__mobile">
                           <div className="swiper-slide">
-                            <div className="box-testimonial center">
+                            <div className="box-testimonial center" key={i}>
                               <div className="image">
                                 <img src={p.img} alt="" />
                               </div>

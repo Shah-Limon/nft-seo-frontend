@@ -35,8 +35,8 @@ const NavBar = () => {
             <div className="col-12">
               <div className="header__body">
                 <div className="header__logo">
-                  {logo.map((showLogo) => (
-                    <Link to="/">
+                  {logo.map((showLogo , index) => (
+                    <Link to="/" key={index}>
                       <img
                         id="site-logo"
                         src={showLogo.logo}

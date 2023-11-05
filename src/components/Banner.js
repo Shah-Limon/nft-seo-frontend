@@ -327,8 +327,8 @@ const Banner = () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              {banner.map((e) => (
-                <div className="block-text center">
+              {banner.map((e,i) => (
+                <div className="block-text center" key={i}>
                   <h6 className="sub-heading">
                     <span>{e.bannerToptext}</span>
                   </h6>
@@ -401,8 +401,8 @@ const Banner = () => {
               ))}
               <div className="swiper bannerSwiper">
                 <div className="swiper-wrapper" style={{ gap: "20px" }}>
-                  {sliders.map((e) => (
-                    <div className="swiper-slide">
+                  {sliders.map((e,i ) => (
+                    <div className="swiper-slide" key={i}>
                       <div className="card-box card-custom">
                         <div className="top d-flex">
                           <span className="icon-logo-01" />

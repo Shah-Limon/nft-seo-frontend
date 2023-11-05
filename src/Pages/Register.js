@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 
 
 const Register = () => {
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [gUser, gLoading] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
@@ -24,7 +24,7 @@ const Register = () => {
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, user, loading] =
     useCreateUserWithEmailAndPassword(auth);
 
   if (loading || gLoading) {

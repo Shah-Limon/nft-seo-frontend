@@ -30,8 +30,8 @@ const Testimonials = () => {
             <div className="col-md-12">
               <div className="testimonials__main">
                 <div className="block-text center">
-                  {title.map((e) => (
-                    <React.Fragment key={e.id}>
+                  {title.map((e, i) => (
+                    <React.Fragment key={i}>
                       <h6 className="sub-heading">
                         <span>{e.titleTopText}</span>
                       </h6>

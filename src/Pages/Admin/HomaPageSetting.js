@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const HomaPageSetting = () => {
   const { id } = useParams();
-  const [paymentEmail, setPaymentEmail] = useState([]);
-  const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
   const [about, setAbout] = useState([]);

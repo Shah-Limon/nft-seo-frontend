@@ -33,8 +33,8 @@ const Pricing = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="testimonials__main">
-                {title.map((e) => (
-                  <div className="block-text center">
+                {title.map((e, i) => (
+                  <div className="block-text center" key={i}>
                     <h6 className="sub-heading">
                       <span>{e.titleTop}ss</span>
                     </h6>
@@ -48,8 +48,8 @@ const Pricing = () => {
                 <div className="swiper testimonials-swiper s2">
                   <div className="container">
                     <div className="row">
-                      {packages.map((p) => (
-                        <div className="col-lg-4 col-md-6 col-12 margin__mobile">
+                      {packages.map((p, i) => (
+                        <div className="col-lg-4 col-md-6 col-12 margin__mobile" key={i}>
                           <div className="swiper-slide">
                             <div className="box-testimonial center">
                               <div className="image">

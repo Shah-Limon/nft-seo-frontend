@@ -41,9 +41,9 @@ const Updatepaypal = () => {
   return (
     <>
     <BackToAdminDashboard></BackToAdminDashboard>
-      {paymentEmail.map((payment) => (
+      {paymentEmail.map((payment, i ) => (
         <>
-          <section className="banner s2 payment-setting" data-aos="fade-up" data-aos-duration={3000}>
+          <section className="banner s2 payment-setting" data-aos="fade-up" data-aos-duration={3000} key={i}>
             <div className="shape" />
             <div className="shape right" />
             <div className="container">

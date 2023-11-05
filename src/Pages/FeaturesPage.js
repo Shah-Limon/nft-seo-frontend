@@ -23,9 +23,9 @@ const FeaturesPage = () => {
         <div className="shape" />
 
         <div className="container">
-          {feature.map((e) => (
+          {feature.map((e,i ) => (
             <>
-              <div className="row  justify-content-center">
+              <div className="row  justify-content-center" key={i}>
                 <div className="col-lg-5 col-md-12">
                   <div className="about__right">
                     <div className="images">
@@ -38,7 +38,7 @@ const FeaturesPage = () => {
                     <h3 className="heading wow" data-splitting="">
                       {e.featureTitle}
                     </h3>
-                    <p className="mb-17">
+                    <p className="mb-17 feature__text-left">
                       {e.featureDesc
                         .split(". ")
                         .map((sentence, sentenceIndex, sentencesArray) => (
