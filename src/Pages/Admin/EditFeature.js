@@ -12,7 +12,7 @@ const EditFeature = () => {
   const [imgbbApiKey] = useState("1f8cc98e0f42a06989fb5e2589a9a8a4");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/feature/${id}`)
+    fetch(`https://nft-seo-server.onrender.com//feature/${id}`)
       .then((res) => res.json())
       .then((info) => setFeature(info));
   }, [id]);
@@ -60,7 +60,7 @@ const EditFeature = () => {
       featureTitle,
     };
 
-    const url = `http://localhost:5000/feature/${id}`;
+    const url = `https://nft-seo-server.onrender.com//feature/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

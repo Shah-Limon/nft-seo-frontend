@@ -33,7 +33,7 @@
 //       subject,
 //     };
 
-//     const url = `http://localhost:5000/add-ticket`;
+//     const url = `https://nft-seo-server.onrender.com//add-ticket`;
 //     fetch(url, {
 //       method: "POST",
 //       headers: {
@@ -172,7 +172,7 @@ const TicketPage = () => {
       names
     };
 
-    const url = `http://localhost:5000/add-ticket`;
+    const url = `https://nft-seo-server.onrender.com//add-ticket`;
     fetch(url, {
       method: "POST",
       headers: {

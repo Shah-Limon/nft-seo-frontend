@@ -10,7 +10,7 @@ const EditBanner = () => {
   const [banner, setBanner] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/banner/`)
+    fetch(`https://nft-seo-server.onrender.com//banner/`)
       .then((res) => res.json())
       .then((info) => setBanner(info));
   }, [id]);
@@ -37,7 +37,7 @@ const EditBanner = () => {
       bannertext,
     };
 
-    const url = `http://localhost:5000/edit-banner/${id}`;
+    const url = `https://nft-seo-server.onrender.com//edit-banner/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
