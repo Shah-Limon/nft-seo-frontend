@@ -511,7 +511,7 @@ li.footer-email {
   margin-top: 10px; /* Adjust the margin value as needed */
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1023px) {
   .payment-setting {
     height: 100vh;
   }
@@ -635,3 +635,4 @@ h2,
 ul.custom-orders-ul {
   flex-wrap: wrap;
 }
+

@@ -7,6 +7,7 @@ const PaymentsCancelled = () => {
   const [orders, setOrders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  const paginationDigits = 3;
 
   useEffect(() => {
     fetch(`http://localhost:5000/orders`)
@@ -15,20 +16,25 @@ const PaymentsCancelled = () => {
   }, []);
 
   // Filter orders with paymentStatus === "Cancelled"
-  const pendingOrders = orders.filter(
+  const PaymentsCancelled = orders.filter(
     (order) => order.paymentStatus === "Cancelled"
   );
+ // Pagination function
+ const paginate = (pageNumber) => {
+  setCurrentPage(pageNumber);
+};
 
-  const paginatedOrders = pendingOrders.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+const totalPages = Math.ceil(PaymentsCancelled.length / itemsPerPage);
 
-  const totalPages = Math.ceil(pendingOrders.length / itemsPerPage);
+// Calculate the range of pagination digits
+const startDigit = Math.max(1, currentPage - Math.floor(paginationDigits / 2));
+const endDigit = Math.min(startDigit + paginationDigits - 1, totalPages);
 
-  const changePage = (page) => {
-    setCurrentPage(page);
-  };
+// Calculate the index range for the current page
+const indexOfLastItem = currentPage * itemsPerPage;
+const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+const currentItems = PaymentsCancelled.slice(indexOfFirstItem, indexOfLastItem);
+ 
 
   return (
     <>
@@ -50,7 +56,7 @@ const PaymentsCancelled = () => {
               
               <th>Edit</th>
             </tr>
-            {paginatedOrders.map((item, index) => (
+            {currentItems.map((item, index) => (
               <tr key={item._id}>
                 <td data-th="SL No.">{index + 1 + (currentPage - 1) * itemsPerPage}</td>
                 <td data-th="Date">{item.orderDate}</td>
@@ -69,22 +75,26 @@ const PaymentsCancelled = () => {
             ))}
           </tbody>
         </table>
-        <div className="pagination mb-15">
-          <ul>
-            
-            {Array.from({ length: totalPages }, (_, index) => (
-              <li key={index}>
-                <Link
-                  onClick={() => changePage(index + 1)}
-                  className={currentPage === index + 1 ? "active" : ""}
-                >
-                  {index + 1}
-                </Link>
-              </li>
-            ))}
-            
-          </ul>
-        </div>
+        <div className="pagination pagination__margin">
+                 <ul>
+                  <li className="d-flex">
+                  {currentPage > 1 && (
+                    <Link onClick={() => paginate(currentPage - 1)}>{"<"}</Link>
+                  )}
+                  {Array.from({ length: endDigit - startDigit + 1 }, (_, index) => (
+                    <Link
+                      key={startDigit + index}
+                      onClick={() => paginate(startDigit + index)}
+                    >
+                      {startDigit + index}
+                    </Link>
+                  ))}
+                  {currentPage < totalPages && (
+                    <Link onClick={() => paginate(currentPage + 1)}>{">"}</Link>
+                  )}
+                  </li>
+                 </ul>
+                </div>
       </div>
     </>
   );

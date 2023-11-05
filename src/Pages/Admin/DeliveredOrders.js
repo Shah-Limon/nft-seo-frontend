@@ -1,101 +1,118 @@
 import React, { useEffect, useState } from "react";
+import "./Dashboard.css";
 import { Link } from "react-router-dom";
-import OrderMenus from "../../components/Shared/OrderMenus";
+import OrderMenu from "./OrderMenu";
+
+import { ScaleLoader  } from "react-spinners";
 
 const DeliveredOrders = () => {
-  const [orders, setorders] = useState([]);
+  const [orders, setOrders] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true); 
+  const itemsPerPage = 10;
 
   useEffect(() => {
     fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
-      .then((info) => setorders(info));
+      .then((info) => {
+        setOrders(info.reverse());
+        setLoading(false); 
+      });
   }, []);
 
-  return (
-    <div className="container mx-auto  items-center">
-      <div className=" w-full bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Total {orders.filter(order => order.deliveryStatus === 'Delivered').length}</h2>
+  // Filter orders with orderStatus === "Pending"
+  const pendingOrders = orders.filter(
+    (order) => order.orderStatus === "Delivered"
+  );
 
-          <div className="overflow-x-auto">
-            <table className="table w-full">
-              <thead>
-                <tr>
-                  <th>Prduct Name</th>
-                  <th>Price</th>
-                  <th>Customer</th>
-                  <th>Payment Status</th>
-                  <th>Order Status</th>
-                  <th>Delivery Status</th>
-                  <th>Edit Order</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders
-                  .map((order) => order.deliveryStatus === 'Delivered' &&
-                    <tr>
-                      <th>{order.ProductName}</th>
-                      <td>{order.ProductPrice}</td>
-                      <td>
-                        <h2 className="font-bold">{order.customerName}</h2>
-                        {order.customerAddress},{order.customerUpozilaName},
-                        {order.customerDistrictName}
-                        <h2>{order.customerPhoneNumber}</h2>
-                      </td>
-                      <td>{order.paymentStatus}</td>
-                      <td>
-                        {order.orderStatus === "Pending" && (
-                          <>
-                            <p className="font-bold">Order Pending</p>
-                            <Link
-                              to={`/admin/order/accept-cancel/${order._id}`}
-                              className="btn btn-sm"
-                            >
-                              Accept/Cancel
-                            </Link>
-                          </>
-                        )}
-                        {order.orderStatus === "Cancelled" && (
-                          <>
-                            <p className="font-bold">Order Cancelled</p>
-                            <Link
-                              to={`/admin/order/accept-cancel/${order._id}`}
-                              className="btn btn-sm"
-                            >
-                              Accept Now
-                            </Link>
-                          </>
-                        )}
-                        {order.orderStatus === "Accepted" && (
-                          <>
-                            <p className="font-bold">Order Accepted</p>
-                            <Link
-                              to={`/admin/order/accept-cancel/${order._id}`}
-                              className="btn btn-sm"
-                            >
-                              Cancel Now
-                            </Link>
-                          </>
-                        )}
-                      </td>
-                      <td>{order.deliveryStatus}</td>
-                      <td>
-                        <Link
-                          to={`/admin/order/edit/${order._id}`}
-                          className="btn"
-                        >
-                          Edit
-                        </Link>
-                      </td>
-                    </tr>
-                  )
-                  .reverse()}
-              </tbody>
-            </table>
+  const paginatedOrders = pendingOrders.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const totalPages = Math.ceil(pendingOrders.length / itemsPerPage);
+
+  const changePage = (page) => {
+    setCurrentPage(page);
+  };
+
+  return (
+    <>
+      <div className="hight-full">
+        <h4 className="text-center">Total Delivered Orders</h4>
+        <OrderMenu></OrderMenu>
+        {loading ? (
+          // Render a loader when data is being fetched
+          <div
+            style={{
+              height: "100vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {loading ? (
+              <ScaleLoader color="#36d7b7" margin={50} size={30} />
+            ) : (
+              // Render your content here when loading is done
+              <div>
+                <h4 className="text-center">Total Delivered Orders</h4>
+              
+              </div>
+            )}
           </div>
-        </div>
+        ) : (
+          <table className="rwd-table">
+            <tbody>
+              <tr>
+                <th>SL No.</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Package</th>
+                <th>Price</th>
+                <th>Website</th>
+                <th>Email</th>
+                <th>Note</th>
+                <th>Order Status</th>
+                <th>Edit</th>
+              </tr>
+              {paginatedOrders.map((item, index) => (
+                <tr key={item._id}>
+                  <td>{index + 1 + (currentPage - 1) * itemsPerPage}</td>
+                  <td>{item.orderDate}</td>
+                  <td>{item.customerName}</td>
+                  <td>{item.packageName}</td>
+                  <td>${item.packagePrice}</td>
+                  <td>{item.customerWebsite}</td>
+                  <td>{item.customerEmail}</td>
+                  <td>{item.customerNote}</td>
+                  <td>{item.orderStatus}</td>
+                  <td>
+                    <Link to={`/admin/order/${item._id}`}>Action</Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {!loading && (
+          <div className="pagination mb-15">
+            <ul>
+              {Array.from({ length: totalPages }, (_, index) => (
+                <li key={index}>
+                  <Link
+                    onClick={() => changePage(index + 1)}
+                    className={currentPage === index + 1 ? "active" : ""}
+                  >
+                    {index + 1}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

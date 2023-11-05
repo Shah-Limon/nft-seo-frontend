@@ -81,9 +81,9 @@ const Login = () => {
                         <div className="auth-content card-body p-5 h-100 text-white">
                           <div className="w-100">
                             <div className="text-center mb-4">
-                              <h5>Welcome Back !</h5>
+                              <h4>Welcome Back !</h4>
                               <p className="text-white-70">
-                                Sign in to continue to Seo Webasite.
+                                Sign in to continue.
                               </p>
                             </div>
                             <form
@@ -165,6 +165,18 @@ const Login = () => {
                                 >
                                   {" "}
                                   Sign Up{" "}
+                                </Link>
+                              </p>
+                            </div>
+                            <div className="mt-4 text-center">
+                              <p className="mb-0">
+                                Forget password ?{" "}
+                                <Link
+                                  to="/reset"
+                                  className="fw-medium text-white text-decoration-underline"
+                                >
+                                  {" "}
+                                  Reset Now{" "}
                                 </Link>
                               </p>
                             </div>

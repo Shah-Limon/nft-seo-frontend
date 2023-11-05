@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import auth from "../firebase.init";
 import HelpDeskMenu from "./HelpDeskMenu";
+import BackToAdminDashboard from "./Admin/BackToAdminDashboard";
 
-const HelpDesk = () => {
-  const [user] = useAuthState(auth);
+const SolvedTicket = () => {
+
   const [tickets, setTickets] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -22,7 +21,13 @@ const HelpDesk = () => {
     setCurrentPage(pageNumber);
   };
 
-  const totalPages = Math.ceil(tickets.length / itemsPerPage);
+  const solvedTickets = tickets.filter(
+    (ticket) => ticket.ticketStatus === "Solved"
+  );
+
+  const totalSolvedTickets = solvedTickets.length;
+
+  const totalPages = Math.ceil(totalSolvedTickets / itemsPerPage);
 
   // Calculate the range of pagination digits
   const startDigit = Math.max(
@@ -34,12 +39,13 @@ const HelpDesk = () => {
   // Calculate the index range for the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = tickets.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = solvedTickets.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <>
       <section className="faq">
         <div className="container">
+          <BackToAdminDashboard></BackToAdminDashboard>
           <div className="row mt-15">
             <div className="col-12">
               <div className="row mb-0"></div>
@@ -51,7 +57,7 @@ const HelpDesk = () => {
                 <h3 className="heading">Customer Support Hub</h3>
 
                 <div className="container">
-                  <h5 mt-15>List of the User Submitted Tickets</h5>
+                  <h5 mt-15>List of the Solved Tickets</h5>
                   <HelpDeskMenu></HelpDeskMenu> <br></br>
                   <table className="rwd-table" style={{ marginTop: "2rem" }}>
                     <tbody>
@@ -66,15 +72,16 @@ const HelpDesk = () => {
                       </tr>
                       {currentItems.map((item, index) => (
                         <tr key={item._id}>
-                          <td>
+                          <td data-th="SL No.">
+                            {" "}
                             {index + 1 + itemsPerPage * (currentPage - 1)}
                           </td>
-                          <td>{item.currentDate}</td>
-                          <td>{item.TicketId}</td>
-                          <td>{item.subject}</td>
-                          <td>{item.ticketCreator}</td>
-                          <td>{item.ticketStatus}</td>
-                          <td>
+                          <td data-th="Date">{item.currentDate}</td>
+                          <td data-th="Ticket ID">{item.TicketId}</td>
+                          <td data-th="Subject">{item.subject}</td>
+                          <td data-th="Sender">{item.ticketCreator}</td>
+                          <td data-th="Status">{item.ticketStatus}</td>
+                          <td data-th="name">
                             <Link to={`/admin/help-desk/${item._id}`}>
                               View
                             </Link>
@@ -120,4 +127,4 @@ const HelpDesk = () => {
   );
 };
 
-export default HelpDesk;
+export default SolvedTicket;

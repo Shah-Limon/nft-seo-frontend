@@ -84,6 +84,11 @@ import UpdatePassword from './Pages/UpdatePassword';
 import EditFeaturesPage from './Pages/Admin/EditFeaturesPage';
 import EditFeature from './Pages/Admin/EditFeature';
 import NewsLetterThank from './Pages/NewsLetterThank';
+import OpenTicket from './Pages/OpenTicket';
+import RepliedTicket from './Pages/RepliedTicket';
+import SolvedTicket from './Pages/SolvedTicket';
+import DeliveredOrders from './Pages/Admin/DeliveredOrders';
+import ErrorPage from './Pages/ErrorPage';
 
 
 function App() {
@@ -93,6 +98,7 @@ function App() {
       <NavBar></NavBar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='*' element={<ErrorPage></ErrorPage>}></Route>
         <Route path='/about-us' element={<AboutPage></AboutPage>}></Route>
         <Route path='/pricing' element={<PricePage></PricePage>}></Route>
 
@@ -129,7 +135,18 @@ function App() {
 
         <Route path='/admin/dashboard' element={<RequireAuth><ManagerRoute><Dashboard></Dashboard></ManagerRoute></RequireAuth>}></Route>
         <Route path='/admin/help-desk' element={<RequireAuth><AdminRoute><HelpDesk></HelpDesk></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/help-desk/open-ticket' element={<RequireAuth><AdminRoute><OpenTicket></OpenTicket></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/help-desk/replied-ticket' element={<RequireAuth><AdminRoute><RepliedTicket></RepliedTicket></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/help-desk/solved-ticket' element={<RequireAuth><AdminRoute><SolvedTicket></SolvedTicket></AdminRoute></RequireAuth>}></Route>
+
+
+
         <Route path='/admin/help-desk/:id' element={<RequireAuth><AdminRoute> <HelpDeskAction></HelpDeskAction> </AdminRoute></RequireAuth>}></Route>
+
+
+
+
+
         <Route path='/admin/subscription-email/' element={<RequireAuth><AdminRoute><SubscriptionMail></SubscriptionMail></AdminRoute></RequireAuth>}></Route>
 
    
@@ -219,6 +236,7 @@ function App() {
         <Route path='/admin/orders/cancelled' element={<RequireAuth><AdminRoute><OrdersCancelled></OrdersCancelled></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/payments/cancelled' element={<RequireAuth><AdminRoute><PaymentsCancelled></PaymentsCancelled></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/payments/refunded' element={<RequireAuth><AdminRoute><PaymentsRefunded></PaymentsRefunded></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/orders/delivered' element={<RequireAuth><AdminRoute><DeliveredOrders></DeliveredOrders></AdminRoute></RequireAuth>}></Route>
 
 
 

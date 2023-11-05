@@ -80,9 +80,9 @@ const Register = () => {
                         <div className="auth-content card-body p-5 h-100 text-white">
                           <div className="w-100">
                             <div className="text-center mb-4">
-                              <h5>Welcome!</h5>
+                              <h4>Welcome!</h4>
                               <p className="text-white-70">
-                                Register to continue to Seo Webasite.
+                                Register to continue
                               </p>
                             </div>
                             <form
