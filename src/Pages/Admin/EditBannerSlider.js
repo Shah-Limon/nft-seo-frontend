@@ -11,7 +11,7 @@ const EditBannerSlider = () => {
   const [sliders, setSliders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/slider/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/slider/${id}`)
       .then((res) => res.json())
       .then((info) => setSliders(info));
   }, [id]);
@@ -44,7 +44,7 @@ const EditBannerSlider = () => {
         sliderImg,
       };
 
-      const url = `http://localhost:5000/slider/${id}`;
+      const url = `https://nft-seo-server.onrender.com/slider/${id}`;
       fetch(url, {
         method: "PUT",
         headers: {

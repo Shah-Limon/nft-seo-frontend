@@ -8,7 +8,7 @@ const FeaturesPage = () => {
   const [feature, setFeature] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/features`)
+    fetch(`https://nft-seo-server.onrender.com/features`)
       .then((res) => res.json())
       .then((info) => setFeature(info));
   }, [id]);

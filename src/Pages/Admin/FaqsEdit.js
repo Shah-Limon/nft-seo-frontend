@@ -8,7 +8,7 @@ const FaqsEdit = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/faq/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/faq/${id}`)
       .then((res) => res.json())
       .then((info) => setFaqs(info));
   }, [id]);
@@ -25,7 +25,7 @@ const FaqsEdit = () => {
       answer,
     };
 
-    const url = `http://localhost:5000/faq/${id}/`;
+    const url = `https://nft-seo-server.onrender.com/faq/${id}/`;
     fetch(url, {
       method: "PUT",
       headers: {

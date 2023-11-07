@@ -11,13 +11,13 @@ const PayNow = () => {
   const currentDomain = window.location.origin;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/order/${id}`)
+    fetch(`https://nft-seo-server.onrender.com/order/${id}`)
       .then((res) => res.json())
       .then((info) => setOrder(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/payments`)
+    fetch(`https://nft-seo-server.onrender.com/payments`)
       .then((res) => res.json())
       .then((info) => setPaypal(info));
   }, []);
