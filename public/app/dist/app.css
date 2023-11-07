@@ -1478,7 +1478,6 @@ a {
   margin-bottom: 28px;
 }
 .banner.s2 .block-text p {
-  padding: 0 285px;
   font-size: 17px;
   font-size: 16px;
 }
@@ -1588,7 +1587,7 @@ a {
 }
 .card-box .content .info p {
   font-weight: 300;
-  font-size: 14px;
+  font-size: 16px;
 }
 .card-box:hover .content .image img {
   transform: scale(1.1);

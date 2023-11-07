@@ -351,7 +351,7 @@ const Banner = () => {
                     </span>
                     <br />
                   </h2>
-                  <p className="mb-34">{e.bannertext}</p>
+                  <p className="mb-34 fs-4">{e.bannertext}</p>
                   <form
                     onSubmit={handleAddWebsite}
                     class="form card-box"
