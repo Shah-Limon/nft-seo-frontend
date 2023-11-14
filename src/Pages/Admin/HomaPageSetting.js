@@ -16,32 +16,32 @@ const HomaPageSetting = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/about`)
+    fetch(`http://localhost:5000/about`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/banner/`)
+    fetch(`http://localhost:5000/banner/`)
       .then((res) => res.json())
       .then((info) => setBanner(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/speciality/`)
+    fetch(`http://localhost:5000/speciality/`)
       .then((res) => res.json())
       .then((info) => SetSpeciality(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/why-choose/`)
+    fetch(`http://localhost:5000/why-choose/`)
       .then((res) => res.json())
       .then((info) => SetChoose(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/road/`)
+    fetch(`http://localhost:5000/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/team-title`)
+    fetch(`http://localhost:5000/team-title`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

@@ -7,13 +7,13 @@ const PaymentSetting = () => {
   const [cash, setCash] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/payment-accounts`)
+    fetch(`http://localhost:5000/payment-accounts`)
       .then((res) => res.json())
       .then((info) => setPayments(info));
   }, []);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/cash-on-delivery`)
+    fetch(`http://localhost:5000/cash-on-delivery`)
       .then((res) => res.json())
       .then((info) => setCash(info));
   }, []);
@@ -24,7 +24,7 @@ const PaymentSetting = () => {
 
     const cashOnDeliveryInfo = { cashOnDeliveryStatus };
 
-    const url = `https://nft-seo-server.onrender.com/cash-on-delivery`;
+    const url = `http://localhost:5000/cash-on-delivery`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -52,7 +52,7 @@ const PaymentSetting = () => {
       accountType,
     };
 
-    const url = `https://nft-seo-server.onrender.com/add-payment-account`;
+    const url = `http://localhost:5000/add-payment-account`;
     fetch(url, {
       method: "POST",
       headers: {

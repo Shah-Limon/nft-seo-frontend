@@ -11,7 +11,7 @@ const Updatepaypal = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/payments`)
+    fetch(`http://localhost:5000/payments`)
       .then((res) => res.json())
       .then((info) => setPaymentEmail(info));
   }, []);
@@ -24,7 +24,7 @@ const Updatepaypal = () => {
       email,
     };
 
-    const url = `https://nft-seo-server.onrender.com/payment/${id}`;
+    const url = `http://localhost:5000/payment/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

@@ -10,7 +10,7 @@ const FooterSetting = () => {
 
   /* footer about */
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-about`)
+    fetch(`http://localhost:5000/footer-about`)
       .then((res) => res.json())
       .then((info) => setFooterAbout(info));
   }, [footerAbout]);
@@ -25,7 +25,7 @@ const FooterSetting = () => {
       aboutUs,
     };
 
-    const url = `https://nft-seo-server.onrender.com/footer-about`;
+    const url = `http://localhost:5000/footer-about`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -41,7 +41,7 @@ const FooterSetting = () => {
 
   /* footer Address */
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-address`)
+    fetch(`http://localhost:5000/footer-address`)
       .then((res) => res.json())
       .then((info) => setFooterAddress(info));
   }, [footerAddress]);
@@ -58,7 +58,7 @@ const FooterSetting = () => {
       footerAdress,
     };
 
-    const url = `https://nft-seo-server.onrender.com/footer-address`;
+    const url = `http://localhost:5000/footer-address`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -73,7 +73,7 @@ const FooterSetting = () => {
   };
   /* Social Address */
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-social`)
+    fetch(`http://localhost:5000/footer-social`)
       .then((res) => res.json())
       .then((info) => setFooterSocial(info));
   }, [footerSocial]);
@@ -90,7 +90,7 @@ const FooterSetting = () => {
       twitter,
     };
 
-    const url = `https://nft-seo-server.onrender.com/footer-social`;
+    const url = `http://localhost:5000/footer-social`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -105,7 +105,7 @@ const FooterSetting = () => {
   };
   /* Copy Right */
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-copyright`)
+    fetch(`http://localhost:5000/footer-copyright`)
       .then((res) => res.json())
       .then((info) => setFooterCopyright(info));
   }, [footerCopyright]);
@@ -118,7 +118,7 @@ const FooterSetting = () => {
       copyright,
     };
 
-    const url = `https://nft-seo-server.onrender.com/footer-copyright`;
+    const url = `http://localhost:5000/footer-copyright`;
     fetch(url, {
       method: "POST",
       headers: {

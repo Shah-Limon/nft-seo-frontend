@@ -11,13 +11,13 @@ const Packages = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/package-titles/`)
+    fetch(`http://localhost:5000/package-titles/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/packages`)
+    fetch(`http://localhost:5000/packages`)
       .then((res) => res.json())
       .then((info) => setPackages(info));
   }, []);
@@ -38,7 +38,7 @@ const Packages = () => {
       description,
     };
 
-    const url = `https://nft-seo-server.onrender.com/edit-package-title/`;
+    const url = `http://localhost:5000/edit-package-title/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -84,7 +84,7 @@ const Packages = () => {
   //     featureTen,
   //   };
 
-  //   const url = `https://nft-seo-server.onrender.com/add-package`;
+  //   const url = `http://localhost:5000/add-package`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {

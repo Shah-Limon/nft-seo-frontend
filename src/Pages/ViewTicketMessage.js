@@ -11,13 +11,13 @@
 //   const [ticket, setTicket] = useState([]);
 
 //   useEffect(() => {
-//     fetch(`https://nft-seo-server.onrender.com/ticket/${id}`)
+//     fetch(`http://localhost:5000/ticket/${id}`)
 //       .then((res) => res.json())
 //       .then((info) => setTicket(info));
 //   }, [id]);
 
 //   useEffect(() => {
-//     fetch(`https://nft-seo-server.onrender.com/reply-tickets`)
+//     fetch(`http://localhost:5000/reply-tickets`)
 //       .then((res) => res.json())
 //       .then((info) => setTickets(info));
 //   }, []);
@@ -184,7 +184,7 @@ const ViewTicketMessage = () => {
       currentDate,
     };
 
-    const url = `https://nft-seo-server.onrender.com/add-ticket-reply`;
+    const url = `http://localhost:5000/add-ticket-reply`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -199,13 +199,13 @@ const ViewTicketMessage = () => {
   };
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/reply-tickets`)
+    fetch(`http://localhost:5000/reply-tickets`)
       .then((res) => res.json())
       .then((info) => setTickets(info));
   }, []);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/ticket/${id}`)
+    fetch(`http://localhost:5000/ticket/${id}`)
       .then((res) => res.json())
       .then((info) => setTicket(info));
   }, [id]);

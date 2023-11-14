@@ -22,7 +22,7 @@ const FooterEditAll = () => {
       youtube
     };
 
-    const url = `https://nft-seo-server.onrender.com/footer-social/`;
+    const url = `http://localhost:5000/footer-social/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -52,7 +52,7 @@ const FooterEditAll = () => {
         linkFive
     };
 
-    const url = `https://nft-seo-server.onrender.com/footer-link`;
+    const url = `http://localhost:5000/footer-link`;
     fetch(url, {
       method: "POST",
       headers: {

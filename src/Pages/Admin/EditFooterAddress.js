@@ -7,7 +7,7 @@ const EditFooterAddress = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-address/${id}`)
+    fetch(`http://localhost:5000/footer-address/${id}`)
       .then((res) => res.json())
       .then((info) => setFooterAddress(info));
   }, [id]);
@@ -24,7 +24,7 @@ const EditFooterAddress = () => {
       footerAdress,
     };
 
-    const url = `https://nft-seo-server.onrender.com/footer-address/${id}`;
+    const url = `http://localhost:5000/footer-address/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

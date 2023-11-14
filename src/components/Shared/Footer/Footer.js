@@ -7,17 +7,17 @@ const Footer = () => {
   const [footer, setFooter] = useState([]);
   const [social, setSocial] = useState([]);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/logo`)
+    fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-links`)
+    fetch(`http://localhost:5000/footer-links`)
       .then((res) => res.json())
       .then((info) => setFooter(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-social`)
+    fetch(`http://localhost:5000/footer-social`)
       .then((res) => res.json())
       .then((info) => setSocial(info));
   }, []);
@@ -39,7 +39,7 @@ const Footer = () => {
      
     };
 
-    const url = `https://nft-seo-server.onrender.com/add-newsLetter/`;
+    const url = `http://localhost:5000/add-newsLetter/`;
     fetch(url, {
       method: "POST",
       headers: {

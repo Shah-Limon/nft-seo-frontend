@@ -10,7 +10,7 @@ const EditRoadMaps = () => {
   const [road, SetRoad] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/road/`)
+    fetch(`http://localhost:5000/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);
@@ -22,19 +22,19 @@ const EditRoadMaps = () => {
     const titleToptext = event.target.titleToptext.value;
     const bannerHeadingText1 = event.target.bannerHeadingText1.value;
     const bannerHeadingText2 = event.target.bannerHeadingText2.value;
-    const cardDateOne = event.target.cardDateOne.value;
+
     const cardTitleOne = event.target.cardTitleOne.value;
     const cardDescOne = event.target.cardDescOne.value;
-    const cardDateTwo = event.target.cardDateTwo.value;
+
     const cardTitleTwo = event.target.cardTitleTwo.value;
     const cardDescTwo = event.target.cardDescTwo.value;
-    const cardDateThree = event.target.cardDateThree.value;
+
     const cardTitleThree = event.target.cardTitleThree.value;
     const cardDescThree = event.target.cardDescThree.value;
-    const cardDateFour = event.target.cardDateFour.value;
+
     const cardTitleFour = event.target.cardTitleFour.value;
     const cardDescFour = event.target.cardDescFour.value;
-    const cardDateFive = event.target.cardDateFive.value;
+
     const cardTitleFive = event.target.cardTitleFive.value;
     const cardDescFive = event.target.cardDescFive.value;
 
@@ -42,24 +42,24 @@ const EditRoadMaps = () => {
       titleToptext,
       bannerHeadingText1,
       bannerHeadingText2,
-      cardDateOne,
+
       cardTitleOne,
       cardDescOne,
-      cardDateTwo,
+
       cardTitleTwo,
       cardDescTwo,
-      cardDateThree,
+
       cardTitleThree,
       cardDescThree,
-      cardDateFour,
+
       cardTitleFour,
       cardDescFour,
-      cardDateFive,
+
       cardTitleFive,
       cardDescFive,
     };
 
-    const url = `https://nft-seo-server.onrender.com/edit-road/${id}`;
+    const url = `http://localhost:5000/edit-road/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -75,8 +75,8 @@ const EditRoadMaps = () => {
 
   return (
     <div>
-      <BackToAdminDashboard></BackToAdminDashboard>     
-       <form class="form mb-30" onSubmit={handleWhyEdit}>
+      <BackToAdminDashboard></BackToAdminDashboard>
+      <form class="form mb-30" onSubmit={handleWhyEdit}>
         {road.map((e) => (
           <div class="container">
             <div class="justify-content-center align-items-baseline">
@@ -117,20 +117,6 @@ const EditRoadMaps = () => {
                 </div>
               </div>
 
-              {/* one */}
-              <div class="col-sm">
-                <label className="mt-1">Enter Card Date (One)</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Card Date (One)"
-                    name="cardDateOne"
-                    defaultValue={e.cardDateOne}
-                  />
-                </div>
-              </div>
-
               <div class="col-sm">
                 <label className="mt-1">Enter Card Title (One)</label>
                 <div class="form-group mb-3">
@@ -153,20 +139,6 @@ const EditRoadMaps = () => {
                     placeholder="Enter Card Description (One)"
                     name="cardDescOne"
                     defaultValue={e.cardDescOne}
-                  />
-                </div>
-              </div>
-
-              {/* Two */}
-              <div class="col-sm">
-                <label className="mt-1">Enter Card Date (Two)</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Card Date (Two)"
-                    name="cardDateTwo"
-                    defaultValue={e.cardDateTwo}
                   />
                 </div>
               </div>
@@ -198,18 +170,6 @@ const EditRoadMaps = () => {
               </div>
 
               {/* Three */}
-              <div class="col-sm">
-                <label className="mt-1">Enter Card Date (Three)</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Card Date (Three)"
-                    name="cardDateThree"
-                    defaultValue={e.cardDateThree}
-                  />
-                </div>
-              </div>
 
               <div class="col-sm">
                 <label className="mt-1">Enter Card Title (Three)</label>
@@ -238,18 +198,6 @@ const EditRoadMaps = () => {
               </div>
 
               {/* Four */}
-              <div class="col-sm">
-                <label className="mt-1">Enter Card Date (Four)</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Card Date (Four)"
-                    name="cardDateFour"
-                    defaultValue={e.cardDateFour}
-                  />
-                </div>
-              </div>
 
               <div class="col-sm">
                 <label className="mt-1">Enter Card Title (Four)</label>
@@ -278,18 +226,6 @@ const EditRoadMaps = () => {
               </div>
 
               {/* Five */}
-              <div class="col-sm">
-                <label className="mt-1">Enter Card Date (Five)</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Card Date (Five)"
-                    name="cardDateFive"
-                    defaultValue={e.cardDateFive}
-                  />
-                </div>
-              </div>
 
               <div class="col-sm">
                 <label className="mt-1">Enter Card Title (Five)</label>
@@ -305,12 +241,12 @@ const EditRoadMaps = () => {
               </div>
 
               <div class="col-sm">
-                <label className="mt-1">Enter Card Description (One)</label>
+                <label className="mt-1">Enter Card Description (Five)</label>
                 <div class="form-group mb-3">
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Enter Card Title (One)"
+                    placeholder="Enter Card Title (Five)"
                     name="cardDescFive"
                     defaultValue={e.cardDescFive}
                   />

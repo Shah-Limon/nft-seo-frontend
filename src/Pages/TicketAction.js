@@ -11,13 +11,13 @@
 //   const [ticket, setTicket] = useState([]);
 
 //   useEffect(() => {
-//     fetch(`https://nft-seo-server.onrender.com/ticket/${id}`)
+//     fetch(`http://localhost:5000/ticket/${id}`)
 //       .then((res) => res.json())
 //       .then((info) => setTicket(info));
 //   }, [id]);
 
 //   useEffect(() => {
-//     fetch(`https://nft-seo-server.onrender.com/reply-tickets`)
+//     fetch(`http://localhost:5000/reply-tickets`)
 //       .then((res) => res.json())
 //       .then((info) => setTickets(info));
 //   }, []);
@@ -143,13 +143,13 @@ const TicketAction = () => {
   const [ticket, setTicket] = useState({});
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/ticket/${id}`)
+    fetch(`http://localhost:5000/ticket/${id}`)
       .then((res) => res.json())
       .then((info) => setTicket(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/reply-tickets`)
+    fetch(`http://localhost:5000/reply-tickets`)
       .then((res) => res.json())
       .then((info) => setTickets(info));
   }, []);

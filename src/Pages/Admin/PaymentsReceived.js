@@ -11,7 +11,7 @@ const PaymentsReceived = () => {
 
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/orders`)
+    fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info.reverse()));
   }, []);

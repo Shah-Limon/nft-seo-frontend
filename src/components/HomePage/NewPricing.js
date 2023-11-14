@@ -7,7 +7,7 @@ const NewPricing = () => {
   const [speciality, SetSpeciality] = useState([]);
   const [packages, setPackages] = useState([]);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/speciality/${id}`)
+    fetch(`http://localhost:5000/speciality/${id}`)
       .then((res) => res.json())
       .then((info) => SetSpeciality(info));
   }, [id]);
@@ -15,13 +15,13 @@ const NewPricing = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/package-titles/`)
+    fetch(`http://localhost:5000/package-titles/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/packages`)
+    fetch(`http://localhost:5000/packages`)
       .then((res) => res.json())
       .then((info) => setPackages(info));
   }, []);

@@ -9,7 +9,7 @@ const PackageTitleEdit = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/package-title/${id}`)
+    fetch(`http://localhost:5000/package-title/${id}`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);
@@ -28,7 +28,7 @@ const PackageTitleEdit = () => {
       description,
     };
 
-    const url = `https://nft-seo-server.onrender.com/package-title/${id}`;
+    const url = `http://localhost:5000/package-title/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

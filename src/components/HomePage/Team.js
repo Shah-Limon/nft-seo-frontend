@@ -13,12 +13,12 @@ const Team = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/teams`)
+    fetch(`http://localhost:5000/teams`)
       .then((res) => res.json())
       .then((info) => setTeam(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/team-title/`)
+    fetch(`http://localhost:5000/team-title/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

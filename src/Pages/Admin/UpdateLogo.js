@@ -40,7 +40,7 @@ const UpdateLogo = () => {
           logo: logoUrl,
         };
 
-        const url = `https://nft-seo-server.onrender.com/logo/${id}`;
+        const url = `http://localhost:5000/logo/${id}`;
         const updateResponse = await fetch(url, {
           method: "PUT",
           headers: {
@@ -50,7 +50,7 @@ const UpdateLogo = () => {
         });
 
         if (updateResponse.ok) {
-          navigate("/admin/packages");
+          navigate("/admin/setting-general/");
         } else {
           // Handle the case where the update to MongoDB fails
         }

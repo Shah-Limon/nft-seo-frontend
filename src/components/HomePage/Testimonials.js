@@ -7,13 +7,13 @@ const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/testimonials/`)
+    fetch(`http://localhost:5000/testimonials/`)
       .then((res) => res.json())
       .then((info) => setTestimonials(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/testimonials-title/`)
+    fetch(`http://localhost:5000/testimonials-title/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);

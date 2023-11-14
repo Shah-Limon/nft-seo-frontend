@@ -29,7 +29,7 @@ const ContactPageEdit = () => {
         img: imgUrl,
     };
 
-    const url = `https://nft-seo-server.onrender.com/contact/${id}`;
+    const url = `http://localhost:5000/contact/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -56,7 +56,7 @@ const ContactPageEdit = () => {
   
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/contact/${id}`)
+    fetch(`http://localhost:5000/contact/${id}`)
       .then((res) => res.json())
       .then((info) => {
         setContact(info);

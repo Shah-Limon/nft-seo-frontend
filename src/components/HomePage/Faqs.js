@@ -5,12 +5,12 @@ const Faqs = () => {
   const [faqTitle, setFaqTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/faqs`)
+    fetch(`http://localhost:5000/faqs`)
       .then((res) => res.json())
       .then((info) => setFaqData(info));
   }, []);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/faqs-title`)
+    fetch(`http://localhost:5000/faqs-title`)
       .then((res) => res.json())
       .then((info) => setFaqTitle(info));
   }, []);

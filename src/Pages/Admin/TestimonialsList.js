@@ -10,7 +10,7 @@ const TestimonialsList = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/testimonials`)
+    fetch(`http://localhost:5000/testimonials`)
       .then((res) => res.json())
       .then((info) => setTestimonial(info));
   }, []);
@@ -31,7 +31,7 @@ const TestimonialsList = () => {
       desc,
     };
 
-    const url = `https://nft-seo-server.onrender.com/testimonial`;
+    const url = `http://localhost:5000/testimonial`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -45,7 +45,7 @@ const TestimonialsList = () => {
       });
   };
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/testimonials-title/`)
+    fetch(`http://localhost:5000/testimonials-title/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);

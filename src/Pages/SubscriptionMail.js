@@ -9,7 +9,7 @@ const SubscriptionMail = () => {
   const paginationDigits = 3;
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/subscription-email`)
+    fetch(`http://localhost:5000/subscription-email`)
       .then((res) => res.json())
       .then((info) => setMail(info));
   }, []);

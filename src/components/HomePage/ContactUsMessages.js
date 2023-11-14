@@ -6,7 +6,7 @@ const ContactUsMessages = () => {
   const [message, setMessage] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/contact-messages`)
+    fetch(`http://localhost:5000/contact-messages`)
       .then((res) => res.json())
       .then((info) => setMessage(info.reverse()));
   }, []);

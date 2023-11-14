@@ -29,7 +29,7 @@ const EditPackage = () => {
   };
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/package/${id}`)
+    fetch(`http://localhost:5000/package/${id}`)
       .then((res) => res.json())
       .then((info) => setPackage(info));
     setImgUrl(p.img || "");
@@ -68,7 +68,7 @@ const EditPackage = () => {
       featureTen,
     };
 
-    const url = `https://nft-seo-server.onrender.com/edit-package/${id}`;
+    const url = `http://localhost:5000/edit-package/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

@@ -6,7 +6,7 @@ const TopBannerSetting = () => {
   const [topBanners, setTopBanners] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/top-banner`)
+    fetch(`http://localhost:5000/top-banner`)
       .then((res) => res.json())
       .then((info) => setTopBanners(info));
   }, []);
@@ -29,7 +29,7 @@ const TopBannerSetting = () => {
       bannerBackgroundImage,
     };
 
-    const url = `https://nft-seo-server.onrender.com/top-banner`;
+    const url = `http://localhost:5000/top-banner`;
     fetch(url, {
       method: "POST",
       headers: {

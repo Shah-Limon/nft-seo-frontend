@@ -4,7 +4,7 @@ const RoadMap = () => {
   const [road, SetRoad] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/road/`)
+    fetch(`http://localhost:5000/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);
@@ -41,53 +41,42 @@ const RoadMap = () => {
                     data-aos-duration={2000}
                   >
                     <div className="roadmap-box">
-                      <div className="time">{e.cardDateOne}</div>
                       <div className="content">
                         <h5 className="title">{e.cardTitleOne}</h5>
                         <p className="text">{e.cardDescOne}</p>
                       </div>
                     </div>
                     <div className="roadmap-box right">
-                      <div className="time">{e.cardDateTwo}</div>
                       <div className="content">
                         <h5 className="title">{e.cardTitleTwo}</h5>
                         <p className="text">{e.cardDescTwo}</p>
                       </div>
                     </div>
                     <div className="roadmap-box">
-                      <div className="time">{e.cardDateThree}</div>
                       <div className="content">
                         <h5 className="title">{e.cardTitleThree}</h5>
                         <p className="text">{e.cardDescThree}</p>
                       </div>
                     </div>
                     <div className="roadmap-box right">
-                      <div className="time">{e.cardDateFour}</div>
                       <div className="content">
                         <h5 className="title">{e.cardTitleFour}</h5>
                         <p className="text">{e.cardDescFour}</p>
                       </div>
                     </div>
                     <div className="roadmap-box">
-                      <div className="time">{e.cardDateFive}</div>
                       <div className="content">
                         <h5 className="title">{e.cardTitleFive}</h5>
-                        <p className="text">
-                          {e.cardDescFive}
-                         
-                        </p>
+                        <p className="text">{e.cardDescFive}</p>
                       </div>
                     </div>
                     <div className="icon" />
                     <div className="icon bottom" />
                   </div>
+                  
+                  
                 </>
               ))}
-              {/* <div className="button">
-                <a href="roadmap.html" className="action-btn">
-                  <span>View Full Road Map</span>
-                </a>
-              </div> */}
             </div>
           </div>
         </div>

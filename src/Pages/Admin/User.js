@@ -10,7 +10,7 @@ const User = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/user/${id}`)
+    fetch(`http://localhost:5000/user/${id}`)
       .then((res) => res.json())
       .then((users) => {
         const user = users.find((user) => user._id === id);
@@ -31,7 +31,7 @@ const User = () => {
       userEmail,
       userRole,
     };
-    const url = `https://nft-seo-server.onrender.com/user/${id}`;
+    const url = `http://localhost:5000/user/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

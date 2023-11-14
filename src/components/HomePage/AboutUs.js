@@ -5,7 +5,7 @@ const AboutUs = () => {
   const { id } = useParams();
   const [about, setAbout] = useState([]);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/about/${id}`)
+    fetch(`http://localhost:5000/about/${id}`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, [id]);

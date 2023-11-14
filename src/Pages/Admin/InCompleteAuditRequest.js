@@ -14,13 +14,13 @@ const InCompleteAuditRequest = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/website`)
+    fetch(`http://localhost:5000/website`)
       .then((res) => res.json())
       .then((info) => setData(info.reverse()));
   }, []);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/users`)
+    fetch(`http://localhost:5000/users`)
       .then((res) => res.json())
       .then((info) => setUsers(info.reverse()));
   }, []);

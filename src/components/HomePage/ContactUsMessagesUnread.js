@@ -8,7 +8,7 @@ const ContactUsMessagesUnread = () => {
   const [itemsPerPage] = useState(5); // Number of items to display per page
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/contact-messages`)
+    fetch(`http://localhost:5000/contact-messages`)
       .then((res) => res.json())
       .then((info) => setMessages(info.reverse()));
   }, []);

@@ -7,7 +7,7 @@ const PaymentSettingEdit = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/payment-account/${id}`)
+    fetch(`http://localhost:5000/payment-account/${id}`)
       .then((res) => res.json())
       .then((info) => setPayment(info));
   }, [id]);
@@ -20,7 +20,7 @@ const PaymentSettingEdit = () => {
 
     const editPayment = { paymentAccount, accountType, guideLine };
 
-    const url = `https://nft-seo-server.onrender.com/payment-edit/${id}`;
+    const url = `http://localhost:5000/payment-edit/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

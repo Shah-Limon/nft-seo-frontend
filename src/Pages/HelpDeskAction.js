@@ -13,13 +13,13 @@ const HelpDeskAction = () => {
 
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/ticket/${id}`)
+    fetch(`http://localhost:5000/ticket/${id}`)
       .then((res) => res.json())
       .then((info) => setTicket(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/reply-tickets`)
+    fetch(`http://localhost:5000/reply-tickets`)
       .then((res) => res.json())
       .then((info) => setTickets(info));
   }, []);
@@ -69,7 +69,7 @@ const HelpDeskAction = () => {
       currentDate,
     };
 
-    const url = `https://nft-seo-server.onrender.com/add-ticket-reply`;
+    const url = `http://localhost:5000/add-ticket-reply`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -91,7 +91,7 @@ const HelpDeskAction = () => {
       ticketStatus,
     };
 
-    const url = `https://nft-seo-server.onrender.com/ticket/${id}`;
+    const url = `http://localhost:5000/ticket/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

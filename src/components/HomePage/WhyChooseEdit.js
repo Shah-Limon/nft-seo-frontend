@@ -12,7 +12,7 @@ const WhyChooseEdit = () => {
   const [imgbbApiKey] = useState("1f8cc98e0f42a06989fb5e2589a9a8a4"); // Your imgbb API key
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/why-choose/`)
+    fetch(`http://localhost:5000/why-choose/`)
       .then((res) => res.json())
       .then((info) => SetChoose(info));
   }, []);
@@ -68,7 +68,7 @@ const WhyChooseEdit = () => {
       cardDescFour,
     };
 
-    const url = `https://nft-seo-server.onrender.com/edit-why-choose/${id}`;
+    const url = `http://localhost:5000/edit-why-choose/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
