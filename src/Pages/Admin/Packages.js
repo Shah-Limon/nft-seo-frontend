@@ -11,13 +11,13 @@ const Packages = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/package-titles/`)
+    fetch(`https://nft-seo-server.vercel.app/package-titles/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/packages`)
+    fetch(`https://nft-seo-server.vercel.app/packages`)
       .then((res) => res.json())
       .then((info) => setPackages(info));
   }, []);
@@ -38,7 +38,7 @@ const Packages = () => {
       description,
     };
 
-    const url = `http://localhost:5000/edit-package-title/`;
+    const url = `https://nft-seo-server.vercel.app/edit-package-title/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -84,7 +84,7 @@ const Packages = () => {
   //     featureTen,
   //   };
 
-  //   const url = `http://localhost:5000/add-package`;
+  //   const url = `https://nft-seo-server.vercel.app/add-package`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {

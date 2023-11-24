@@ -17,24 +17,24 @@ const AboutPage = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/about/${id}`)
+    fetch(`https://nft-seo-server.vercel.app/about/${id}`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/why-choose/${id}`)
+    fetch(`https://nft-seo-server.vercel.app/why-choose/${id}`)
       .then((res) => res.json())
       .then((info) => setChoose(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/teams`)
+    fetch(`https://nft-seo-server.vercel.app/teams`)
       .then((res) => res.json())
       .then((info) => setTeam(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/team-title/`)
+    fetch(`https://nft-seo-server.vercel.app/team-title/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

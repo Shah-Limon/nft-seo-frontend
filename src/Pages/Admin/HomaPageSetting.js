@@ -16,32 +16,32 @@ const HomaPageSetting = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/about`)
+    fetch(`https://nft-seo-server.vercel.app/about`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/banner/`)
+    fetch(`https://nft-seo-server.vercel.app/banner/`)
       .then((res) => res.json())
       .then((info) => setBanner(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/speciality/`)
+    fetch(`https://nft-seo-server.vercel.app/speciality/`)
       .then((res) => res.json())
       .then((info) => SetSpeciality(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/why-choose/`)
+    fetch(`https://nft-seo-server.vercel.app/why-choose/`)
       .then((res) => res.json())
       .then((info) => SetChoose(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/road/`)
+    fetch(`https://nft-seo-server.vercel.app/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/team-title`)
+    fetch(`https://nft-seo-server.vercel.app/team-title`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

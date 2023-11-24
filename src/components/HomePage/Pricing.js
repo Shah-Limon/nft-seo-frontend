@@ -10,14 +10,14 @@ const Pricing = () => {
   const [packages, setPackages] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/packages`)
+    fetch(`https://nft-seo-server.vercel.app/packages`)
       .then((res) => res.json())
       .then((info) => setPackages(info));
   }, []);
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/package-titles/`)
+    fetch(`https://nft-seo-server.vercel.app/package-titles/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

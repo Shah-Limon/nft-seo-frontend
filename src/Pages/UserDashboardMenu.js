@@ -13,7 +13,7 @@ const UserDashboardMenu = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders`)
+    fetch(`https://nft-seo-server.vercel.app/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info));
   }, []);

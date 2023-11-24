@@ -5,7 +5,7 @@ const DashboardMenu = () => {
   const [orders, setorders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders`)
+    fetch(`https://nft-seo-server.vercel.app/orders`)
       .then((res) => res.json())
       .then((info) => setorders(info));
   }, [orders]);

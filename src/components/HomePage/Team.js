@@ -13,12 +13,12 @@ const Team = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/teams`)
+    fetch(`https://nft-seo-server.vercel.app/teams`)
       .then((res) => res.json())
       .then((info) => setTeam(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/team-title/`)
+    fetch(`https://nft-seo-server.vercel.app/team-title/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

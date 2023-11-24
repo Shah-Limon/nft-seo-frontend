@@ -10,7 +10,7 @@ const EditFaqTitle = () => {
   const [faqTitle, setFaqTitle] = useState([]);
  
   useEffect(() => {
-    fetch(`http://localhost:5000/faq-title/${id}`)
+    fetch(`https://nft-seo-server.vercel.app/faq-title/${id}`)
       .then((res) => res.json())
       .then((info) => setFaqTitle(info));
   }, [id]);
@@ -29,7 +29,7 @@ const EditFaqTitle = () => {
       titleTwo,
     };
 
-    const url = `http://localhost:5000/faq-title/${id}/`;
+    const url = `https://nft-seo-server.vercel.app/faq-title/${id}/`;
     fetch(url, {
       method: "PUT",
       headers: {

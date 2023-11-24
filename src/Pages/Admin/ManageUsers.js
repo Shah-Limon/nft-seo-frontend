@@ -7,7 +7,7 @@ const ManageUsers = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users`)
+    fetch(`https://nft-seo-server.vercel.app/users`)
       .then((res) => res.json())
       .then((info) => setUsers(info));
   }, []);
@@ -23,7 +23,7 @@ const ManageUsers = () => {
       userRole,
     };
 
-    const url = `http://localhost:5000/add-user`;
+    const url = `https://nft-seo-server.vercel.app/add-user`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -37,7 +37,7 @@ const ManageUsers = () => {
       });
   };
   const handleDeleteUser = (userId) => {
-    fetch(`http://localhost:5000/user/${userId}`, {
+    fetch(`https://nft-seo-server.vercel.app/user/${userId}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

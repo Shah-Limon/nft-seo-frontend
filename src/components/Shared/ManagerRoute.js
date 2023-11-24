@@ -7,7 +7,7 @@ const ManagerRoute = ({ children }) => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://nft-seo-server.vercel.app/users")
       .then((res) => res.json())
       .then((data) => setUsers(data.reverse()));
   }, []);

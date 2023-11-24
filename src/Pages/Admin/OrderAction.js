@@ -8,7 +8,7 @@ const OrderAction = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/order/${id}`)
+    fetch(`https://nft-seo-server.vercel.app/order/${id}`)
       .then((res) => res.json())
       .then((info) => setOrder(info));
   }, [id]);
@@ -22,7 +22,7 @@ const OrderAction = () => {
       paymentStatus,
     };
 
-    const url = `http://localhost:5000/order/${id}`;
+    const url = `https://nft-seo-server.vercel.app/order/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

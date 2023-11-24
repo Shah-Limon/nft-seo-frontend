@@ -10,7 +10,7 @@ const EditSocialLinks = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-social/${id}`)
+    fetch(`https://nft-seo-server.vercel.app/footer-social/${id}`)
       .then((res) => res.json())
       .then((info) => setSocial(info));
   }, [id]);
@@ -32,7 +32,7 @@ const EditSocialLinks = () => {
       email
     };
 
-    const url = `http://localhost:5000/footer-social/${id}`;
+    const url = `https://nft-seo-server.vercel.app/footer-social/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

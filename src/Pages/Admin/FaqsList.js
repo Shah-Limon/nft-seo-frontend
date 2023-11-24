@@ -10,14 +10,14 @@ const FaqsList = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/faqs`)
+    fetch(`https://nft-seo-server.vercel.app/faqs`)
       .then((res) => res.json())
       .then((info) => setFaqs(info));
   }, []);
   const [faqTitle, setFaqTitle] = useState([]);
  
   useEffect(() => {
-    fetch(`http://localhost:5000/faqs-title`)
+    fetch(`https://nft-seo-server.vercel.app/faqs-title`)
       .then((res) => res.json())
       .then((info) => setFaqTitle(info));
   }, []);
@@ -36,7 +36,7 @@ const FaqsList = () => {
       titleTwo,
     };
 
-    const url = `http://localhost:5000/faq-title/`;
+    const url = `https://nft-seo-server.vercel.app/faq-title/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -66,7 +66,7 @@ const FaqsList = () => {
       
     };
 
-    const url = `http://localhost:5000/faq`;
+    const url = `https://nft-seo-server.vercel.app/faq`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -80,7 +80,7 @@ const FaqsList = () => {
       });
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/faqs/`)
+    fetch(`https://nft-seo-server.vercel.app/faqs/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);

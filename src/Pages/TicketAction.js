@@ -11,13 +11,13 @@
 //   const [ticket, setTicket] = useState([]);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:5000/ticket/${id}`)
+//     fetch(`https://nft-seo-server.vercel.app/ticket/${id}`)
 //       .then((res) => res.json())
 //       .then((info) => setTicket(info));
 //   }, [id]);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:5000/reply-tickets`)
+//     fetch(`https://nft-seo-server.vercel.app/reply-tickets`)
 //       .then((res) => res.json())
 //       .then((info) => setTickets(info));
 //   }, []);
@@ -143,13 +143,13 @@ const TicketAction = () => {
   const [ticket, setTicket] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/ticket/${id}`)
+    fetch(`https://nft-seo-server.vercel.app/ticket/${id}`)
       .then((res) => res.json())
       .then((info) => setTicket(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reply-tickets`)
+    fetch(`https://nft-seo-server.vercel.app/reply-tickets`)
       .then((res) => res.json())
       .then((info) => setTickets(info));
   }, []);

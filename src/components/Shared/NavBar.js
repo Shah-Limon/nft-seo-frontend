@@ -15,12 +15,12 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/logo`)
+    fetch(`https://nft-seo-server.vercel.app/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/users`)
+    fetch(`https://nft-seo-server.vercel.app/users`)
       .then((res) => res.json())
       .then((info) => setAdmin(info));
   }, []);

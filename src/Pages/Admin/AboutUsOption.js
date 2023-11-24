@@ -28,7 +28,7 @@ const AboutUsOption = () => {
         btnUrl,
     };
 
-    const url = `http://localhost:5000/add-about`;
+    const url = `https://nft-seo-server.vercel.app/add-about`;
     fetch(url, {
       method: "POST",
       headers: {

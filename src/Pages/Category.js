@@ -8,13 +8,13 @@ const Category = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/category/${id}`)
+    fetch(`https://nft-seo-server.vercel.app/category/${id}`)
       .then((res) => res.json())
       .then((info) => setCategory(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products`)
+    fetch(`https://nft-seo-server.vercel.app/products`)
       .then((res) => res.json())
       .then((info) => setProducts(info));
   }, []);

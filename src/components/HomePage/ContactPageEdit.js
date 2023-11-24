@@ -29,7 +29,7 @@ const ContactPageEdit = () => {
         img: imgUrl,
     };
 
-    const url = `http://localhost:5000/contact/${id}`;
+    const url = `https://nft-seo-server.vercel.app/contact/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -56,7 +56,7 @@ const ContactPageEdit = () => {
   
 
   useEffect(() => {
-    fetch(`http://localhost:5000/contact/${id}`)
+    fetch(`https://nft-seo-server.vercel.app/contact/${id}`)
       .then((res) => res.json())
       .then((info) => {
         setContact(info);

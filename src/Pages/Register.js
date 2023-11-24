@@ -20,7 +20,7 @@ const Register = () => {
   const [logo, setLogo] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/logo`)
+    fetch(`https://nft-seo-server.vercel.app/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);

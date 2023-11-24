@@ -6,7 +6,7 @@ const ReportSeo = () => {
   const [website, setWebsite] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/website/${id}`)
+    fetch(`https://nft-seo-server.vercel.app/website/${id}`)
       .then((res) => res.json())
       .then((data) => setWebsite(data));
   }, [id]);
